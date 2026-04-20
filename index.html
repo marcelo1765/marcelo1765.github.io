@@ -5,44 +5,57 @@
     <title>Mi Portafolio | Marcelo</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #4facfe 0%, #764ba2 100%);
+            color: #fff;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1, h2 {
+            margin: 0 0 20px;
         }
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-align: left;
+            font-size: 2.2rem;
+            font-weight: 700;
         }
         .highlight {
             color: #ffd700;
         }
         .card {
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px auto;
-            max-width: 500px;
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            backdrop-filter: blur(12px);
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
         .btn {
-            background: white;
-            color: #667eea;
-            padding: 12px 30px;
-            border-radius: 50px;
+            padding: 12px 25px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
-            display: block;
-            transition: transform 0.3s ease;
-            margin: 10px auto;
-            width: 80%;
-            max-width: 250px;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
         .btn:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            opacity: 0.9;
         }
         .btn-linkedin {
             background: #0077b5;
@@ -56,40 +69,32 @@
             background: #dc3545;
             color: white;
         }
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <h1>Hola, soy <span class="highlight">Marcelo Ricardo Gil Grados Calderon</span></h1>
+    <h1>Hola, soy <span class="highlight">Marcelo Ricardo Gil Grados Calderón</span></h1>
     <div class="card">
-        <h1>¡Bienvenido a mi Portafolio Virtual!</h1>
+        <h2>¡Bienvenido a mi Portafolio Virtual!</h2>
         <p>
-            Soy un Ingeniero de Sistemas especializado en Data Analysis y Business Intelligence. 
-            Aquí encontrarás proyectos en SQL, Power BI y automatización de flujos de trabajo, 
+            Soy un Ingeniero de Sistemas especializado en <strong>Data Analysis</strong> y <strong>Business Intelligence</strong>. 
+            Aquí encontrarás proyectos en <strong>SQL</strong>, <strong>Power BI</strong> y automatización de flujos de trabajo, 
             diseñados para transformar datos en información clara y útil para la toma de decisiones.
         </p>
         <p>
             Explora mis trabajos, descubre dashboards dinámicos y soluciones prácticas, 
             y acompáñame en este camino hacia la innovación y la eficiencia.
         </p>
-
         <div class="buttons">
-            <a href="https://www.linkedin.com/in/marcelo-gil-grados-calderon-895a46225/" target="_blank" class="btn btn-linkedin">
-                🔗 Mi LinkedIn
-            </a>
-            <a href="CV_Marcelo.GG.docx" download class="btn btn-cv">
-                📄 Descargar CV.docx
-            </a>
-            <a href="CV_Marcelo.GG.pdf" download class="btn btn-pdf">
-                📑 Descargar CV.pdf
-            </a>
+            <a href="https://www.linkedin.com/in/marcelo-gil-grados-calderon-895a46225/" target="_blank" class="btn btn-linkedin">🔗 LinkedIn</a>
+            <a href="CV_Marcelo.GG.docx" download class="btn btn-cv">📄 CV.docx</a>
+            <a href="CV_Marcelo.GG.pdf" download class="btn btn-pdf">📑 CV.pdf</a>
         </div>
     </div>
-    <p>© 2026 Marcelo - Portafolio en construcción</p>
+    <footer>© 2026 Marcelo - Portafolio en construcción</footer>
 </body>
 </html>
