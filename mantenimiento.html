@@ -2,57 +2,246 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>En Mantenimiento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio SQL SERVER | Marcelo</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             text-align: center;
             padding: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             min-height: 100vh;
         }
+
         h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
         }
+
         .highlight {
             color: #ffd700;
         }
+
         .emoji {
-            font-size: 5rem;
+            font-size: 4rem;
+            margin-bottom: 20px;
         }
+
         .card {
             background: rgba(255,255,255,0.1);
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px;
             margin: 30px auto;
-            max-width: 500px;
+            max-width: 800px;
             backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
+
+        .card h2 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
         .btn {
-            background: white;
-            color: #667eea;
             padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
+            transition: all 0.3s ease;
             display: inline-block;
-            margin-top: 20px;
-            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
         }
+
         .btn:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-linkedin {
+            background: #0077b5;
+            color: white;
+        }
+
+        .btn-proyectos {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-volver {
+            background: white;
+            color: #2a5298;
+        }
+
+        .skills-section {
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: rgba(255,255,255,0.15);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .code-demo {
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+            overflow-x: auto;
+        }
+
+        .code-demo pre {
+            color: #d4d4d4;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .sql-keyword { color: #569cd6; }
+        .sql-function { color: #dcdcaa; }
+        .sql-string { color: #ce9178; }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <div class="emoji">🚧👷‍♂️🔧</div>
-    <h1>Página en <span class="highlight">Mantenimiento</span></h1>
-    <div class="card">
-        <p>Estamos trabajando para mejorar esta sección.</p>
-        <p>¡Pronto estará disponible!</p>
-        <a href="index.html" class="btn">← Volver al portafolio</a>
+    <div class="emoji">
+        🗄️📊💾
     </div>
+    <h1>Portafolio <span class="highlight">SQL SERVER</span></h1>
+    <h2 style="margin-bottom: 20px; font-size: 1.3rem;">Marcelo Ricardo Gil Grados Calderón</h2>
+
+    <div class="card">
+        <h2>🚀 Especialista en Bases de Datos</h2>
+        <p>
+            Bienvenido a mi portafolio de <strong>SQL Server</strong>. Aquí encontrarás proyectos profesionales, 
+            consultas optimizadas, stored procedures, y soluciones de Business Intelligence implementadas 
+            con T-SQL y herramientas de Microsoft.
+        </p>
+        
+        <div class="skills-section">
+            <h3 style="color: #ffd700; margin-bottom: 15px;">🛠️ Tecnologías y Habilidades</h3>
+            <div class="skills-grid">
+                <div class="skill-item">✅ T-SQL Avanzado</div>
+                <div class="skill-item">✅ Stored Procedures</div>
+                <div class="skill-item">✅ Functions & Triggers</div>
+                <div class="skill-item">✅ Query Optimization</div>
+                <div class="skill-item">✅ Indexación Estratégica</div>
+                <div class="skill-item">✅ ETL con SSIS</div>
+                <div class="skill-item">✅ Reporting Services (SSRS)</div>
+                <div class="skill-item">✅ Analysis Services (SSAS)</div>
+            </div>
+        </div>
+
+        <div class="code-demo">
+            <h3 style="color: #ffd700; margin-bottom: 10px;">📝 Ejemplo de Código - Análisis de Ventas</h3>
+            <pre>
+<span class="sql-keyword">CREATE PROCEDURE</span> sp_ReporteVentasMensuales
+    @Year <span class="sql-keyword">INT</span>,
+    @Month <span class="sql-keyword">INT</span> = <span class="sql-keyword">NULL</span>
+<span class="sql-keyword">AS</span>
+<span class="sql-keyword">BEGIN</span>
+    <span class="sql-keyword">WITH</span> VentasCTE <span class="sql-keyword">AS</span> (
+        <span class="sql-keyword">SELECT</span>
+            <span class="sql-function">YEAR</span>(fecha_venta) <span class="sql-keyword">AS</span> año,
+            <span class="sql-function">MONTH</span>(fecha_venta) <span class="sql-keyword">AS</span> mes,
+            <span class="sql-function">SUM</span>(monto_total) <span class="sql-keyword">AS</span> total_ventas,
+            <span class="sql-function">COUNT</span>(<span class="sql-keyword">DISTINCT</span> id_cliente) <span class="sql-keyword">AS</span> clientes_activos
+        <span class="sql-keyword">FROM</span> ventas
+        <span class="sql-keyword">WHERE</span> <span class="sql-function">YEAR</span>(fecha_venta) = @Year
+            <span class="sql-keyword">AND</span> (@Month <span class="sql-keyword">IS NULL</span> <span class="sql-keyword">OR</span> <span class="sql-function">MONTH</span>(fecha_venta) = @Month)
+        <span class="sql-keyword">GROUP BY</span> <span class="sql-function">YEAR</span>(fecha_venta), <span class="sql-function">MONTH</span>(fecha_venta)
+    )
+    <span class="sql-keyword">SELECT</span> *,
+        <span class="sql-function">LAG</span>(total_ventas) <span class="sql-keyword">OVER</span> (<span class="sql-keyword">ORDER BY</span> mes) <span class="sql-keyword">AS</span> ventas_mes_anterior,
+        <span class="sql-keyword">CAST</span>(
+            (<span class="sql-function">LEAD</span>(total_ventas) <span class="sql-keyword">OVER</span> (<span class="sql-keyword">ORDER BY</span> mes) - total_ventas) 
+            <span class="sql-keyword">AS</span> <span class="sql-function">DECIMAL</span>(10,2)
+        ) <span class="sql-keyword">AS</span> crecimiento_proyectado
+    <span class="sql-keyword">FROM</span> VentasCTE
+    <span class="sql-keyword">ORDER BY</span> mes;
+<span class="sql-keyword">END</span>;
+            </pre>
+        </div>
+
+        <div class="buttons">
+            <a href="https://www.linkedin.com/in/marcelo-gil-grados-calderon-895a46225/" target="_blank" class="btn btn-linkedin">
+                🔗 LinkedIn
+            </a>
+            <a href="#" class="btn btn-proyectos" onclick="mostrarProyectos()">
+                📂 Proyectos
+            </a>
+            <a href="index.html" class="btn btn-volver">
+                ← Volver al portafolio
+            </a>
+        </div>
+
+        <div id="proyectos-info" style="display: none; margin-top: 30px; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 10px;">
+            <h3 style="color: #ffd700;">📊 Proyectos Destacados en SQL Server</h3>
+            <ul style="text-align: left; margin-top: 15px; list-style: none;">
+                <li>🏆 <strong>Dashboard de Ventas Retail</strong> - Análisis de KPIs con ventanas temporales</li>
+                <li>🏆 <strong>Segmentación RFM de Clientes</strong> - Modelo de scoring con NTILE y CASE</li>
+                <li>🏆 <strong>Optimización de Consultas</strong> - Reducción del 70% en tiempo de ejecución</li>
+                <li>🏆 <strong>ETL Automatizado</strong> - Procesamiento diario de 500k+ registros</li>
+                <li>🏆 <strong>Data Warehouse para Ventas</strong> - Modelo estrella con dimensiones SC Type 2</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Marcelo Ricardo Gil Grados Calderón - Especialista en SQL Server & Business Intelligence
+    </footer>
+
+    <script>
+        function mostrarProyectos() {
+            const proyectosDiv = document.getElementById('proyectos-info');
+            if (proyectosDiv.style.display === 'none' || proyectosDiv.style.display === '') {
+                proyectosDiv.style.display = 'block';
+                // Scroll suave hasta la sección
+                proyectosDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                proyectosDiv.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
