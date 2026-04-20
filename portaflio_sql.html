@@ -131,7 +131,7 @@
             font-size: 1.1rem;
         }
 
-        /* Tarjeta para la foto - MÁS GRANDE */
+        /* Tarjeta para la foto */
         .foto-card {
             background: rgba(255,255,255,0.1);
             border-radius: 25px;
@@ -157,10 +157,10 @@
             opacity: 0.9;
         }
 
-        /* Imagen rectangular - MUY GRANDE */
+        /* Imagen rectangular - MUCHO MÁS GRANDE */
         .foto-perfil {
             width: 100%;
-            max-width: 700px;
+            max-width: 900px;
             height: auto;
             border-radius: 20px;
             object-fit: cover;
@@ -284,20 +284,19 @@
         </div>
     </div>
 
-    <!-- Tarjeta con la foto - TAMAÑO GRANDE -->
+    <!-- Tarjeta con la foto - FOTO MÁS GRANDE -->
     <div class="foto-card">
         <div id="contenedor-foto">
             <img id="foto-perfil" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 450px; flex-direction: column;">
-                <span style="font-size: 5rem;">📷</span>
-                <span style="font-size: 1.1rem; margin-top: 15px;">Haz clic para subir tu foto</span>
+            <div id="placeholder-foto" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 550px; flex-direction: column;">
+                <span style="font-size: 6rem;">📷</span>
+                <span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>
             </div>
         </div>
         
         <h3>Marco Gil Grados</h3>
         <h4>Ingeniero de Sistemas | Data Analyst | BI Specialist</h4>
         
-        <!-- Descripción debajo de la foto -->
         <div class="descripcion">
             <p>✨ <strong>Especialista en transformación de datos</strong> ✨</p>
             <p>📊 Apasionado por convertir datos en decisiones estratégicas</p>
@@ -326,7 +325,7 @@
         
         function intentarCargarFoto() {
             if (intentoActual >= rutasImagen.length) {
-                placeholder.innerHTML = '<span style="font-size: 5rem;">📷</span><br><span style="font-size: 1.1rem; margin-top: 15px;">Haz clic para subir tu foto</span>';
+                placeholder.innerHTML = '<span style="font-size: 6rem;">📷</span><br><span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>';
                 placeholder.style.display = 'flex';
                 return;
             }
@@ -335,14 +334,12 @@
             const testImg = new Image();
             
             testImg.onload = function() {
-                // Foto encontrada
                 imgElement.src = ruta;
                 imgElement.style.display = 'block';
                 placeholder.style.display = 'none';
             };
             
             testImg.onerror = function() {
-                // Probar siguiente ruta
                 intentoActual++;
                 intentarCargarFoto();
             };
@@ -350,12 +347,10 @@
             testImg.src = ruta;
         }
         
-        // Iniciar búsqueda de la foto al cargar la página
         window.addEventListener('DOMContentLoaded', function() {
             intentarCargarFoto();
         });
         
-        // Permitir que el usuario seleccione una foto manualmente haciendo clic
         document.getElementById('contenedor-foto').addEventListener('click', function() {
             const input = document.createElement('input');
             input.type = 'file';
