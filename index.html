@@ -40,27 +40,23 @@
             transform: translateY(-3px);
             opacity: 0.9;
         }
-        .btn-linkedin {
-            background: #0077b5;
-            color: white;
-        }
-        .btn-cv {
-            background: #28a745;
-            color: white;
-        }
-        .btn-pdf {
-            background: #dc3545;
-            color: white;
-        }
+        .btn-linkedin { background: #0077b5; color: white; }
+        .btn-cv { background: #28a745; color: white; }
+        .btn-pdf { background: #dc3545; color: white; }
+
         .card {
             background: rgba(255,255,255,0.15);
             border-radius: 15px;
-            padding: 30px;
+            padding: 40px;
             max-width: 600px;
-            margin: auto;
+            margin: 40px auto;
             text-align: center;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             backdrop-filter: blur(12px);
+        }
+        .card h2 {
+            font-size: 1.8rem;
+            color: #ffd700;
         }
         footer {
             margin-top: 30px;
@@ -80,7 +76,8 @@
         </div>
     </header>
 
-    <div class="card">
+    <!-- Contenido principal fuera de la tarjeta -->
+    <section>
         <h2>¡Bienvenido a mi Portafolio Virtual!</h2>
         <p>
             Soy un Ingeniero de Sistemas especializado en <strong>Data Analysis</strong> y <strong>Business Intelligence</strong>. 
@@ -91,6 +88,12 @@
             Explora mis trabajos, descubre dashboards dinámicos y soluciones prácticas, 
             y acompáñame en este camino hacia la innovación y la eficiencia.
         </p>
+    </section>
+
+    <!-- Tarjeta solo con mensaje de mantenimiento -->
+    <div class="card">
+        <h2>🚧 En mantenimiento 🚧</h2>
+        <p>Esta sección estará disponible próximamente.</p>
     </div>
 
     <footer>© 2026 Marcelo - Portafolio en construcción</footer>
