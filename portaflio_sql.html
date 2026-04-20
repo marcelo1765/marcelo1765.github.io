@@ -152,6 +152,7 @@
             object-fit: cover;
             border: 3px solid #ffd700;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: #2a5298;
         }
 
         .foto-card p {
@@ -160,10 +161,40 @@
             margin-top: 10px;
         }
 
+        .descripcion {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .descripcion p {
+            margin: 5px 0;
+            font-size: 0.95rem;
+        }
+
+        .loading-text {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
         footer {
             margin-top: 30px;
             font-size: 0.9rem;
             opacity: 0.8;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        .cargando {
+            animation: blink 1.5s infinite;
         }
 
         @media (max-width: 768px) {
@@ -236,13 +267,98 @@
 
     <!-- Tarjeta con la foto -->
     <div class="foto-card">
-        <img src="fotoprueba.PNG" alt="Foto de Marcelo" class="foto-perfil">
+        <div id="contenedor-foto">
+            <img id="foto-perfil" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <span style="font-size: 3rem;">📷</span>
+            </div>
+        </div>
+        <div class="loading-text cargando" id="loadingText">🔄 Cargando foto automáticamente...</div>
         <h3>📷 Marcelo Gil Grados</h3>
         <p>Ingeniero de Sistemas | Data Analyst | BI Specialist</p>
+        
+        <!-- Descripción debajo de la foto -->
+        <div class="descripcion">
+            <p>✨ <strong>Especialista en transformación de datos</strong> ✨</p>
+            <p>📊 Apasionado por convertir datos en decisiones estratégicas</p>
+            <p>🎯 +5 años de experiencia en SQL Server y Business Intelligence</p>
+            <p>🚀 Comprometido con la excelencia y la innovación tecnológica</p>
+        </div>
     </div>
 
     <footer>
         © 2026 Marcelo Ricardo Gil Grados Calderón - Especialista en SQL Server & Business Intelligence
     </footer>
+
+    <script>
+        // Simular carga automática de la foto
+        // Reemplaza 'fotoprueba.PNG' con la ruta correcta de tu imagen
+        const rutasImagen = [
+            'fotoprueba.PNG',
+            'foto.jpg',
+            'imagen.png'
+        ];
+        
+        let intentoActual = 0;
+        const contenedorFoto = document.getElementById('contenedor-foto');
+        const imgElement = document.getElementById('foto-perfil');
+        const placeholder = document.getElementById('placeholder-foto');
+        const loadingText = document.getElementById('loadingText');
+        
+        function intentarCargarFoto() {
+            if (intentoActual >= rutasImagen.length) {
+                loadingText.innerHTML = '⚠️ No se encontró la foto. Por favor, verifica la ruta de la imagen.';
+                loadingText.classList.remove('cargando');
+                return;
+            }
+            
+            const ruta = rutasImagen[intentoActual];
+            const testImg = new Image();
+            
+            testImg.onload = function() {
+                // Foto encontrada
+                imgElement.src = ruta;
+                imgElement.style.display = 'block';
+                placeholder.style.display = 'none';
+                loadingText.innerHTML = '✅ Foto cargada correctamente';
+                loadingText.classList.remove('cargando');
+            };
+            
+            testImg.onerror = function() {
+                // Probar siguiente ruta
+                intentoActual++;
+                intentarCargarFoto();
+            };
+            
+            testImg.src = ruta;
+        }
+        
+        // Iniciar búsqueda de la foto al cargar la página
+        window.addEventListener('DOMContentLoaded', function() {
+            intentarCargarFoto();
+        });
+        
+        // También permitir que el usuario seleccione una foto manualmente haciendo clic
+        document.getElementById('contenedor-foto').addEventListener('click', function() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        imgElement.src = event.target.result;
+                        imgElement.style.display = 'block';
+                        placeholder.style.display = 'none';
+                        loadingText.innerHTML = '✅ Foto actualizada manualmente';
+                        loadingText.classList.remove('cargando');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            input.click();
+        });
+    </script>
 </body>
 </html>
