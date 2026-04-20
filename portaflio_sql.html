@@ -81,11 +81,6 @@
             color: white;
         }
 
-        .btn-proyectos {
-            background: #ff9800;
-            color: white;
-        }
-
         .btn-volver {
             background: white;
             color: #2a5298;
@@ -153,6 +148,28 @@
         .sql-function { color: #dcdcaa; }
         .sql-string { color: #ce9178; }
 
+        /* Sección de proyectos siempre visible */
+        .proyectos-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .proyectos-section h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .proyectos-section ul {
+            list-style: none;
+        }
+
+        .proyectos-section li {
+            margin-bottom: 10px;
+        }
+
         footer {
             margin-top: 30px;
             font-size: 0.9rem;
@@ -192,9 +209,6 @@
             <a href="https://www.linkedin.com/in/marcelo-gil-grados-calderon-895a46225/" target="_blank" class="btn btn-linkedin">
                 🔗 LinkedIn
             </a>
-            <button class="btn btn-proyectos" onclick="mostrarProyectos()">
-                📂 Proyectos
-            </button>
             <a href="index.html" class="btn btn-volver">
                 ← Volver
             </a>
@@ -254,9 +268,10 @@
             </pre>
         </div>
 
-        <div id="proyectos-info" style="display: none; margin-top: 30px; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 10px;">
-            <h3 style="color: #ffd700;">📊 Proyectos Destacados en SQL Server</h3>
-            <ul style="text-align: left; margin-top: 15px; list-style: none;">
+        <!-- Sección de proyectos siempre visible -->
+        <div class="proyectos-section">
+            <h3>📊 Proyectos Destacados en SQL Server</h3>
+            <ul>
                 <li>🏆 <strong>Dashboard de Ventas Retail</strong> - Análisis de KPIs con ventanas temporales</li>
                 <li>🏆 <strong>Segmentación RFM de Clientes</strong> - Modelo de scoring con NTILE y CASE</li>
                 <li>🏆 <strong>Optimización de Consultas</strong> - Reducción del 70% en tiempo de ejecución</li>
@@ -269,18 +284,5 @@
     <footer>
         © 2026 Marcelo Ricardo Gil Grados Calderón - Especialista en SQL Server & Business Intelligence
     </footer>
-
-    <script>
-        function mostrarProyectos() {
-            const proyectosDiv = document.getElementById('proyectos-info');
-            if (proyectosDiv.style.display === 'none' || proyectosDiv.style.display === '') {
-                proyectosDiv.style.display = 'block';
-                // Scroll suave hasta la sección
-                proyectosDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            } else {
-                proyectosDiv.style.display = 'none';
-            }
-        }
-    </script>
 </body>
 </html>
