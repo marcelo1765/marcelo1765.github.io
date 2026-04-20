@@ -7,51 +7,34 @@
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 50px;
             background: linear-gradient(135deg, #4facfe 0%, #764ba2 100%);
             color: #fff;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
-        h1, h2 {
-            margin: 0 0 20px;
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
         }
         h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
         }
         .highlight {
             color: #ffd700;
         }
-        .card {
-            background: rgba(255,255,255,0.15);
-            border-radius: 15px;
-            padding: 40px;
-            max-width: 600px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            backdrop-filter: blur(12px);
-        }
-        p {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
         .buttons {
             display: flex;
-            justify-content: center;
             gap: 15px;
-            flex-wrap: wrap;
         }
         .btn {
-            padding: 12px 25px;
-            border-radius: 30px;
+            padding: 10px 20px;
+            border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
-            display: inline-block;
         }
         .btn:hover {
             transform: translateY(-3px);
@@ -69,15 +52,34 @@
             background: #dc3545;
             color: white;
         }
+        .card {
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            backdrop-filter: blur(12px);
+        }
         footer {
             margin-top: 30px;
             font-size: 0.9rem;
             opacity: 0.8;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Hola, soy <span class="highlight">Marcelo Ricardo Gil Grados Calderón</span></h1>
+    <header>
+        <h1>Hola, soy <span class="highlight">Marcelo Ricardo Gil Grados Calderón</span></h1>
+        <div class="buttons">
+            <a href="https://www.linkedin.com/in/marcelo-gil-grados-calderon-895a46225/" target="_blank" class="btn btn-linkedin">🔗 LinkedIn</a>
+            <a href="CV_Marcelo.GG.docx" download class="btn btn-cv">📄 CV.docx</a>
+            <a href="CV_Marcelo.GG.pdf" download class="btn btn-pdf">📑 CV.pdf</a>
+        </div>
+    </header>
+
     <div class="card">
         <h2>¡Bienvenido a mi Portafolio Virtual!</h2>
         <p>
@@ -89,12 +91,8 @@
             Explora mis trabajos, descubre dashboards dinámicos y soluciones prácticas, 
             y acompáñame en este camino hacia la innovación y la eficiencia.
         </p>
-        <div class="buttons">
-            <a href="https://www.linkedin.com/in/marcelo-gil-grados-calderon-895a46225/" target="_blank" class="btn btn-linkedin">🔗 LinkedIn</a>
-            <a href="CV_Marcelo.GG.docx" download class="btn btn-cv">📄 CV.docx</a>
-            <a href="CV_Marcelo.GG.pdf" download class="btn btn-pdf">📑 CV.pdf</a>
-        </div>
     </div>
+
     <footer>© 2026 Marcelo - Portafolio en construcción</footer>
 </body>
 </html>
