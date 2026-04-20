@@ -141,18 +141,29 @@
         .foto-card h3 {
             color: #ffd700;
             font-size: 1.5rem;
-            margin-bottom: 15px;
-            margin-top: 15px;
+            margin-bottom: 10px;
+            margin-top: 20px;
         }
 
+        .foto-card h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        /* Imagen rectangular - SIN borde circular */
         .foto-perfil {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
             object-fit: cover;
             border: 3px solid #ffd700;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             background: #2a5298;
+            margin: 0 auto;
+            display: block;
         }
 
         .foto-card p {
@@ -162,16 +173,20 @@
         }
 
         .descripcion {
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 25px;
+            padding: 20px;
             background: rgba(0,0,0,0.3);
-            border-radius: 10px;
+            border-radius: 15px;
             text-align: center;
         }
 
         .descripcion p {
-            margin: 5px 0;
+            margin: 8px 0;
             font-size: 0.95rem;
+        }
+
+        .descripcion strong {
+            color: #ffd700;
         }
 
         .loading-text {
@@ -215,8 +230,7 @@
                 max-width: 90%;
             }
             .foto-perfil {
-                width: 140px;
-                height: 140px;
+                max-width: 250px;
             }
         }
     </style>
@@ -265,17 +279,16 @@
         </div>
     </div>
 
-    <!-- Tarjeta con la foto -->
+    <!-- Tarjeta con la foto - SIN círculo -->
     <div class="foto-card">
         <div id="contenedor-foto">
             <img id="foto-perfil" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div id="placeholder-foto" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 250px;">
                 <span style="font-size: 3rem;">📷</span>
             </div>
         </div>
-        <div class="loading-text cargando" id="loadingText">🔄 Cargando foto automáticamente...</div>
-        <h3>📷 Marcelo Gil Grados</h3>
-        <p>Ingeniero de Sistemas | Data Analyst | BI Specialist</p>
+        
+        <h3>Carga Automatizada con SSIS</h3>
         
         <!-- Descripción debajo de la foto -->
         <div class="descripcion">
@@ -291,24 +304,23 @@
     </footer>
 
     <script>
-        // Simular carga automática de la foto
-        // Reemplaza 'fotoprueba.PNG' con la ruta correcta de tu imagen
+        // Intentar cargar la foto automáticamente
         const rutasImagen = [
             'fotoprueba.PNG',
             'foto.jpg',
-            'imagen.png'
+            'imagen.png',
+            'marco.jpg',
+            'perfil.png'
         ];
         
         let intentoActual = 0;
-        const contenedorFoto = document.getElementById('contenedor-foto');
         const imgElement = document.getElementById('foto-perfil');
         const placeholder = document.getElementById('placeholder-foto');
-        const loadingText = document.getElementById('loadingText');
         
         function intentarCargarFoto() {
             if (intentoActual >= rutasImagen.length) {
-                loadingText.innerHTML = '⚠️ No se encontró la foto. Por favor, verifica la ruta de la imagen.';
-                loadingText.classList.remove('cargando');
+                placeholder.innerHTML = '<span style="font-size: 3rem;">📷</span><br><span style="font-size: 0.8rem;">Haz clic para subir tu foto</span>';
+                placeholder.style.display = 'flex';
                 return;
             }
             
@@ -320,8 +332,6 @@
                 imgElement.src = ruta;
                 imgElement.style.display = 'block';
                 placeholder.style.display = 'none';
-                loadingText.innerHTML = '✅ Foto cargada correctamente';
-                loadingText.classList.remove('cargando');
             };
             
             testImg.onerror = function() {
@@ -338,7 +348,7 @@
             intentarCargarFoto();
         });
         
-        // También permitir que el usuario seleccione una foto manualmente haciendo clic
+        // Permitir que el usuario seleccione una foto manualmente haciendo clic
         document.getElementById('contenedor-foto').addEventListener('click', function() {
             const input = document.createElement('input');
             input.type = 'file';
@@ -351,8 +361,6 @@
                         imgElement.src = event.target.result;
                         imgElement.style.display = 'block';
                         placeholder.style.display = 'none';
-                        loadingText.innerHTML = '✅ Foto actualizada manualmente';
-                        loadingText.classList.remove('cargando');
                     };
                     reader.readAsDataURL(file);
                 }
