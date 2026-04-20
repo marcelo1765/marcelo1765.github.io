@@ -127,6 +127,49 @@
             text-align: center;
         }
 
+        /* Tarjeta para la foto */
+        .foto-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 30px auto;
+            max-width: 500px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            text-align: center;
+            border: 2px dashed rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .foto-card:hover {
+            background: rgba(255,255,255,0.2);
+            border: 2px dashed #ffd700;
+            transform: scale(1.02);
+        }
+
+        .foto-card h3 {
+            color: #ffd700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .foto-card .icono-foto {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .foto-card p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .foto-card .subtexto {
+            font-size: 0.85rem;
+            margin-top: 10px;
+            opacity: 0.6;
+        }
+
         footer {
             margin-top: 30px;
             font-size: 0.9rem;
@@ -146,6 +189,10 @@
             }
             .buttons-header {
                 justify-content: center;
+            }
+            .foto-card {
+                max-width: 90%;
+                padding: 40px 20px;
             }
         }
     </style>
@@ -172,6 +219,7 @@
         </div>
     </div>
 
+    <!-- Tarjeta principal -->
     <div class="card">
         <h2>🚀 Bases de Datos</h2>
         <p>
@@ -193,6 +241,14 @@
                 <div class="skill-item">✅ Envío automatizado de Reportes</div>
             </div>
         </div>
+    </div>
+
+    <!-- Nueva tarjeta: Pon Foto -->
+    <div class="foto-card" onclick="alert('Aquí puedes agregar tu foto personal')">
+        <div class="icono-foto">📸</div>
+        <h3>📷 Pon Foto</h3>
+        <p>Haz clic aquí para agregar una foto</p>
+        <div class="subtexto">Formato: JPG, PNG | Tamaño: Máx 5MB</div>
     </div>
 
     <footer>
