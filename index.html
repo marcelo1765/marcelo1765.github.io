@@ -21,6 +21,19 @@
         h1 {
             font-size: 2rem;
             font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .fecha-actualizada {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .fecha-actualizada::before {
+            content: "📅";
+            font-size: 0.9rem;
         }
         .highlight {
             color: #ffd700;
@@ -79,7 +92,10 @@
 </head>
 <body>
     <header>
-        <h1>Hola, soy <span class="highlight">Marcelo Ricardo Gil Grados Calderón</span></h1>
+        <div>
+            <h1>Hola, soy <span class="highlight">Marcelo Ricardo Gil Grados Calderón</span></h1>
+            <div class="fecha-actualizada">Datos actualizados al 20-04-2026</div>
+        </div>
         <div class="buttons">
             <a href="https://www.linkedin.com/in/marcelo-gil-grados-calderon-895a46225/" target="_blank" class="btn btn-linkedin">🔗 LinkedIn</a>
             <a href="CV_Marcelo.GG.docx" download class="btn btn-cv">📄 CV.docx</a>
