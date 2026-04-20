@@ -90,7 +90,7 @@
             border-radius: 20px;
             padding: 40px;
             margin: 30px auto;
-            max-width: 800px;
+            max-width: 900px;
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
@@ -126,13 +126,13 @@
             text-align: center;
         }
 
-        /* Tarjeta para la foto */
+        /* Tarjeta para la foto - MÁS GRANDE */
         .foto-card {
             background: rgba(255,255,255,0.1);
             border-radius: 20px;
-            padding: 40px;
+            padding: 30px;
             margin: 30px auto;
-            max-width: 500px;
+            max-width: 700px;
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             text-align: center;
@@ -140,22 +140,22 @@
 
         .foto-card h3 {
             color: #ffd700;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 10px;
             margin-top: 20px;
         }
 
         .foto-card h4 {
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 20px;
             opacity: 0.9;
         }
 
-        /* Imagen rectangular - SIN borde circular */
+        /* Imagen rectangular - MÁS GRANDE y ocupando todo el ancho disponible */
         .foto-perfil {
             width: 100%;
-            max-width: 300px;
+            max-width: 500px;
             height: auto;
             border-radius: 15px;
             object-fit: cover;
@@ -181,8 +181,8 @@
         }
 
         .descripcion p {
-            margin: 8px 0;
-            font-size: 0.95rem;
+            margin: 10px 0;
+            font-size: 1rem;
         }
 
         .descripcion strong {
@@ -226,11 +226,25 @@
             .buttons-header {
                 justify-content: center;
             }
+            .card {
+                max-width: 95%;
+                padding: 25px;
+            }
             .foto-card {
-                max-width: 90%;
+                max-width: 95%;
+                padding: 20px;
             }
             .foto-perfil {
-                max-width: 250px;
+                max-width: 100%;
+            }
+            .foto-card h3 {
+                font-size: 1.4rem;
+            }
+            .foto-card h4 {
+                font-size: 1rem;
+            }
+            .descripcion p {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -257,7 +271,7 @@
     </div>
 
     <div class="card">
-        <h2>🚀 Bases de Datos</h2>
+        <h2>🚀 Carga Automatizada con SSIS</h2>
         <p>
             Bienvenido a mi portafolio de <strong>SQL Server</strong>. Aquí encontrarás proyectos profesionales, 
             consultas optimizadas, stored procedures, y soluciones de Business Intelligence implementadas 
@@ -279,16 +293,18 @@
         </div>
     </div>
 
-    <!-- Tarjeta con la foto - SIN círculo -->
+    <!-- Tarjeta con la foto - TAMAÑO MEJORADO -->
     <div class="foto-card">
         <div id="contenedor-foto">
             <img id="foto-perfil" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 250px;">
-                <span style="font-size: 3rem;">📷</span>
+            <div id="placeholder-foto" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 350px; flex-direction: column;">
+                <span style="font-size: 4rem;">📷</span>
+                <span style="font-size: 0.9rem; margin-top: 10px;">Haz clic para subir tu foto</span>
             </div>
         </div>
         
-        <h3>Carga Automatizada con SSIS</h3>
+        <h3>Marco Gil Grados</h3>
+        <h4>Ingeniero de Sistemas | Data Analyst | BI Specialist</h4>
         
         <!-- Descripción debajo de la foto -->
         <div class="descripcion">
@@ -319,7 +335,7 @@
         
         function intentarCargarFoto() {
             if (intentoActual >= rutasImagen.length) {
-                placeholder.innerHTML = '<span style="font-size: 3rem;">📷</span><br><span style="font-size: 0.8rem;">Haz clic para subir tu foto</span>';
+                placeholder.innerHTML = '<span style="font-size: 4rem;">📷</span><br><span style="font-size: 0.9rem; margin-top: 10px;">Haz clic para subir tu foto</span>';
                 placeholder.style.display = 'flex';
                 return;
             }
