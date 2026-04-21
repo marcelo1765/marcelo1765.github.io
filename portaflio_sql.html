@@ -188,10 +188,46 @@
         .descripcion p {
             margin: 12px 0;
             font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         .descripcion strong {
             color: #ffd700;
+        }
+
+        /* Estilos mejorados para la lista de características */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .features-list li {
+            margin: 12px 0;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list li::before {
+            content: "⚡";
+            font-size: 1.2rem;
+        }
+
+        /* Texto de descripción centrado con mejor espaciado */
+        .desc-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .desc-text p {
+            margin: 15px 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
 
         footer {
@@ -235,6 +271,9 @@
                 font-size: 0.95rem;
             }
             .skill-item {
+                font-size: 0.95rem;
+            }
+            .desc-text p {
                 font-size: 0.95rem;
             }
         }
@@ -297,10 +336,22 @@
         </div>
         
         <div class="descripcion">
-            <p>✨ <strong>SQL SERVER| SSIS | ETL | ENVIO CORREO ELECTRONICO</strong> ✨</p>
-            <p>Se a creado un fluyo que nos permite cargar datos de diferentes archivos excel</p>
-            <p>de una manera rapida que tambien se encargar de hacer la limpieza y tratamiento de la información</p>
-            <p>al finalizar manda un correo electronico mostrando cuanto se a carga </p>
+            <p><strong>✨ SQL SERVER | SSIS | ETL | ENVIO CORREO ELECTRONICO ✨</strong></p>
+            
+            <div class="desc-text">
+                <p>📊 Se ha creado un flujo que nos permite cargar datos de diferentes archivos Excel<br>
+                de una manera rápida que también se encarga de hacer la limpieza y tratamiento de la información</p>
+                
+                <p>📧 Al finalizar el proceso, se envía un correo electrónico mostrando<br>
+                la cantidad de registros que se han cargado exitosamente</p>
+            </div>
+            
+            <ul class="features-list">
+                <li>Carga masiva desde múltiples archivos Excel</li>
+                <li>Limpieza y transformación automática de datos</li>
+                <li>Notificación por correo electrónico al finalizar</li>
+                <li>Reporte detallado de registros cargados</li>
+            </ul>
         </div>
     </div>
 
