@@ -85,13 +85,13 @@
             color: #2a5298;
         }
 
-        /* Card principal reducida */
+        /* Card principal */
         .card {
             background: rgba(255,255,255,0.1);
             border-radius: 20px;
-            padding: 30px 40px; /* Padding reducido */
-            margin: 20px auto; /* Margen reducido */
-            max-width: 1000px; /* Ancho reducido */
+            padding: 30px 40px;
+            margin: 20px auto;
+            max-width: 1000px;
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
@@ -132,24 +132,84 @@
             font-size: 0.9rem;
         }
 
-        /* Tarjeta de proyecto minimizada */
+        /* BOTÓN / CUADRO DEL PROYECTO (visible siempre) */
+        .proyecto-boton {
+            background: rgba(255,255,255,0.15);
+            border: 2px solid #ffd700;
+            border-radius: 20px;
+            padding: 20px 30px;
+            margin: 15px auto;
+            max-width: 900px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .proyecto-boton:hover {
+            background: rgba(255,215,0,0.2);
+            transform: scale(1.01);
+            border-color: #ffaa00;
+        }
+
+        .proyecto-boton h3 {
+            color: #ffd700;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .proyecto-boton p {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        .proyecto-badge {
+            background: rgba(255, 215, 0, 0.2);
+            border: 1px solid #ffd700;
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            color: #ffd700;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        /* Icono de expandir */
+        .expand-icon {
+            font-size: 1.5rem;
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+
+        /* TARJETA COMPLETA (oculta inicialmente) */
         .foto-card {
             background: rgba(255,255,255,0.1);
             border-radius: 20px;
-            padding: 25px; /* Padding reducido */
-            margin: 20px auto; /* Margen reducido */
-            max-width: 900px; /* Ancho reducido */
+            padding: 25px;
+            margin: 0 auto 20px auto;
+            max-width: 900px;
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             text-align: center;
-            transition: transform 0.2s;
-        }
-        
-        .foto-card:hover {
-            transform: scale(1.01); /* Efecto sutil al pasar el mouse */
+            display: none;
+            animation: fadeIn 0.5s ease;
         }
 
-        /* Bloque de título del proyecto */
+        .foto-card.visible {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .proyecto-titulo {
             background: rgba(0, 0, 0, 0.4);
             border-left: 5px solid #ffd700;
@@ -165,27 +225,15 @@
         
         .proyecto-titulo h3 {
             color: #ffd700;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             margin: 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .proyecto-badge {
-            background: rgba(255, 215, 0, 0.2);
-            border: 1px solid #ffd700;
-            border-radius: 30px;
-            padding: 4px 12px;
-            font-size: 0.8rem;
-            color: #ffd700;
         }
 
         .foto-perfil {
             width: 100%;
             max-width: 100%;
             height: auto;
-            max-height: 300px; /* Altura máxima reducida */
+            max-height: 300px;
             border-radius: 15px;
             object-fit: cover;
             border: 3px solid #ffd700;
@@ -246,6 +294,23 @@
             line-height: 1.5;
         }
 
+        .cerrar-tarjeta {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid #ffd700;
+            border-radius: 30px;
+            padding: 8px 20px;
+            margin-top: 15px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .cerrar-tarjeta:hover {
+            background: rgba(255,0,0,0.3);
+            border-color: #ff6666;
+        }
+
         footer {
             margin-top: 30px;
             font-size: 0.85rem;
@@ -266,12 +331,12 @@
             .buttons-header {
                 justify-content: center;
             }
-            .card, .foto-card {
+            .card, .foto-card, .proyecto-boton {
                 max-width: 100%;
                 padding: 20px;
             }
-            .proyecto-titulo h3 {
-                font-size: 1.2rem;
+            .proyecto-boton h3 {
+                font-size: 1.3rem;
             }
             .foto-perfil {
                 max-height: 200px;
@@ -300,7 +365,7 @@
         </div>
     </div>
 
-    <!-- Card principal reducida -->
+    <!-- Card principal -->
     <div class="card">
         <h2>🚀 Experiencia en Datos</h2>
         <p>
@@ -322,8 +387,18 @@
         </div>
     </div>
 
-    <!-- PROYECTO 1: TARJETA MINIMIZADA -->
-    <div class="foto-card">
+    <!-- BOTÓN / CUADRO PROYECTO 1 -->
+    <div class="proyecto-boton" id="btn-proyecto-1">
+        <h3>
+            📂 Carga de Base Automático en SSIS
+            <span class="expand-icon">▼</span>
+        </h3>
+        <p>ETL · Excel · Automatización</p>
+        <span class="proyecto-badge">Haz clic para ver detalles</span>
+    </div>
+
+    <!-- TARJETA COMPLETA PROYECTO 1 (oculta) -->
+    <div class="foto-card" id="tarjeta-proyecto-1">
         <div class="proyecto-titulo">
             <h3>📂 Carga de Base Automático en SSIS</h3>
             <span class="proyecto-badge">ETL · Excel · Automatización</span>
@@ -333,7 +408,7 @@
             <img id="foto-perfil-1" src="" alt="Proyecto SSIS" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-1" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; flex-direction: column;">
                 <span style="font-size: 3rem;">📷</span>
-                <span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para vista previa</span>
+                <span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para subir imagen</span>
             </div>
         </div>
         
@@ -350,10 +425,22 @@
                 <li>Reporte detallado de registros</li>
             </ul>
         </div>
+        
+        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 2: TARJETA MINIMIZADA -->
-    <div class="foto-card">
+    <!-- BOTÓN / CUADRO PROYECTO 2 -->
+    <div class="proyecto-boton" id="btn-proyecto-2">
+        <h3>
+            📧 Reporte de Correo Automatizado
+            <span class="expand-icon">▼</span>
+        </h3>
+        <p>SQL · Automatización · Reportes</p>
+        <span class="proyecto-badge">Haz clic para ver detalles</span>
+    </div>
+
+    <!-- TARJETA COMPLETA PROYECTO 2 (oculta) -->
+    <div class="foto-card" id="tarjeta-proyecto-2">
         <div class="proyecto-titulo">
             <h3>📧 Reporte de Correo Automatizado</h3>
             <span class="proyecto-badge">SQL · Automatización · Reportes</span>
@@ -363,7 +450,7 @@
             <img id="foto-perfil-2" src="" alt="Reporte Automático" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-2" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; flex-direction: column;">
                 <span style="font-size: 3rem;">📷</span>
-                <span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para vista previa</span>
+                <span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para subir imagen</span>
             </div>
         </div>
         
@@ -378,6 +465,8 @@
                 <li>Métricas de rendimiento</li>
             </ul>
         </div>
+        
+        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
     </div>
 
     <footer>
@@ -394,7 +483,7 @@
             
             function intentarCargarFoto() {
                 if (intentoActual >= rutasImagenes.length) {
-                    placeholder.innerHTML = '<span style="font-size: 3rem;">📷</span><br><span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para vista previa</span>';
+                    placeholder.innerHTML = '<span style="font-size: 3rem;">📷</span><br><span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para subir imagen</span>';
                     placeholder.style.display = 'flex';
                     imgElement.style.display = 'none';
                     return;
@@ -439,9 +528,54 @@
             });
         }
         
-        // Configurar tarjetas
+        // Función para mostrar/ocultar tarjetas
+        function toggleTarjeta(botonId, tarjetaId) {
+            const btn = document.getElementById(botonId);
+            const tarjeta = document.getElementById(tarjetaId);
+            const icon = btn.querySelector('.expand-icon');
+            
+            btn.addEventListener('click', function(e) {
+                // Evitar que el clic se propague si se cierra desde adentro
+                e.stopPropagation();
+                
+                // Cerrar todas las demás tarjetas primero (opcional)
+                document.querySelectorAll('.foto-card').forEach(card => {
+                    if (card.id !== tarjetaId) {
+                        card.classList.remove('visible');
+                        const otherBtn = document.getElementById(card.id.replace('tarjeta-proyecto', 'btn-proyecto'));
+                        if (otherBtn) {
+                            const otherIcon = otherBtn.querySelector('.expand-icon');
+                            if (otherIcon) otherIcon.textContent = '▼';
+                        }
+                    }
+                });
+                
+                // Toggle la tarjeta actual
+                tarjeta.classList.toggle('visible');
+                icon.textContent = tarjeta.classList.contains('visible') ? '▲' : '▼';
+            });
+        }
+        
+        // Cerrar tarjeta con botón cerrar
+        document.querySelectorAll('.cerrar-tarjeta').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const tarjetaId = this.getAttribute('data-tarjeta');
+                const tarjeta = document.getElementById(tarjetaId);
+                const botonId = tarjetaId.replace('tarjeta-proyecto', 'btn-proyecto');
+                const boton = document.getElementById(botonId);
+                
+                tarjeta.classList.remove('visible');
+                if (boton) {
+                    const icon = boton.querySelector('.expand-icon');
+                    if (icon) icon.textContent = '▼';
+                }
+            });
+        });
+        
+        // Inicializar
         window.addEventListener('DOMContentLoaded', function() {
-            // Proyecto 1
+            // Configurar fotos
             configurarTarjetaFoto(
                 'contenedor-foto-1', 
                 'foto-perfil-1', 
@@ -449,13 +583,16 @@
                 ['fotoprueba.PNG']
             );
             
-            // Proyecto 2
             configurarTarjetaFoto(
                 'contenedor-foto-2', 
                 'foto-perfil-2', 
                 'placeholder-foto-2',
                 ['correo_automatico.PNG']
             );
+            
+            // Configurar expansión de tarjetas
+            toggleTarjeta('btn-proyecto-1', 'tarjeta-proyecto-1');
+            toggleTarjeta('btn-proyecto-2', 'tarjeta-proyecto-2');
         });
     </script>
 </body>
