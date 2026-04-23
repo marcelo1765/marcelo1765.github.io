@@ -219,55 +219,6 @@
             opacity: 0.8;
         }
 
-        /* Modal para expandir imagen */
-        .modal-imagen {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            cursor: pointer;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .modal-imagen img {
-            max-width: 95%;
-            max-height: 95%;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-
-        .modal-imagen .cerrar-modal {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            font-size: 50px;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .modal-imagen .cerrar-modal:hover {
-            color: #ffd700;
-            transform: scale(1.1);
-        }
-
-        .modal-imagen .texto-modal {
-            color: white;
-            margin-top: 20px;
-            font-size: 1.2rem;
-            background: rgba(0,0,0,0.6);
-            padding: 10px 20px;
-            border-radius: 30px;
-        }
-
         @media (max-width: 768px) {
             body {
                 padding: 15px;
@@ -295,14 +246,6 @@
             }
             .foto-card h3 {
                 font-size: 1.6rem;
-            }
-            .modal-imagen .cerrar-modal {
-                font-size: 35px;
-                top: 10px;
-                right: 20px;
-            }
-            .modal-imagen .texto-modal {
-                font-size: 0.9rem;
             }
         }
     </style>
@@ -406,66 +349,19 @@
         © 2026 Marcelo Ricardo Gil Grados Calderón - Especialista en SQL Server & Business Intelligence
     </footer>
 
-    <!-- Modal para expandir imagen -->
-    <div id="modal-imagen" class="modal-imagen" onclick="cerrarModal()">
-        <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
-        <img id="modal-img" src="" alt="Imagen expandida">
-        <div class="texto-modal">Haz clic en cualquier lugar para cerrar</div>
-    </div>
-
     <script>
-        // Funciones para el modal de expansión
-        function abrirModal(src) {
-            const modal = document.getElementById('modal-imagen');
-            const modalImg = document.getElementById('modal-img');
-            modal.style.display = 'flex';
-            modalImg.src = src;
-            document.body.style.overflow = 'hidden';
-        }
-
-        function cerrarModal() {
-            const modal = document.getElementById('modal-imagen');
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                cerrarModal();
-            }
-        });
-
-        // Función para manejar la carga de fotos con expansión
+        // Función para manejar la carga de fotos
         function configurarTarjetaFoto(contenedorId, imgId, placeholderId, rutasImagenes) {
             let intentoActual = 0;
             const imgElement = document.getElementById(imgId);
             const placeholder = document.getElementById(placeholderId);
             const contenedor = document.getElementById(contenedorId);
             
-            // Función para asignar el evento de clic a la imagen
-            function asignarEventoClic(ruta) {
-                if (imgElement && ruta) {
-                    // Remover eventos anteriores para evitar duplicados
-                    const oldClick = imgElement.onclick;
-                    if (oldClick) imgElement.onclick = null;
-                    
-                    // Asignar nuevo evento
-                    imgElement.onclick = function(e) {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        abrirModal(ruta);
-                        return false;
-                    };
-                    imgElement.style.cursor = 'pointer';
-                }
-            }
-            
             function intentarCargarFoto() {
                 if (intentoActual >= rutasImagenes.length) {
                     placeholder.innerHTML = '<span style="font-size: 6rem;">📷</span><br><span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>';
                     placeholder.style.display = 'flex';
                     imgElement.style.display = 'none';
-                    imgElement.style.cursor = 'default';
                     return;
                 }
                 
@@ -476,7 +372,6 @@
                     imgElement.src = ruta;
                     imgElement.style.display = 'block';
                     placeholder.style.display = 'none';
-                    asignarEventoClic(ruta);
                 };
                 
                 testImg.onerror = function() {
@@ -489,13 +384,7 @@
             
             intentarCargarFoto();
             
-            // Clic en el contenedor para subir imagen (si no se hizo clic en la imagen)
-            contenedor.onclick = function(e) {
-                // Si el clic fue en la imagen, no hacer nada (ya se expande)
-                if (e.target === imgElement && imgElement.style.display === 'block') {
-                    return;
-                }
-                // Abrir selector de archivos
+            contenedor.addEventListener('click', function(e) {
                 const input = document.createElement('input');
                 input.type = 'file';
                 input.accept = 'image/*';
@@ -504,22 +393,19 @@
                     if (file) {
                         const reader = new FileReader();
                         reader.onload = function(event) {
-                            const nuevaRuta = event.target.result;
-                            imgElement.src = nuevaRuta;
+                            imgElement.src = event.target.result;
                             imgElement.style.display = 'block';
                             placeholder.style.display = 'none';
-                            asignarEventoClic(nuevaRuta);
                         };
                         reader.readAsDataURL(file);
                     }
                 };
                 input.click();
-            };
+            });
         }
         
         // Configurar tarjetas
         window.addEventListener('DOMContentLoaded', function() {
-            // Tarjeta 1
             configurarTarjetaFoto(
                 'contenedor-foto-1', 
                 'foto-perfil-1', 
@@ -527,7 +413,6 @@
                 ['fotoprueba.PNG']
             );
             
-            // Tarjeta 2
             configurarTarjetaFoto(
                 'contenedor-foto-2', 
                 'foto-perfil-2', 
