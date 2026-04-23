@@ -323,13 +323,45 @@
         </div>
     </div>
 
-    <!-- Tarjeta con la foto - TÍTULO ARRIBA DE LA FOTO -->
+    <!-- PRIMERA TARJETA ORIGINAL -->
     <div class="foto-card">
         <h3>Carga de Base Automatico en SSIS</h3>
         
-        <div id="contenedor-foto">
-            <img id="foto-perfil" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 550px; flex-direction: column;">
+        <div id="contenedor-foto-1">
+            <img id="foto-perfil-1" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto-1" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 550px; flex-direction: column;">
+                <span style="font-size: 6rem;">📷</span>
+                <span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>
+            </div>
+        </div>
+        
+        <div class="descripcion">
+            <p><strong>SQL SERVER | SSIS | ETL | ENVIO CORREO ELECTRONICO</strong></p>
+            
+            <div class="desc-text">
+                <p>Se ha creado un flujo que nos permite cargar datos de diferentes archivos Excel<br>
+                de una manera rápida que también se encarga de hacer la limpieza y tratamiento de la información</p>
+                
+                <p>Al finalizar el proceso, se envía un correo electrónico mostrando<br>
+                la cantidad de registros que se han cargado exitosamente</p>
+            </div>
+            
+            <ul class="features-list">
+                <li>Carga masiva desde múltiples archivos Excel</li>
+                <li>Limpieza y transformación automática de datos</li>
+                <li>Notificación por correo electrónico al finalizar</li>
+                <li>Reporte detallado de registros cargados</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SEGUNDA TARJETA (COPIA EXACTA) -->
+    <div class="foto-card">
+        <h3>Carga de Base Automatico en SSIS - Copia</h3>
+        
+        <div id="contenedor-foto-2">
+            <img id="foto-perfil-2" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto-2" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 550px; flex-direction: column;">
                 <span style="font-size: 6rem;">📷</span>
                 <span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>
             </div>
@@ -360,64 +392,76 @@
     </footer>
 
     <script>
-        // Intentar cargar la foto automáticamente
-        const rutasImagen = [
-            'fotoprueba.PNG',
-            'foto.jpg',
-            'imagen.png',
-            'marco.jpg',
-            'perfil.png'
-        ];
-        
-        let intentoActual = 0;
-        const imgElement = document.getElementById('foto-perfil');
-        const placeholder = document.getElementById('placeholder-foto');
-        
-        function intentarCargarFoto() {
-            if (intentoActual >= rutasImagen.length) {
-                placeholder.innerHTML = '<span style="font-size: 6rem;">📷</span><br><span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>';
-                placeholder.style.display = 'flex';
-                return;
+        // Función para manejar la carga de fotos en una tarjeta específica
+        function configurarTarjetaFoto(contenedorId, imgId, placeholderId, rutasImagenes) {
+            let intentoActual = 0;
+            const imgElement = document.getElementById(imgId);
+            const placeholder = document.getElementById(placeholderId);
+            
+            function intentarCargarFoto() {
+                if (intentoActual >= rutasImagenes.length) {
+                    placeholder.innerHTML = '<span style="font-size: 6rem;">📷</span><br><span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>';
+                    placeholder.style.display = 'flex';
+                    imgElement.style.display = 'none';
+                    return;
+                }
+                
+                const ruta = rutasImagenes[intentoActual];
+                const testImg = new Image();
+                
+                testImg.onload = function() {
+                    imgElement.src = ruta;
+                    imgElement.style.display = 'block';
+                    placeholder.style.display = 'none';
+                };
+                
+                testImg.onerror = function() {
+                    intentoActual++;
+                    intentarCargarFoto();
+                };
+                
+                testImg.src = ruta;
             }
             
-            const ruta = rutasImagen[intentoActual];
-            const testImg = new Image();
+            intentarCargarFoto();
             
-            testImg.onload = function() {
-                imgElement.src = ruta;
-                imgElement.style.display = 'block';
-                placeholder.style.display = 'none';
-            };
-            
-            testImg.onerror = function() {
-                intentoActual++;
-                intentarCargarFoto();
-            };
-            
-            testImg.src = ruta;
+            document.getElementById(contenedorId).addEventListener('click', function() {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                input.onchange = function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            imgElement.src = event.target.result;
+                            imgElement.style.display = 'block';
+                            placeholder.style.display = 'none';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                };
+                input.click();
+            });
         }
         
+        // Configurar ambas tarjetas con sus propias rutas de imagen
         window.addEventListener('DOMContentLoaded', function() {
-            intentarCargarFoto();
-        });
-        
-        document.getElementById('contenedor-foto').addEventListener('click', function() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        imgElement.src = event.target.result;
-                        imgElement.style.display = 'block';
-                        placeholder.style.display = 'none';
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-            input.click();
+            // Tarjeta 1
+            configurarTarjetaFoto(
+                'contenedor-foto-1', 
+                'foto-perfil-1', 
+                'placeholder-foto-1',
+                ['fotoprueba.PNG', 'foto.jpg', 'imagen.png', 'marco.jpg', 'perfil.png']
+            );
+            
+            // Tarjeta 2 (puedes cambiar las rutas si quieres imágenes diferentes)
+            configurarTarjetaFoto(
+                'contenedor-foto-2', 
+                'foto-perfil-2', 
+                'placeholder-foto-2',
+                ['fotoprueba.PNG', 'foto.jpg', 'imagen.png', 'marco.jpg', 'perfil.png']
+            );
         });
     </script>
 </body>
