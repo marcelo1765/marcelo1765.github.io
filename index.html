@@ -65,37 +65,61 @@
         .btn-pdf { background: #dc3545; color: white; }
         .btn-proyectos { background: #ff9800; color: white; }
 
-        /* Botones desplegables - MEJOR SEPARACIÓN */
+        /* Botones desplegables - SEPARACIÓN EXTREMA */
         .submenu {
             display: none;
             position: absolute;
-            top: 45px;
+            top: 50px;
             right: 0;
             flex-direction: column;
-            gap: 12px;
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
-            border-radius: 15px;
+            gap: 25px;
+            background: rgba(0,0,0,0.3);
+            padding: 20px 25px;
+            border-radius: 20px;
             backdrop-filter: blur(15px);
-            min-width: 160px;
+            min-width: 200px;
             z-index: 100;
-        }
-        .submenu .btn-sql { 
-            background: #2196f3; 
-            color: white;
-            margin-bottom: 5px;
-        }
-        .submenu .btn-powerbi { 
-            background: #f1c40f; 
-            color: black;
+            border: 1px solid rgba(255,215,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
         
-        /* Separador visual entre botones del submenú */
+        /* Botón SQL - más grande y llamativo */
+        .submenu .btn-sql { 
+            background: linear-gradient(135deg, #2196f3 0%, #0b5e9e 100%);
+            color: white;
+            font-size: 1rem;
+            padding: 12px 24px;
+            text-align: center;
+            border-radius: 30px;
+            margin: 0;
+            box-shadow: 0 4px 12px rgba(33,150,243,0.4);
+        }
+        
+        /* Botón Power BI */
+        .submenu .btn-powerbi { 
+            background: linear-gradient(135deg, #f1c40f 0%, #d4a017 100%);
+            color: #1a1a2e;
+            font-size: 1rem;
+            padding: 12px 24px;
+            text-align: center;
+            border-radius: 30px;
+            margin: 0;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(241,196,15,0.4);
+        }
+        
+        /* Separador más grande y visible */
         .submenu .separador {
-            height: 2px;
-            background: rgba(255,255,255,0.3);
-            margin: 8px 0;
-            border-radius: 2px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffd700, #ffd700, transparent);
+            margin: 5px 0;
+            border-radius: 3px;
+            width: 100%;
+        }
+        
+        /* Espacio extra alrededor del separador */
+        .submenu .separador-wrapper {
+            padding: 5px 0;
         }
 
         .card {
@@ -119,6 +143,12 @@
             text-align: center;
         }
 
+        /* Efecto hover extra para los botones del submenú */
+        .submenu .btn-sql:hover, .submenu .btn-powerbi:hover {
+            transform: translateY(-4px) scale(1.02);
+            filter: brightness(1.05);
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 20px;
@@ -130,6 +160,15 @@
             .buttons {
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+            .submenu {
+                position: fixed;
+                top: auto;
+                bottom: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+                width: 280px;
             }
         }
     </style>
@@ -147,7 +186,9 @@
             <button class="btn btn-proyectos" onclick="toggleSubmenu()">📂 Proyectos ▼</button>
             <div class="submenu" id="submenu">
                 <a href="portaflio_sql.html" class="btn btn-sql">🗄️ SQL Server</a>
-                <div class="separador"></div>
+                <div class="separador-wrapper">
+                    <div class="separador"></div>
+                </div>
                 <a href="mantenimiento.html" class="btn btn-powerbi">📊 Power BI</a>
             </div>
         </div>
@@ -183,7 +224,7 @@
             const submenu = document.getElementById("submenu");
             const botonProyectos = document.querySelector('.btn-proyectos');
             
-            if (submenu && botonProyectos) {
+            if (submenu && botonProyectos && submenu.style.display === "flex") {
                 if (!botonProyectos.contains(event.target) && !submenu.contains(event.target)) {
                     submenu.style.display = "none";
                 }
