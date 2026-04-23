@@ -132,57 +132,40 @@
             font-size: 0.9rem;
         }
 
-        /* BOTÓN / CUADRO DEL PROYECTO (visible siempre) */
-        .proyecto-boton {
-            background: rgba(255,255,255,0.15);
+        /* CUADRO DEL PROYECTO (visible siempre) - SOLO TÍTULO */
+        .proyecto-cuadro {
+            background: rgba(255,255,255,0.1);
             border: 2px solid #ffd700;
             border-radius: 20px;
             padding: 20px 30px;
             margin: 15px auto;
-            max-width: 900px;
+            max-width: 600px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             backdrop-filter: blur(5px);
         }
 
-        .proyecto-boton:hover {
+        .proyecto-cuadro:hover {
             background: rgba(255,215,0,0.2);
-            transform: scale(1.01);
+            transform: scale(1.02);
             border-color: #ffaa00;
         }
 
-        .proyecto-boton h3 {
+        .proyecto-cuadro h3 {
             color: #ffd700;
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .proyecto-boton p {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin: 0;
-        }
-
-        .proyecto-badge {
-            background: rgba(255, 215, 0, 0.2);
-            border: 1px solid #ffd700;
-            border-radius: 30px;
-            padding: 4px 12px;
-            font-size: 0.8rem;
-            color: #ffd700;
-            display: inline-block;
-            margin-top: 8px;
-        }
-
-        /* Icono de expandir */
-        .expand-icon {
             font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .proyecto-cuadro .etiquetas {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            letter-spacing: 1px;
+        }
+
+        .expand-icon {
+            font-size: 1.2rem;
             margin-left: 10px;
             transition: transform 0.3s;
         }
@@ -198,7 +181,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             text-align: center;
             display: none;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.4s ease;
         }
 
         .foto-card.visible {
@@ -206,27 +189,8 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .proyecto-titulo {
-            background: rgba(0, 0, 0, 0.4);
-            border-left: 5px solid #ffd700;
-            border-radius: 12px;
-            padding: 12px 20px;
-            margin-bottom: 20px;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .proyecto-titulo h3 {
-            color: #ffd700;
-            font-size: 1.4rem;
-            margin: 0;
         }
 
         .foto-perfil {
@@ -321,22 +285,8 @@
             body {
                 padding: 15px;
             }
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-            .title-section {
-                text-align: center;
-            }
-            .buttons-header {
-                justify-content: center;
-            }
-            .card, .foto-card, .proyecto-boton {
-                max-width: 100%;
-                padding: 20px;
-            }
-            .proyecto-boton h3 {
-                font-size: 1.3rem;
+            .proyecto-cuadro h3 {
+                font-size: 1.2rem;
             }
             .foto-perfil {
                 max-height: 200px;
@@ -365,7 +315,7 @@
         </div>
     </div>
 
-    <!-- Card principal -->
+    <!-- Card principal de tecnologías -->
     <div class="card">
         <h2>🚀 Experiencia en Datos</h2>
         <p>
@@ -387,23 +337,17 @@
         </div>
     </div>
 
-    <!-- BOTÓN / CUADRO PROYECTO 1 -->
-    <div class="proyecto-boton" id="btn-proyecto-1">
+    <!-- PROYECTO 1: SOLO CUADRO PEQUEÑO -->
+    <div class="proyecto-cuadro" id="cuadro-proyecto-1">
         <h3>
             📂 Carga de Base Automático en SSIS
             <span class="expand-icon">▼</span>
         </h3>
-        <p>ETL · Excel · Automatización</p>
-        <span class="proyecto-badge">Haz clic para ver detalles</span>
+        <div class="etiquetas">ETL · Excel · Automatización</div>
     </div>
 
     <!-- TARJETA COMPLETA PROYECTO 1 (oculta) -->
     <div class="foto-card" id="tarjeta-proyecto-1">
-        <div class="proyecto-titulo">
-            <h3>📂 Carga de Base Automático en SSIS</h3>
-            <span class="proyecto-badge">ETL · Excel · Automatización</span>
-        </div>
-        
         <div id="contenedor-foto-1">
             <img id="foto-perfil-1" src="" alt="Proyecto SSIS" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-1" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; flex-direction: column;">
@@ -429,23 +373,17 @@
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
     </div>
 
-    <!-- BOTÓN / CUADRO PROYECTO 2 -->
-    <div class="proyecto-boton" id="btn-proyecto-2">
+    <!-- PROYECTO 2: SOLO CUADRO PEQUEÑO -->
+    <div class="proyecto-cuadro" id="cuadro-proyecto-2">
         <h3>
             📧 Reporte de Correo Automatizado
             <span class="expand-icon">▼</span>
         </h3>
-        <p>SQL · Automatización · Reportes</p>
-        <span class="proyecto-badge">Haz clic para ver detalles</span>
+        <div class="etiquetas">SQL · Automatización · Reportes</div>
     </div>
 
     <!-- TARJETA COMPLETA PROYECTO 2 (oculta) -->
     <div class="foto-card" id="tarjeta-proyecto-2">
-        <div class="proyecto-titulo">
-            <h3>📧 Reporte de Correo Automatizado</h3>
-            <span class="proyecto-badge">SQL · Automatización · Reportes</span>
-        </div>
-        
         <div id="contenedor-foto-2">
             <img id="foto-perfil-2" src="" alt="Reporte Automático" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-2" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; flex-direction: column;">
@@ -509,6 +447,7 @@
             intentarCargarFoto();
             
             contenedor.addEventListener('click', function(e) {
+                e.stopPropagation();
                 const input = document.createElement('input');
                 input.type = 'file';
                 input.accept = 'image/*';
@@ -528,24 +467,23 @@
             });
         }
         
-        // Función para mostrar/ocultar tarjetas
-        function toggleTarjeta(botonId, tarjetaId) {
-            const btn = document.getElementById(botonId);
+        // Función para mostrar/ocultar tarjeta al hacer clic en el cuadro
+        function setupProyecto(cuadroId, tarjetaId) {
+            const cuadro = document.getElementById(cuadroId);
             const tarjeta = document.getElementById(tarjetaId);
-            const icon = btn.querySelector('.expand-icon');
+            const icon = cuadro.querySelector('.expand-icon');
             
-            btn.addEventListener('click', function(e) {
-                // Evitar que el clic se propague si se cierra desde adentro
+            cuadro.addEventListener('click', function(e) {
                 e.stopPropagation();
                 
-                // Cerrar todas las demás tarjetas primero (opcional)
+                // Cerrar otras tarjetas
                 document.querySelectorAll('.foto-card').forEach(card => {
                     if (card.id !== tarjetaId) {
                         card.classList.remove('visible');
-                        const otherBtn = document.getElementById(card.id.replace('tarjeta-proyecto', 'btn-proyecto'));
-                        if (otherBtn) {
-                            const otherIcon = otherBtn.querySelector('.expand-icon');
-                            if (otherIcon) otherIcon.textContent = '▼';
+                        const otroCuadro = document.getElementById(card.id.replace('tarjeta-proyecto', 'cuadro-proyecto'));
+                        if (otroCuadro) {
+                            const otroIcon = otroCuadro.querySelector('.expand-icon');
+                            if (otroIcon) otroIcon.textContent = '▼';
                         }
                     }
                 });
@@ -562,12 +500,12 @@
                 e.stopPropagation();
                 const tarjetaId = this.getAttribute('data-tarjeta');
                 const tarjeta = document.getElementById(tarjetaId);
-                const botonId = tarjetaId.replace('tarjeta-proyecto', 'btn-proyecto');
-                const boton = document.getElementById(botonId);
+                const cuadroId = tarjetaId.replace('tarjeta-proyecto', 'cuadro-proyecto');
+                const cuadro = document.getElementById(cuadroId);
                 
                 tarjeta.classList.remove('visible');
-                if (boton) {
-                    const icon = boton.querySelector('.expand-icon');
+                if (cuadro) {
+                    const icon = cuadro.querySelector('.expand-icon');
                     if (icon) icon.textContent = '▼';
                 }
             });
@@ -590,9 +528,9 @@
                 ['correo_automatico.PNG']
             );
             
-            // Configurar expansión de tarjetas
-            toggleTarjeta('btn-proyecto-1', 'tarjeta-proyecto-1');
-            toggleTarjeta('btn-proyecto-2', 'tarjeta-proyecto-2');
+            // Configurar expansión
+            setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
+            setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
         });
     </script>
 </body>
