@@ -440,12 +440,32 @@
             let intentoActual = 0;
             const imgElement = document.getElementById(imgId);
             const placeholder = document.getElementById(placeholderId);
+            const contenedor = document.getElementById(contenedorId);
+            
+            // Función para asignar el evento de clic a la imagen
+            function asignarEventoClic(ruta) {
+                if (imgElement && ruta) {
+                    // Remover eventos anteriores para evitar duplicados
+                    const oldClick = imgElement.onclick;
+                    if (oldClick) imgElement.onclick = null;
+                    
+                    // Asignar nuevo evento
+                    imgElement.onclick = function(e) {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        abrirModal(ruta);
+                        return false;
+                    };
+                    imgElement.style.cursor = 'pointer';
+                }
+            }
             
             function intentarCargarFoto() {
                 if (intentoActual >= rutasImagenes.length) {
                     placeholder.innerHTML = '<span style="font-size: 6rem;">📷</span><br><span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>';
                     placeholder.style.display = 'flex';
                     imgElement.style.display = 'none';
+                    imgElement.style.cursor = 'default';
                     return;
                 }
                 
@@ -456,11 +476,7 @@
                     imgElement.src = ruta;
                     imgElement.style.display = 'block';
                     placeholder.style.display = 'none';
-                    imgElement.style.cursor = 'pointer';
-                    imgElement.onclick = function(e) {
-                        e.stopPropagation();
-                        abrirModal(ruta);
-                    };
+                    asignarEventoClic(ruta);
                 };
                 
                 testImg.onerror = function() {
@@ -473,10 +489,13 @@
             
             intentarCargarFoto();
             
-            document.getElementById(contenedorId).addEventListener('click', function(e) {
+            // Clic en el contenedor para subir imagen (si no se hizo clic en la imagen)
+            contenedor.onclick = function(e) {
+                // Si el clic fue en la imagen, no hacer nada (ya se expande)
                 if (e.target === imgElement && imgElement.style.display === 'block') {
                     return;
                 }
+                // Abrir selector de archivos
                 const input = document.createElement('input');
                 input.type = 'file';
                 input.accept = 'image/*';
@@ -489,41 +508,31 @@
                             imgElement.src = nuevaRuta;
                             imgElement.style.display = 'block';
                             placeholder.style.display = 'none';
-                            imgElement.style.cursor = 'pointer';
-                            imgElement.onclick = function(e) {
-                                e.stopPropagation();
-                                abrirModal(nuevaRuta);
-                            };
+                            asignarEventoClic(nuevaRuta);
                         };
                         reader.readAsDataURL(file);
                     }
                 };
                 input.click();
-            });
+            };
         }
         
         // Configurar tarjetas
         window.addEventListener('DOMContentLoaded', function() {
+            // Tarjeta 1
             configurarTarjetaFoto(
                 'contenedor-foto-1', 
                 'foto-perfil-1', 
                 'placeholder-foto-1',
-                ['fotoprueba.PNG', 'foto.jpg', 'imagen.png', 'marco.jpg', 'perfil.png']
+                ['fotoprueba.PNG']
             );
             
+            // Tarjeta 2
             configurarTarjetaFoto(
                 'contenedor-foto-2', 
                 'foto-perfil-2', 
                 'placeholder-foto-2',
-                [
-                    'correo_automatico.png',
-                    'correo_automatico.PNG',
-                    './correo_automatico.png',
-                    './correo_automatico.PNG',
-                    'img/correo_automatico.png',
-                    'imagenes/correo_automatico.png',
-                    'fotoprueba.PNG'
-                ]
+                ['Correo_automatico.png']
             );
         });
     </script>
