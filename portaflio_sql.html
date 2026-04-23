@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Portafolio SQL SERVER | Marcelo</title>
     <style>
         * {
@@ -170,18 +170,19 @@
             transition: transform 0.3s;
         }
 
-        /* TARJETA COMPLETA (oculta inicialmente) */
+        /* TARJETA COMPLETA (oculta inicialmente) - MEJORADA PARA IMÁGENES COMPLETAS */
         .foto-card {
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 30px;
             padding: 25px;
-            margin: 0 auto 20px auto;
-            max-width: 900px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            margin: 0 auto 30px auto;
+            max-width: 1100px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.3);
             text-align: center;
             display: none;
             animation: fadeIn 0.4s ease;
+            border: 1px solid rgba(255,215,0,0.3);
         }
 
         .foto-card.visible {
@@ -189,36 +190,92 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
+            from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .foto-perfil {
+        /* CONTENEDOR DE IMAGEN: tamaño flexible y mantiene proporciones completas */
+        .image-wrapper {
             width: 100%;
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 280px;
+        }
+
+        .image-wrapper:hover {
+            background: rgba(0,0,0,0.3);
+        }
+
+        /* IMAGEN: se muestra completa, sin recortes, escalada proporcionalmente */
+        .foto-perfil {
             max-width: 100%;
+            width: auto;
             height: auto;
-            max-height: 300px;
-            border-radius: 15px;
-            object-fit: cover;
-            border: 3px solid #ffd700;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            background: #2a5298;
-            margin: 0 auto;
+            max-height: 480px;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             display: block;
+            margin: 0 auto;
+            transition: transform 0.2s;
+        }
+
+        /* Placeholder moderno para subir imagen */
+        .image-placeholder {
+            width: 100%;
+            min-height: 260px;
+            background: linear-gradient(135deg, #3a5f9e 0%, #1e3c72 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+            border: 2px dashed #ffd700;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 30px 20px;
+        }
+
+        .image-placeholder:hover {
+            background: linear-gradient(135deg, #4a6fae 0%, #2a4c82 100%);
+            border-color: #ffaa00;
+            transform: scale(0.99);
+        }
+
+        .placeholder-icon {
+            font-size: 4rem;
+            opacity: 0.9;
+        }
+
+        .placeholder-text {
+            font-size: 1rem;
+            font-weight: 500;
+            background: rgba(0,0,0,0.4);
+            padding: 6px 14px;
+            border-radius: 40px;
         }
 
         .descripcion {
             margin-top: 20px;
-            padding: 15px;
-            background: rgba(0,0,0,0.25);
-            border-radius: 15px;
+            padding: 20px;
+            background: rgba(0,0,0,0.35);
+            border-radius: 24px;
             text-align: center;
+            backdrop-filter: blur(4px);
         }
 
         .descripcion p {
-            margin: 8px 0;
-            font-size: 0.95rem;
-            line-height: 1.4;
+            margin: 10px 0;
+            font-size: 1rem;
+            line-height: 1.5;
         }
 
         .descripcion strong {
@@ -228,22 +285,22 @@
         .features-list {
             list-style: none;
             padding: 0;
-            margin: 15px 0 0 0;
+            margin: 20px 0 0 0;
             display: inline-block;
             text-align: left;
         }
 
         .features-list li {
-            margin: 8px 0;
-            font-size: 0.9rem;
+            margin: 10px 0;
+            font-size: 0.95rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .features-list li::before {
             content: "✔️";
-            font-size: 1rem;
+            font-size: 1.1rem;
         }    
 
         .desc-text {
@@ -253,34 +310,37 @@
         }
 
         .desc-text p {
-            margin: 10px 0;
-            font-size: 0.95rem;
+            margin: 12px 0;
+            font-size: 1rem;
             line-height: 1.5;
         }
 
         .cerrar-tarjeta {
             background: rgba(255,255,255,0.2);
             border: 1px solid #ffd700;
-            border-radius: 30px;
-            padding: 8px 20px;
-            margin-top: 15px;
+            border-radius: 40px;
+            padding: 10px 28px;
+            margin-top: 22px;
             cursor: pointer;
             display: inline-block;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: bold;
             transition: all 0.3s;
         }
 
         .cerrar-tarjeta:hover {
-            background: rgba(255,0,0,0.3);
-            border-color: #ff6666;
+            background: rgba(220, 60, 50, 0.7);
+            border-color: #ffaaaa;
+            transform: translateY(-2px);
         }
 
         footer {
-            margin-top: 30px;
+            margin-top: 40px;
             font-size: 0.85rem;
             opacity: 0.8;
         }
 
+        /* Responsive: para móviles ajusta márgenes y tamaño de imagen */
         @media (max-width: 768px) {
             body {
                 padding: 15px;
@@ -289,8 +349,34 @@
                 font-size: 1.2rem;
             }
             .foto-perfil {
-                max-height: 200px;
+                max-height: 320px;
             }
+            .image-wrapper {
+                padding: 10px;
+                min-height: 200px;
+            }
+            .image-placeholder {
+                min-height: 200px;
+                padding: 20px;
+            }
+            .descripcion {
+                padding: 15px;
+            }
+            .card {
+                padding: 20px;
+            }
+        }
+
+        /* Para pantallas muy grandes, la imagen no se estira más allá de 550px de alto */
+        @media (min-width: 1400px) {
+            .foto-perfil {
+                max-height: 550px;
+            }
+        }
+
+        /* Indicador de clic amigable */
+        .clickable-area {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -337,200 +423,273 @@
         </div>
     </div>
 
-    <!-- PROYECTO 1: SOLO CUADRO PEQUEÑO -->
+    <!-- PROYECTO 1: CUADRO RESUMEN -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-1">
         <h3>
             📂 Carga de Base Automático en SSIS
             <span class="expand-icon">▼</span>
         </h3>
-        <div class="etiquetas">ETL · Excel · Automatización</div>
+        <div class="etiquetas">ETL · Excel · Automatización · Correo</div>
     </div>
 
-    <!-- TARJETA COMPLETA PROYECTO 1 (oculta) -->
+    <!-- TARJETA COMPLETA PROYECTO 1 (con imagen completa) -->
     <div class="foto-card" id="tarjeta-proyecto-1">
-        <div id="contenedor-foto-1">
-            <img id="foto-perfil-1" src="" alt="Proyecto SSIS" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-1" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; flex-direction: column;">
-                <span style="font-size: 3rem;">📷</span>
-                <span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para subir imagen</span>
+        <!-- Contenedor con wrapper para click y mostrar imagen completa -->
+        <div id="wrapper-proyecto-1" class="image-wrapper">
+            <img id="foto-perfil-1" src="" alt="Proyecto SSIS - Carga Automática" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto-1" class="image-placeholder">
+                <div class="placeholder-icon">🖼️📂</div>
+                <div class="placeholder-text">Haz clic para subir imagen (muestra completa)</div>
+                <div style="font-size: 0.8rem; opacity: 0.8;">Formatos: PNG, JPG, GIF | Vista sin recortes</div>
             </div>
         </div>
         
         <div class="descripcion">
-            <p><strong>SQL SERVER | SSIS | ETL | CORREO AUTOMÁTICO</strong></p>
+            <p><strong>⚡ SQL SERVER | SSIS | ETL | CORREO AUTOMÁTICO</strong></p>
             <div class="desc-text">
                 <p>Flujo que carga datos desde archivos Excel, limpia y transforma la información automáticamente.</p>
-                <p>Al finalizar, envía un correo con el resumen de registros cargados.</p>
+                <p>Al finalizar, envía un correo con el resumen de registros cargados y log del proceso.</p>
             </div>
             <ul class="features-list">
                 <li>Carga masiva desde múltiples archivos Excel</li>
-                <li>Limpieza y transformación automática</li>
-                <li>Notificación por correo electrónico</li>
-                <li>Reporte detallado de registros</li>
+                <li>Limpieza y transformación automática con T-SQL</li>
+                <li>Notificación por correo electrónico con adjuntos</li>
+                <li>Reporte detallado de registros insertados/errores</li>
+                <li>Programación mediante Agente SQL Server</li>
             </ul>
         </div>
         
-        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
+        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar vista</div>
     </div>
 
-    <!-- PROYECTO 2: SOLO CUADRO PEQUEÑO -->
+    <!-- PROYECTO 2: CUADRO RESUMEN -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-2">
         <h3>
             📧 Reporte de Correo Automatizado
             <span class="expand-icon">▼</span>
         </h3>
-        <div class="etiquetas">SQL · Automatización · Reportes</div>
+        <div class="etiquetas">SQL · Automatización · Dashboard por Email</div>
     </div>
 
-    <!-- TARJETA COMPLETA PROYECTO 2 (oculta) -->
+    <!-- TARJETA COMPLETA PROYECTO 2 (imagen completa) -->
     <div class="foto-card" id="tarjeta-proyecto-2">
-        <div id="contenedor-foto-2">
-            <img id="foto-perfil-2" src="" alt="Reporte Automático" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-2" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; flex-direction: column;">
-                <span style="font-size: 3rem;">📷</span>
-                <span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para subir imagen</span>
+        <div id="wrapper-proyecto-2" class="image-wrapper">
+            <img id="foto-perfil-2" src="" alt="Reporte Automático por Correo" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto-2" class="image-placeholder">
+                <div class="placeholder-icon">📧📊</div>
+                <div class="placeholder-text">Haz clic aquí para subir imagen (vista completa)</div>
+                <div style="font-size: 0.8rem; opacity: 0.8;">Soporte imagen vertical u horizontal | Escala integra</div>
             </div>
         </div>
         
         <div class="descripcion">
-            <p><strong>SQL SERVER | ENVÍO DE CORREOS | AUTOMATIZACIÓN</strong></p>
+            <p><strong>📬 SQL SERVER | ENVÍO DE CORREOS | AUTOMATIZACIÓN AVANZADA</strong></p>
             <div class="desc-text">
                 <p>Automatización programada que envía correos con el progreso diario, mostrando listas gestionadas, cantidad de leads trabajados, ventas y llamadas pendientes.</p>
+                <p>El sistema genera reportes HTML incrustados, métricas de rendimiento y se ejecuta sin intervención manual mediante Jobs de SQL Agent.</p>
             </div>
             <ul class="features-list">
-                <li>Notificación periódica por correo</li>
-                <li>Reporte detallado de gestión diaria</li>
-                <li>Métricas de rendimiento</li>
+                <li>Notificación periódica configurable (diaria/semanal)</li>
+                <li>Reporte detallado de gestión comercial con KPIs clave</li>
+                <li>Envío automático con Database Mail y HTML incrustado</li>
+                <li>Métricas de rendimiento: conversión, pendientes, eficacia</li>
+                <li>Logs de envío para auditoría</li>
             </ul>
         </div>
         
-        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
+        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar vista</div>
     </div>
 
     <footer>
-        © 2026 Marcelo Ricardo Gil Grados Calderón - Especialista en SQL Server & Business Intelligence
+        © 2026 Marcelo Ricardo Gil Grados Calderón - Especialista en SQL Server & Business Intelligence | Proyectos con visualización completa
     </footer>
 
     <script>
-        // Función para manejar la carga de fotos
-        function configurarTarjetaFoto(contenedorId, imgId, placeholderId, rutasImagenes) {
-            let intentoActual = 0;
+        // Función mejorada para manejar carga de imágenes (respetando tamaño completo, sin recorte)
+        function configurarTarjetaFoto(contenedorWrapperId, imgId, placeholderId, rutasPrecargadas = []) {
+            const wrapper = document.getElementById(contenedorWrapperId);
             const imgElement = document.getElementById(imgId);
             const placeholder = document.getElementById(placeholderId);
-            const contenedor = document.getElementById(contenedorId);
             
-            function intentarCargarFoto() {
-                if (intentoActual >= rutasImagenes.length) {
-                    placeholder.innerHTML = '<span style="font-size: 3rem;">📷</span><br><span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para subir imagen</span>';
+            if (!wrapper || !imgElement || !placeholder) return;
+            
+            let intentoActual = 0;
+            const rutasPorDefecto = rutasPrecargadas.length ? rutasPrecargadas : [];
+            
+            // Intentar cargar imagen por defecto si existe
+            function intentarCargarImagenPorDefecto() {
+                if (intentoActual >= rutasPorDefecto.length) {
+                    // No hay imagen por defecto, mantener placeholder activo
                     placeholder.style.display = 'flex';
                     imgElement.style.display = 'none';
                     return;
                 }
                 
-                const ruta = rutasImagenes[intentoActual];
+                const ruta = rutasPorDefecto[intentoActual];
                 const testImg = new Image();
                 
                 testImg.onload = function() {
                     imgElement.src = ruta;
                     imgElement.style.display = 'block';
                     placeholder.style.display = 'none';
+                    // Ajuste de estilo extra: aseguramos object-fit contain (ya en CSS)
                 };
                 
                 testImg.onerror = function() {
                     intentoActual++;
-                    intentarCargarFoto();
+                    intentarCargarImagenPorDefecto();
                 };
                 
                 testImg.src = ruta;
             }
             
-            intentarCargarFoto();
+            // Intentar precargar si existen rutas
+            if (rutasPorDefecto.length > 0) {
+                intentarCargarImagenPorDefecto();
+            } else {
+                placeholder.style.display = 'flex';
+                imgElement.style.display = 'none';
+            }
             
-            contenedor.addEventListener('click', function(e) {
-                e.stopPropagation();
+            // Función para subir imagen local del usuario (se muestra completa)
+            const subirImagen = (event) => {
+                event.stopPropagation();
                 const input = document.createElement('input');
                 input.type = 'file';
-                input.accept = 'image/*';
-                input.onchange = function(e) {
+                input.accept = 'image/jpeg, image/png, image/gif, image/webp, image/bmp';
+                input.onchange = (e) => {
                     const file = e.target.files[0];
-                    if (file) {
+                    if (file && file.type.startsWith('image/')) {
                         const reader = new FileReader();
-                        reader.onload = function(event) {
-                            imgElement.src = event.target.result;
+                        reader.onload = (loadEvent) => {
+                            imgElement.src = loadEvent.target.result;
                             imgElement.style.display = 'block';
                             placeholder.style.display = 'none';
+                            
+                            // Pequeño efecto visual de éxito
+                            const originalBorder = wrapper.style.border;
+                            wrapper.style.transition = '0.2s';
+                            wrapper.style.boxShadow = '0 0 0 2px #ffd700';
+                            setTimeout(() => {
+                                wrapper.style.boxShadow = '';
+                            }, 500);
                         };
                         reader.readAsDataURL(file);
+                    } else {
+                        alert("Por favor selecciona un archivo de imagen válido (PNG, JPG, GIF, etc.)");
                     }
                 };
                 input.click();
-            });
+            };
+            
+            // Hacer click en cualquier parte del wrapper o placeholder activa la subida
+            wrapper.addEventListener('click', subirImagen);
+            if (placeholder) {
+                placeholder.addEventListener('click', subirImagen);
+            }
+            
+            // Si la imagen tiene error de carga (por ejemplo ruta inexistente), mostrar placeholder
+            imgElement.onerror = () => {
+                imgElement.style.display = 'none';
+                placeholder.style.display = 'flex';
+            };
         }
         
-        // Función para mostrar/ocultar tarjeta al hacer clic en el cuadro
+        // Función para expandir/contraer tarjetas
         function setupProyecto(cuadroId, tarjetaId) {
             const cuadro = document.getElementById(cuadroId);
             const tarjeta = document.getElementById(tarjetaId);
+            if (!cuadro || !tarjeta) return;
+            
             const icon = cuadro.querySelector('.expand-icon');
             
             cuadro.addEventListener('click', function(e) {
                 e.stopPropagation();
                 
-                // Cerrar otras tarjetas
+                // Cerrar todas las otras tarjetas abiertas para mejor UX
                 document.querySelectorAll('.foto-card').forEach(card => {
-                    if (card.id !== tarjetaId) {
+                    if (card.id !== tarjetaId && card.classList.contains('visible')) {
                         card.classList.remove('visible');
-                        const otroCuadro = document.getElementById(card.id.replace('tarjeta-proyecto', 'cuadro-proyecto'));
-                        if (otroCuadro) {
-                            const otroIcon = otroCuadro.querySelector('.expand-icon');
+                        const otherCuadroId = card.id.replace('tarjeta-proyecto', 'cuadro-proyecto');
+                        const otherCuadro = document.getElementById(otherCuadroId);
+                        if (otherCuadro) {
+                            const otroIcon = otherCuadro.querySelector('.expand-icon');
                             if (otroIcon) otroIcon.textContent = '▼';
                         }
                     }
                 });
                 
-                // Toggle la tarjeta actual
-                tarjeta.classList.toggle('visible');
-                icon.textContent = tarjeta.classList.contains('visible') ? '▲' : '▼';
-            });
-        }
-        
-        // Cerrar tarjeta con botón cerrar
-        document.querySelectorAll('.cerrar-tarjeta').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const tarjetaId = this.getAttribute('data-tarjeta');
-                const tarjeta = document.getElementById(tarjetaId);
-                const cuadroId = tarjetaId.replace('tarjeta-proyecto', 'cuadro-proyecto');
-                const cuadro = document.getElementById(cuadroId);
-                
-                tarjeta.classList.remove('visible');
-                if (cuadro) {
-                    const icon = cuadro.querySelector('.expand-icon');
+                // Alternar tarjeta actual
+                const wasVisible = tarjeta.classList.contains('visible');
+                if (!wasVisible) {
+                    tarjeta.classList.add('visible');
+                    if (icon) icon.textContent = '▲';
+                    // Al abrir, hacer scroll suave hacia la tarjeta (mejor experiencia)
+                    setTimeout(() => {
+                        tarjeta.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                } else {
+                    tarjeta.classList.remove('visible');
                     if (icon) icon.textContent = '▼';
                 }
             });
-        });
+        }
         
-        // Inicializar
-        window.addEventListener('DOMContentLoaded', function() {
-            // Configurar fotos
+        // Configurar botones de cerrar correctamente
+        function configurarBotonesCerrar() {
+            const botonesCerrar = document.querySelectorAll('.cerrar-tarjeta');
+            botonesCerrar.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const tarjetaId = this.getAttribute('data-tarjeta');
+                    const tarjeta = document.getElementById(tarjetaId);
+                    if (tarjeta) {
+                        tarjeta.classList.remove('visible');
+                        // Actualizar ícono del cuadro correspondiente
+                        const cuadroId = tarjetaId.replace('tarjeta-proyecto', 'cuadro-proyecto');
+                        const cuadro = document.getElementById(cuadroId);
+                        if (cuadro) {
+                            const icon = cuadro.querySelector('.expand-icon');
+                            if (icon) icon.textContent = '▼';
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Inicializar todo cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar carga de imágenes con rutas sugeridas (si existen las imágenes en el directorio raíz)
+            // El sistema permite tener las imágenes locales: fotoprueba.PNG y correo_automatico.PNG 
+            // pero aún si no existen, el usuario puede subir cualquier imagen y se verá COMPLETA.
             configurarTarjetaFoto(
-                'contenedor-foto-1', 
-                'foto-perfil-1', 
+                'wrapper-proyecto-1',
+                'foto-perfil-1',
                 'placeholder-foto-1',
-                ['fotoprueba.PNG']
+                ['fotoprueba.PNG', 'proyecto_ssis_ejemplo.png', 'ssis_carga.jpg']  // varias opciones por si alguna existe
             );
             
             configurarTarjetaFoto(
-                'contenedor-foto-2', 
-                'foto-perfil-2', 
+                'wrapper-proyecto-2',
+                'foto-perfil-2',
                 'placeholder-foto-2',
-                ['correo_automatico.PNG']
+                ['correo_automatico.PNG', 'reporte_email.png', 'automail_sql.jpg']
             );
             
-            // Configurar expansión
+            // Configurar expansión de proyectos
             setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
             setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
+            
+            // Configurar botones de cerrar
+            configurarBotonesCerrar();
+            
+            // Pequeña mejora: si alguna imagen se carga y es demasiado grande, el CSS garantiza que se vea entera
+            // sin overflow oculto. Aseguramos también que en el wrapper la imagen no se recorte con object-fit: contain.
+            // Ya está en .foto-perfil { object-fit: contain; max-width:100%; height:auto; max-height: 480px; }
+            // Para móviles max-height se reduce pero siempre se ve completa.
+            
+            // Opcional: añadir mensaje consola amigable
+            console.log("Portafolio SQL Server - Imágenes se muestran completas sin recortes. Haz clic en placeholder para subir tu screenshot.");
         });
     </script>
 </body>
