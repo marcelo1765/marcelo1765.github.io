@@ -452,12 +452,21 @@
                 ['fotoprueba.PNG', 'foto.jpg', 'imagen.png', 'marco.jpg', 'perfil.png']
             );
             
-            // Tarjeta 2 (puedes cambiar las rutas si quieres imágenes diferentes)
+           // Tarjeta 2 - Con múltiples variantes y rutas posibles
             configurarTarjetaFoto(
                 'contenedor-foto-2', 
                 'foto-perfil-2', 
                 'placeholder-foto-2',
-                ['Correo_automatico.png', 'foto.jpg', 'imagen.png', 'marco.jpg', 'perfil.png']
+                [
+                    'Correo_automatico.png',
+                    'Correo_automatico.PNG',
+                    'correo_automatico.png',
+                    './Correo_automatico.png',
+                    './Correo_automatico.PNG',
+                    'img/Correo_automatico.png',
+                    'imagenes/Correo_automatico.png',
+                    'fotoprueba.PNG'  // Fallback: si no encuentra, usa esta
+                ]
             );
         });
     </script>
