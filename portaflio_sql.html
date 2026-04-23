@@ -85,95 +85,128 @@
             color: #2a5298;
         }
 
+        /* Card principal reducida */
         .card {
             background: rgba(255,255,255,0.1);
             border-radius: 20px;
-            padding: 50px;
-            margin: 30px auto;
-            max-width: 1200px;
+            padding: 30px 40px; /* Padding reducido */
+            margin: 20px auto; /* Margen reducido */
+            max-width: 1000px; /* Ancho reducido */
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         .card h2 {
             color: #ffd700;
-            margin-bottom: 20px;
-            font-size: 2rem;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
         }
 
         .card p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
         }
 
         .skills-section {
-            margin-top: 30px;
+            margin-top: 20px;
             text-align: left;
         }
 
         .skills-section h3 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
         }
 
         .skill-item {
             background: rgba(255,255,255,0.15);
-            padding: 15px;
+            padding: 10px;
             border-radius: 10px;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
         }
 
+        /* Tarjeta de proyecto minimizada */
         .foto-card {
             background: rgba(255,255,255,0.1);
-            border-radius: 25px;
-            padding: 50px;
-            margin: 30px auto;
-            max-width: 1000px;
+            border-radius: 20px;
+            padding: 25px; /* Padding reducido */
+            margin: 20px auto; /* Margen reducido */
+            max-width: 900px; /* Ancho reducido */
             backdrop-filter: blur(10px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             text-align: center;
+            transition: transform 0.2s;
+        }
+        
+        .foto-card:hover {
+            transform: scale(1.01); /* Efecto sutil al pasar el mouse */
         }
 
-        .foto-card h3 {
+        /* Bloque de título del proyecto */
+        .proyecto-titulo {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 5px solid #ffd700;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .proyecto-titulo h3 {
             color: #ffd700;
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            margin-top: 0;
+            font-size: 1.6rem;
+            margin: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .proyecto-badge {
+            background: rgba(255, 215, 0, 0.2);
+            border: 1px solid #ffd700;
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            color: #ffd700;
         }
 
         .foto-perfil {
             width: 100%;
-            max-width: 1500px;
+            max-width: 100%;
             height: auto;
-            border-radius: 20px;
+            max-height: 300px; /* Altura máxima reducida */
+            border-radius: 15px;
             object-fit: cover;
-            border: 4px solid #ffd700;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 3px solid #ffd700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             background: #2a5298;
             margin: 0 auto;
             display: block;
         }
 
         .descripcion {
-            margin-top: 35px;
-            padding: 30px;
-            background: rgba(0,0,0,0.35);
-            border-radius: 20px;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0,0,0,0.25);
+            border-radius: 15px;
             text-align: center;
         }
 
         .descripcion p {
-            margin: 12px 0;
-            font-size: 1.1rem;
-            line-height: 1.6;
+            margin: 8px 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
         }
 
         .descripcion strong {
@@ -183,39 +216,39 @@
         .features-list {
             list-style: none;
             padding: 0;
-            margin: 20px 0 0 0;
+            margin: 15px 0 0 0;
             display: inline-block;
             text-align: left;
         }
 
         .features-list li {
-            margin: 12px 0;
-            font-size: 1.05rem;
+            margin: 8px 0;
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .features-list li::before {
-        content: "✔️";
-        font-size: 1.2rem;
+            content: "✔️";
+            font-size: 1rem;
         }    
 
         .desc-text {
-            max-width: 800px;
+            max-width: 100%;
             margin: 0 auto;
             text-align: center;
         }
 
         .desc-text p {
-            margin: 15px 0;
-            font-size: 1.05rem;
-            line-height: 1.7;
+            margin: 10px 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         footer {
-            margin-top: 40px;
-            font-size: 1rem;
+            margin-top: 30px;
+            font-size: 0.85rem;
             opacity: 0.8;
         }
 
@@ -233,19 +266,15 @@
             .buttons-header {
                 justify-content: center;
             }
-            .card {
+            .card, .foto-card {
                 max-width: 100%;
-                padding: 30px;
+                padding: 20px;
             }
-            .foto-card {
-                max-width: 100%;
-                padding: 30px;
+            .proyecto-titulo h3 {
+                font-size: 1.2rem;
             }
             .foto-perfil {
-                max-width: 100%;
-            }
-            .foto-card h3 {
-                font-size: 1.6rem;
+                max-height: 200px;
             }
         }
     </style>
@@ -271,76 +300,82 @@
         </div>
     </div>
 
+    <!-- Card principal reducida -->
     <div class="card">
-        <h2>🚀 Carga Automatizada con SSIS</h2>
+        <h2>🚀 Experiencia en Datos</h2>
         <p>
-            Bienvenido a mi portafolio de <strong>SQL Server</strong>. Aquí encontrarás proyectos profesionales, 
-            consultas optimizadas, stored procedures, y soluciones de Business Intelligence implementadas 
-            con T-SQL y herramientas de Microsoft.
+            Especialista en <strong>SQL Server</strong> con proyectos de ETL, automatización y Business Intelligence.
         </p>
         
         <div class="skills-section">
-            <h3 style="color: #ffd700; margin-bottom: 15px;">🛠️ Tecnologías y Habilidades</h3>
+            <h3 style="color: #ffd700; margin-bottom: 10px;">🛠️ Tecnologías</h3>
             <div class="skills-grid">
-                <div class="skill-item">✅ T-SQL Avanzado</div>
-                <div class="skill-item">✅ Procedimientos Almacenados</div>
-                <div class="skill-item">✅ Query Optimization</div>
-                <div class="skill-item">✅ Indexación Estratégica</div>
-                <div class="skill-item">✅ ETL con SSIS</div>
-                <div class="skill-item">✅ Reporting Services (SSRS)</div>
-                <div class="skill-item">✅ Analysis Services (SSAS)</div>
-                <div class="skill-item">✅ Envío automatizado de Reportes</div>
+                <div class="skill-item">T-SQL Avanzado</div>
+                <div class="skill-item">Procedimientos</div>
+                <div class="skill-item">Optimización</div>
+                <div class="skill-item">Indexación</div>
+                <div class="skill-item">ETL con SSIS</div>
+                <div class="skill-item">SSRS</div>
+                <div class="skill-item">SSAS</div>
+                <div class="skill-item">Reportes Automáticos</div>
             </div>
         </div>
     </div>
 
-    <!-- PRIMERA TARJETA -->
+    <!-- PROYECTO 1: TARJETA MINIMIZADA -->
     <div class="foto-card">
-        <h3>Carga de Base Automatico en SSIS</h3>
+        <div class="proyecto-titulo">
+            <h3>📂 Carga de Base Automático en SSIS</h3>
+            <span class="proyecto-badge">ETL · Excel · Automatización</span>
+        </div>
+        
         <div id="contenedor-foto-1">
-            <img id="foto-perfil-1" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-1" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 550px; flex-direction: column;">
-                <span style="font-size: 6rem;">📷</span>
-                <span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>
+            <img id="foto-perfil-1" src="" alt="Proyecto SSIS" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto-1" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; flex-direction: column;">
+                <span style="font-size: 3rem;">📷</span>
+                <span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para vista previa</span>
             </div>
         </div>
+        
         <div class="descripcion">
-            <p><strong>SQL SERVER | SSIS | ETL | ENVIO CORREO ELECTRONICO</strong></p>
+            <p><strong>SQL SERVER | SSIS | ETL | CORREO AUTOMÁTICO</strong></p>
             <div class="desc-text">
-                <p>Se ha creado un flujo que nos permite cargar datos de diferentes archivos Excel<br>
-                de una manera rápida que también se encarga de hacer la limpieza y tratamiento de la información</p>
-                <p>Al finalizar el proceso, se envía un correo electrónico mostrando<br>
-                la cantidad de registros que se han cargado exitosamente</p>
+                <p>Flujo que carga datos desde archivos Excel, limpia y transforma la información automáticamente.</p>
+                <p>Al finalizar, envía un correo con el resumen de registros cargados.</p>
             </div>
             <ul class="features-list">
                 <li>Carga masiva desde múltiples archivos Excel</li>
-                <li>Limpieza y transformación automática de datos</li>
-                <li>Notificación por correo electrónico al finalizar</li>
-                <li>Reporte detallado de registros cargados</li>
+                <li>Limpieza y transformación automática</li>
+                <li>Notificación por correo electrónico</li>
+                <li>Reporte detallado de registros</li>
             </ul>
         </div>
     </div>
 
-    <!-- SEGUNDA TARJETA -->
+    <!-- PROYECTO 2: TARJETA MINIMIZADA -->
     <div class="foto-card">
-        <h3>Reporte de Correo Automatizado</h3>
+        <div class="proyecto-titulo">
+            <h3>📧 Reporte de Correo Automatizado</h3>
+            <span class="proyecto-badge">SQL · Automatización · Reportes</span>
+        </div>
+        
         <div id="contenedor-foto-2">
-            <img id="foto-perfil-2" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-2" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 550px; flex-direction: column;">
-                <span style="font-size: 6rem;">📷</span>
-                <span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>
+            <img id="foto-perfil-2" src="" alt="Reporte Automático" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto-2" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 200px; flex-direction: column;">
+                <span style="font-size: 3rem;">📷</span>
+                <span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para vista previa</span>
             </div>
         </div>
+        
         <div class="descripcion">
-            <p><strong>SQL SERVER | ENVIO CORREO ELECTRONICO | AUTOMATIZACIÓN</strong></p>
+            <p><strong>SQL SERVER | ENVÍO DE CORREOS | AUTOMATIZACIÓN</strong></p>
             <div class="desc-text">
-                <p>Se ha creado una automatización que corre cada cierto tiempo mandando un correo<br>
-                que nos muestra el progreso del día mostrando las listas que fueron gestionadas notificando<br>
-                la cantidad de lead trabajadas, ventas y volver a llamar realizados en el día.</p>
+                <p>Automatización programada que envía correos con el progreso diario, mostrando listas gestionadas, cantidad de leads trabajados, ventas y llamadas pendientes.</p>
             </div>
             <ul class="features-list">
-                <li>Notificación por correo electrónico</li>
-                <li>Reporte detallado de listas gestionadas</li>
+                <li>Notificación periódica por correo</li>
+                <li>Reporte detallado de gestión diaria</li>
+                <li>Métricas de rendimiento</li>
             </ul>
         </div>
     </div>
@@ -359,7 +394,7 @@
             
             function intentarCargarFoto() {
                 if (intentoActual >= rutasImagenes.length) {
-                    placeholder.innerHTML = '<span style="font-size: 6rem;">📷</span><br><span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>';
+                    placeholder.innerHTML = '<span style="font-size: 3rem;">📷</span><br><span style="font-size: 0.9rem; margin-top: 8px;">Haz clic para vista previa</span>';
                     placeholder.style.display = 'flex';
                     imgElement.style.display = 'none';
                     return;
@@ -406,7 +441,7 @@
         
         // Configurar tarjetas
         window.addEventListener('DOMContentLoaded', function() {
-            // Tarjeta 1
+            // Proyecto 1
             configurarTarjetaFoto(
                 'contenedor-foto-1', 
                 'foto-perfil-1', 
@@ -414,7 +449,7 @@
                 ['fotoprueba.PNG']
             );
             
-            // Tarjeta 2 - Nombre exacto según tu lista de archivos
+            // Proyecto 2
             configurarTarjetaFoto(
                 'contenedor-foto-2', 
                 'foto-perfil-2', 
