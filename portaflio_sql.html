@@ -131,7 +131,6 @@
             font-size: 1.1rem;
         }
 
-        /* Tarjeta para la foto */
         .foto-card {
             background: rgba(255,255,255,0.1);
             border-radius: 25px;
@@ -150,14 +149,6 @@
             margin-top: 0;
         }
 
-        .foto-card h4 {
-            color: #fff;
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            opacity: 0.9;
-        }
-
-        /* Imagen rectangular - MUCHO MÁS GRANDE */
         .foto-perfil {
             width: 100%;
             max-width: 1500px;
@@ -169,12 +160,6 @@
             background: #2a5298;
             margin: 0 auto;
             display: block;
-        }
-
-        .foto-card p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-top: 10px;
         }
 
         .descripcion {
@@ -195,7 +180,6 @@
             color: #ffd700;
         }
 
-        /* Estilos mejorados para la lista de características */
         .features-list {
             list-style: none;
             padding: 0;
@@ -217,7 +201,6 @@
             font-size: 1.2rem;
         }
 
-        /* Texto de descripción centrado con mejor espaciado */
         .desc-text {
             max-width: 800px;
             margin: 0 auto;
@@ -234,6 +217,55 @@
             margin-top: 40px;
             font-size: 1rem;
             opacity: 0.8;
+        }
+
+        /* Modal para expandir imagen */
+        .modal-imagen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-imagen img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .modal-imagen .cerrar-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .modal-imagen .cerrar-modal:hover {
+            color: #ffd700;
+            transform: scale(1.1);
+        }
+
+        .modal-imagen .texto-modal {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            background: rgba(0,0,0,0.6);
+            padding: 10px 20px;
+            border-radius: 30px;
         }
 
         @media (max-width: 768px) {
@@ -264,17 +296,13 @@
             .foto-card h3 {
                 font-size: 1.6rem;
             }
-            .foto-card h4 {
-                font-size: 1.1rem;
+            .modal-imagen .cerrar-modal {
+                font-size: 35px;
+                top: 10px;
+                right: 20px;
             }
-            .descripcion p {
-                font-size: 0.95rem;
-            }
-            .skill-item {
-                font-size: 0.95rem;
-            }
-            .desc-text p {
-                font-size: 0.95rem;
+            .modal-imagen .texto-modal {
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -323,10 +351,9 @@
         </div>
     </div>
 
-    <!-- PRIMERA TARJETA ORIGINAL -->
+    <!-- PRIMERA TARJETA -->
     <div class="foto-card">
         <h3>Carga de Base Automatico en SSIS</h3>
-        
         <div id="contenedor-foto-1">
             <img id="foto-perfil-1" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-1" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 550px; flex-direction: column;">
@@ -334,18 +361,14 @@
                 <span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>
             </div>
         </div>
-        
         <div class="descripcion">
             <p><strong>SQL SERVER | SSIS | ETL | ENVIO CORREO ELECTRONICO</strong></p>
-            
             <div class="desc-text">
                 <p>Se ha creado un flujo que nos permite cargar datos de diferentes archivos Excel<br>
                 de una manera rápida que también se encarga de hacer la limpieza y tratamiento de la información</p>
-                
                 <p>Al finalizar el proceso, se envía un correo electrónico mostrando<br>
                 la cantidad de registros que se han cargado exitosamente</p>
             </div>
-            
             <ul class="features-list">
                 <li>Carga masiva desde múltiples archivos Excel</li>
                 <li>Limpieza y transformación automática de datos</li>
@@ -355,10 +378,9 @@
         </div>
     </div>
 
-    <!-- SEGUNDA TARJETA (COPIA EXACTA) -->
+    <!-- SEGUNDA TARJETA -->
     <div class="foto-card">
         <h3>Reporte de Correo Automatizado</h3>
-        
         <div id="contenedor-foto-2">
             <img id="foto-perfil-2" src="" alt="Foto de Marcelo" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-2" class="foto-perfil" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 550px; flex-direction: column;">
@@ -366,17 +388,13 @@
                 <span style="font-size: 1.2rem; margin-top: 15px;">Haz clic para subir tu foto</span>
             </div>
         </div>
-        
         <div class="descripcion">
             <p><strong>SQL SERVER | ENVIO CORREO ELECTRONICO | AUTOMATIZACIÓN</strong></p>
-            
             <div class="desc-text">
                 <p>Se ha creado una automatización que correr cada cierto tiempo mandando un correo<br>
                 que nos muestra el progrese del dia mostrando las listas que fueron gestionadas notificando<br>
-                la cantidad de lead trabajadas, ventas y volver a llamar realizados en el dia.
-                </p>
+                la cantidad de lead trabajadas, ventas y volver a llamar realizados en el dia.</p>
             </div>
-            
             <ul class="features-list">
                 <li>Notificación por correo electrónico</li>
                 <li>Reporte detallado de listas gestionadas</li>
@@ -388,8 +406,36 @@
         © 2026 Marcelo Ricardo Gil Grados Calderón - Especialista en SQL Server & Business Intelligence
     </footer>
 
+    <!-- Modal para expandir imagen -->
+    <div id="modal-imagen" class="modal-imagen" onclick="cerrarModal()">
+        <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+        <img id="modal-img" src="" alt="Imagen expandida">
+        <div class="texto-modal">Haz clic en cualquier lugar para cerrar</div>
+    </div>
+
     <script>
-        // Función para manejar la carga de fotos en una tarjeta específica
+        // Funciones para el modal de expansión
+        function abrirModal(src) {
+            const modal = document.getElementById('modal-imagen');
+            const modalImg = document.getElementById('modal-img');
+            modal.style.display = 'flex';
+            modalImg.src = src;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cerrarModal() {
+            const modal = document.getElementById('modal-imagen');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                cerrarModal();
+            }
+        });
+
+        // Función para manejar la carga de fotos con expansión
         function configurarTarjetaFoto(contenedorId, imgId, placeholderId, rutasImagenes) {
             let intentoActual = 0;
             const imgElement = document.getElementById(imgId);
@@ -410,6 +456,11 @@
                     imgElement.src = ruta;
                     imgElement.style.display = 'block';
                     placeholder.style.display = 'none';
+                    imgElement.style.cursor = 'pointer';
+                    imgElement.onclick = function(e) {
+                        e.stopPropagation();
+                        abrirModal(ruta);
+                    };
                 };
                 
                 testImg.onerror = function() {
@@ -422,7 +473,10 @@
             
             intentarCargarFoto();
             
-            document.getElementById(contenedorId).addEventListener('click', function() {
+            document.getElementById(contenedorId).addEventListener('click', function(e) {
+                if (e.target === imgElement && imgElement.style.display === 'block') {
+                    return;
+                }
                 const input = document.createElement('input');
                 input.type = 'file';
                 input.accept = 'image/*';
@@ -431,9 +485,15 @@
                     if (file) {
                         const reader = new FileReader();
                         reader.onload = function(event) {
-                            imgElement.src = event.target.result;
+                            const nuevaRuta = event.target.result;
+                            imgElement.src = nuevaRuta;
                             imgElement.style.display = 'block';
                             placeholder.style.display = 'none';
+                            imgElement.style.cursor = 'pointer';
+                            imgElement.onclick = function(e) {
+                                e.stopPropagation();
+                                abrirModal(nuevaRuta);
+                            };
                         };
                         reader.readAsDataURL(file);
                     }
@@ -442,9 +502,8 @@
             });
         }
         
-        // Configurar ambas tarjetas con sus propias rutas de imagen
+        // Configurar tarjetas
         window.addEventListener('DOMContentLoaded', function() {
-            // Tarjeta 1
             configurarTarjetaFoto(
                 'contenedor-foto-1', 
                 'foto-perfil-1', 
@@ -452,7 +511,6 @@
                 ['fotoprueba.PNG', 'foto.jpg', 'imagen.png', 'marco.jpg', 'perfil.png']
             );
             
-           // Tarjeta 2 - Con múltiples variantes y rutas posibles
             configurarTarjetaFoto(
                 'contenedor-foto-2', 
                 'foto-perfil-2', 
@@ -460,12 +518,11 @@
                 [
                     'correo_automatico.png',
                     'correo_automatico.PNG',
-                    'correo_automatico.png',
                     './correo_automatico.png',
                     './correo_automatico.PNG',
                     'img/correo_automatico.png',
                     'imagenes/correo_automatico.png',
-                    'fotoprueba.PNG'  // Fallback: si no encuentra, usa esta
+                    'fotoprueba.PNG'
                 ]
             );
         });
