@@ -221,6 +221,106 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Estilos para los sub-proyectos dentro de la tarjeta */
+        .subproyecto {
+            background: #f8fbfe;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e0ecf5;
+        }
+
+        .subproyecto:last-child {
+            margin-bottom: 0;
+        }
+
+        .subproyecto h4 {
+            color: #cc2929;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .subproyecto .sub-etiquetas {
+            font-size: 0.7rem;
+            color: #6e8eae;
+            margin-bottom: 0.8rem;
+        }
+
+        .sub-image-wrapper {
+            width: 100%;
+            background: #f5f9fe;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 0.8rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 200px;
+            border: 1px dashed #c0d4e8;
+        }
+
+        .sub-image-wrapper:hover {
+            background: #eef4fa;
+            border-color: #8ab3d0;
+        }
+
+        .sub-foto {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 12px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .sub-placeholder {
+            width: 100%;
+            min-height: 180px;
+            background: linear-gradient(135deg, #e8f0f7 0%, #dce8f0 100%);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 1.5rem;
+        }
+
+        .sub-placeholder:hover {
+            background: linear-gradient(135deg, #dfeaf3 0%, #d0dfea 100%);
+        }
+
+        .sub-features {
+            list-style: none;
+            padding: 0;
+            margin: 0.8rem 0 0 0;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .sub-features li {
+            margin: 0.4rem 0;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sub-features li::before {
+            content: "✓";
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
         .image-wrapper {
             width: 100%;
             background: #f5f9fe;
@@ -362,6 +462,7 @@
             .proyecto-cuadro h3 { font-size: 1.1rem; }
             .foto-perfil { max-height: 280px; }
             .image-wrapper { min-height: 200px; }
+            .sub-foto { max-height: 200px; }
         }
     </style>
 </head>
@@ -440,7 +541,7 @@
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 2: Automatización de Reportes por Correo con Database Mail -->
+    <!-- PROYECTO 2: Automatización de Reportes por Correo con Database Mail (con múltiples ejemplos) -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-2">
         <h3>
             <i class="fas fa-paper-plane"></i> Reportes Automáticos por Email
@@ -450,66 +551,76 @@
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-2">
-        <div id="wrapper-proyecto-2" class="image-wrapper">
-            <img id="foto-perfil-2" src="" alt="Reportes Automáticos Email" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-2" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <div class="placeholder-text">Haz clic para subir imagen del reporte</div>
-                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
-            </div>
-        </div>
-        <div class="descripcion">
+        <!-- DESCRIPCIÓN GENERAL DEL PROYECTO -->
+        <div class="descripcion" style="margin-bottom: 1rem;">
             <p><strong>📧 SQL SERVER | DATABASE MAIL | AUTOMATIZACIÓN AVANZADA</strong></p>
-            <div class="desc-text">
-                <p>Sistema de generación y envío automático de reportes ejecutivos con formato HTML, tablas dinámicas y gráficos embebidos. Incluye KPIs de negocio y alertas condicionales.</p>
-                <p><strong>📎 Ejemplo:</strong> Reporte diario de ventas enviado a las 8:00 AM a todo el equipo comercial.</p>
-            </div>
-            <ul class="features-list">
-                <li>Procedimientos almacenados que generan HTML responsivo</li>
-                <li>Envío masivo personalizado con Database Mail</li>
-                <li>KPIs: ventas, productividad, metas vs reales</li>
-                <li>Alertas automáticas por umbrales definidos</li>
-                <li>Adjuntos de archivos (Excel, PDF, CSV)</li>
-                <li>Ejecución programada y logs de monitoreo</li>
-            </ul>
+            <p>Sistema de generación y envío automático de reportes ejecutivos con formato HTML, tablas dinámicas y gráficos embebidos. A continuación, 3 ejemplos implementados:</p>
         </div>
-        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
-    </div>
 
-    <!-- PROYECTO 2B: Dashboard de Ventas por Correo Electrónico (NUEVO) -->
-    <div class="proyecto-cuadro" id="cuadro-proyecto-2b">
-        <h3>
-            <i class="fas fa-envelope-open-text"></i> Dashboard de Ventas por Email
-            <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
-        </h3>
-        <div class="etiquetas">Database Mail · HTML · KPIs Comerciales · Automatización</div>
-    </div>
-
-    <div class="foto-card" id="tarjeta-proyecto-2b">
-        <div id="wrapper-proyecto-2b" class="image-wrapper">
-            <img id="foto-perfil-2b" src="" alt="Dashboard Ventas Email" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-2b" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <div class="placeholder-text">Haz clic para subir imagen del dashboard</div>
-                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
+        <!-- EJEMPLO 1: Reporte Diario de Ventas -->
+        <div class="subproyecto">
+            <h4><i class="fas fa-chart-line"></i> Ejemplo 1: Reporte Diario de Ventas</h4>
+            <div class="sub-etiquetas">Envío diario · KPIs · Comparativas</div>
+            <div id="wrapper-sub1" class="sub-image-wrapper">
+                <img id="sub-foto-1" src="" alt="Reporte Diario Ventas" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub1" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 1</div>
+                </div>
             </div>
-        </div>
-        <div class="descripcion">
-            <p><strong>📊 SQL SERVER | DASHBOARD VENTAS | EMAIL AUTOMATIZADO</strong></p>
-            <div class="desc-text">
-                <p>Dashboard de ventas enviado automáticamente cada mañana a la dirección <strong>sistemas@ejemplo.com</strong>. Incluye gráficos de tendencia, top productos y metas comerciales.</p>
-                <p>El sistema consulta la base de datos, genera un HTML con tablas y gráficos CSS, y lo envía mediante Database Mail.</p>
-            </div>
-            <ul class="features-list">
-                <li>Envío diario a sistemas@ejemplo.com</li>
-                <li>Gráficos de barras y tendencias con CSS puro</li>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte enviado cada mañana a las 8:00 AM al equipo comercial. Incluye ventas del día anterior, comparativa vs día anterior y vs mismo día del año anterior.</p>
+            <ul class="sub-features">
+                <li>Ventas totales, ticket promedio y número de transacciones</li>
                 <li>Top 10 productos más vendidos</li>
-                <li>Comparativa vs mes anterior</li>
-                <li>Formato responsive para móviles</li>
-                <li>Log de envíos exitosos y fallidos</li>
+                <li>Comparativa vs día anterior y vs mes anterior</li>
+                <li>Gráfico de tendencia de últimos 7 días</li>
+                <li>Formato HTML responsivo con CSS embebido</li>
             </ul>
         </div>
-        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2b">✖ Cerrar</div>
+
+        <!-- EJEMPLO 2: Dashboard de Ventas por Email -->
+        <div class="subproyecto">
+            <h4><i class="fas fa-envelope-open-text"></i> Ejemplo 2: Dashboard de Ventas por Email</h4>
+            <div class="sub-etiquetas">Dashboard · Gráficos CSS · Automatización</div>
+            <div id="wrapper-sub2" class="sub-image-wrapper">
+                <img id="sub-foto-2" src="" alt="Dashboard Ventas Email" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub2" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 2</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Dashboard completo enviado automáticamente a <strong>sistemas@ejemplo.com</strong>. Incluye gráficos de barras hechos con CSS, tablas dinámicas y resumen ejecutivo.</p>
+            <ul class="sub-features">
+                <li>Gráficos de ventas por categoría y por vendedor</li>
+                <li>Indicadores de cumplimiento de metas</li>
+                <li>Alertas condicionales (rojo/verde) por umbrales</li>
+                <li>Adjunto CSV con detalle de transacciones</li>
+                <li>Log de envío para auditoría</li>
+            </ul>
+        </div>
+
+        <!-- EJEMPLO 3: Alerta de Stock Mínimo -->
+        <div class="subproyecto">
+            <h4><i class="fas fa-exclamation-triangle"></i> Ejemplo 3: Alerta de Stock Mínimo</h4>
+            <div class="sub-etiquetas">Alertas · Thresholds · Automatización</div>
+            <div id="wrapper-sub3" class="sub-image-wrapper">
+                <img id="sub-foto-3" src="" alt="Alerta Stock Mínimo" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub3" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 3</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Sistema de alertas que envía notificaciones cuando el stock de productos baja del mínimo establecido. Correo enviado al área de compras y logística.</p>
+            <ul class="sub-features">
+                <li>Monitoreo automático de niveles de inventario</li>
+                <li>Alerta solo cuando stock < punto de reorden</li>
+                <li>Lista de productos críticos con prioridad</li>
+                <li>Recomendación de cantidad a comprar</li>
+                <li>Ejecución cada 2 horas mediante SQL Agent</li>
+            </ul>
+        </div>
+
+        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
     </div>
 
     <!-- PROYECTO 3: Optimización de Base de Datos y Query Tuning -->
@@ -588,6 +699,77 @@
 </div>
 
 <script>
+    // Función para configurar carga de imágenes en subproyectos
+    function configurarCargaImagenSub(wrapperId, imgId, placeholderId, rutasSugeridas = []) {
+        const wrapper = document.getElementById(wrapperId);
+        const imgElement = document.getElementById(imgId);
+        const placeholder = document.getElementById(placeholderId);
+        
+        if (!wrapper || !imgElement || !placeholder) return;
+        
+        let intentoActual = 0;
+        
+        function intentarCargarImagenPorDefecto() {
+            if (intentoActual >= rutasSugeridas.length) {
+                placeholder.style.display = 'flex';
+                imgElement.style.display = 'none';
+                return;
+            }
+            
+            const ruta = rutasSugeridas[intentoActual];
+            const testImg = new Image();
+            testImg.onload = function() {
+                imgElement.src = ruta;
+                imgElement.style.display = 'block';
+                placeholder.style.display = 'none';
+            };
+            testImg.onerror = function() {
+                intentoActual++;
+                intentarCargarImagenPorDefecto();
+            };
+            testImg.src = ruta;
+        }
+        
+        if (rutasSugeridas.length > 0) {
+            intentarCargarImagenPorDefecto();
+        } else {
+            placeholder.style.display = 'flex';
+            imgElement.style.display = 'none';
+        }
+        
+        const subirImagen = (event) => {
+            event.stopPropagation();
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/jpeg, image/png, image/gif, image/webp';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (loadEvent) => {
+                        imgElement.src = loadEvent.target.result;
+                        imgElement.style.display = 'block';
+                        placeholder.style.display = 'none';
+                        wrapper.style.boxShadow = '0 0 0 2px #cc2929';
+                        setTimeout(() => { wrapper.style.boxShadow = ''; }, 400);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert("Selecciona una imagen válida (PNG, JPG, GIF)");
+                }
+            };
+            input.click();
+        };
+        
+        wrapper.addEventListener('click', subirImagen);
+        if (placeholder) placeholder.addEventListener('click', subirImagen);
+        
+        imgElement.onerror = () => {
+            imgElement.style.display = 'none';
+            placeholder.style.display = 'flex';
+        };
+    }
+    
     function configurarCargaImagen(wrapperId, imgId, placeholderId, rutasSugeridas = []) {
         const wrapper = document.getElementById(wrapperId);
         const imgElement = document.getElementById(imgId);
@@ -711,15 +893,18 @@
     }
     
     document.addEventListener('DOMContentLoaded', function() {
+        // Configurar imágenes de proyectos principales
         configurarCargaImagen('wrapper-proyecto-1', 'foto-perfil-1', 'placeholder-foto-1', ['ssis_etl_diagram.png', 'etl_pipeline.jpg', 'ssis_package.PNG']);
-        configurarCargaImagen('wrapper-proyecto-2', 'foto-perfil-2', 'placeholder-foto-2', ['reporte_email_general.png', 'database_mail_report.jpg', 'sql_report_automation.PNG']);
-        configurarCargaImagen('wrapper-proyecto-2b', 'foto-perfil-2b', 'placeholder-foto-2b', ['correo_automatico.PNG', 'dashboard_email.png', 'ventas_email.jpg']);
         configurarCargaImagen('wrapper-proyecto-3', 'foto-perfil-3', 'placeholder-foto-3', ['execution_plan.png', 'query_tuning.jpg', 'sql_performance.PNG']);
         configurarCargaImagen('wrapper-proyecto-4', 'foto-perfil-4', 'placeholder-foto-4', ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG']);
         
+        // Configurar imágenes de los 3 subproyectos dentro de Reportes Automáticos
+        configurarCargaImagenSub('wrapper-sub1', 'sub-foto-1', 'placeholder-sub1', ['reporte_diario_ventas.png', 'daily_sales_report.jpg', 'ventas_diarias.PNG']);
+        configurarCargaImagenSub('wrapper-sub2', 'sub-foto-2', 'placeholder-sub2', ['correo_automatico.PNG', 'dashboard_email.png', 'ventas_email.jpg']);
+        configurarCargaImagenSub('wrapper-sub3', 'sub-foto-3', 'placeholder-sub3', ['alerta_stock.png', 'stock_alert.jpg', 'inventario_critico.PNG']);
+        
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
-        setupProyecto('cuadro-proyecto-2b', 'tarjeta-proyecto-2b');
         setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
         setupProyecto('cuadro-proyecto-4', 'tarjeta-proyecto-4');
         
