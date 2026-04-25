@@ -462,6 +462,7 @@
             <p><strong>📧 SQL SERVER | DATABASE MAIL | AUTOMATIZACIÓN AVANZADA</strong></p>
             <div class="desc-text">
                 <p>Sistema de generación y envío automático de reportes ejecutivos con formato HTML, tablas dinámicas y gráficos embebidos. Incluye KPIs de negocio y alertas condicionales.</p>
+                <p><strong>📎 Ejemplo:</strong> Reporte diario de ventas enviado a las 8:00 AM a todo el equipo comercial.</p>
             </div>
             <ul class="features-list">
                 <li>Procedimientos almacenados que generan HTML responsivo</li>
@@ -473,6 +474,42 @@
             </ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
+    </div>
+
+    <!-- PROYECTO 2B: Dashboard de Ventas por Correo Electrónico (NUEVO) -->
+    <div class="proyecto-cuadro" id="cuadro-proyecto-2b">
+        <h3>
+            <i class="fas fa-envelope-open-text"></i> Dashboard de Ventas por Email
+            <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+        </h3>
+        <div class="etiquetas">Database Mail · HTML · KPIs Comerciales · Automatización</div>
+    </div>
+
+    <div class="foto-card" id="tarjeta-proyecto-2b">
+        <div id="wrapper-proyecto-2b" class="image-wrapper">
+            <img id="foto-perfil-2b" src="" alt="Dashboard Ventas Email" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto-2b" class="image-placeholder">
+                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <div class="placeholder-text">Haz clic para subir imagen del dashboard</div>
+                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
+            </div>
+        </div>
+        <div class="descripcion">
+            <p><strong>📊 SQL SERVER | DASHBOARD VENTAS | EMAIL AUTOMATIZADO</strong></p>
+            <div class="desc-text">
+                <p>Dashboard de ventas enviado automáticamente cada mañana a la dirección <strong>sistemas@ejemplo.com</strong>. Incluye gráficos de tendencia, top productos y metas comerciales.</p>
+                <p>El sistema consulta la base de datos, genera un HTML con tablas y gráficos CSS, y lo envía mediante Database Mail.</p>
+            </div>
+            <ul class="features-list">
+                <li>Envío diario a sistemas@ejemplo.com</li>
+                <li>Gráficos de barras y tendencias con CSS puro</li>
+                <li>Top 10 productos más vendidos</li>
+                <li>Comparativa vs mes anterior</li>
+                <li>Formato responsive para móviles</li>
+                <li>Log de envíos exitosos y fallidos</li>
+            </ul>
+        </div>
+        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2b">✖ Cerrar</div>
     </div>
 
     <!-- PROYECTO 3: Optimización de Base de Datos y Query Tuning -->
@@ -675,12 +712,14 @@
     
     document.addEventListener('DOMContentLoaded', function() {
         configurarCargaImagen('wrapper-proyecto-1', 'foto-perfil-1', 'placeholder-foto-1', ['ssis_etl_diagram.png', 'etl_pipeline.jpg', 'ssis_package.PNG']);
-        configurarCargaImagen('wrapper-proyecto-2', 'foto-perfil-2', 'placeholder-foto-2', ['correo_automatico.PNG', 'email_report.jpg', 'sql_report_automation.PNG']);
+        configurarCargaImagen('wrapper-proyecto-2', 'foto-perfil-2', 'placeholder-foto-2', ['reporte_email_general.png', 'database_mail_report.jpg', 'sql_report_automation.PNG']);
+        configurarCargaImagen('wrapper-proyecto-2b', 'foto-perfil-2b', 'placeholder-foto-2b', ['correo_automatico.PNG', 'dashboard_email.png', 'ventas_email.jpg']);
         configurarCargaImagen('wrapper-proyecto-3', 'foto-perfil-3', 'placeholder-foto-3', ['execution_plan.png', 'query_tuning.jpg', 'sql_performance.PNG']);
         configurarCargaImagen('wrapper-proyecto-4', 'foto-perfil-4', 'placeholder-foto-4', ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG']);
         
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
+        setupProyecto('cuadro-proyecto-2b', 'tarjeta-proyecto-2b');
         setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
         setupProyecto('cuadro-proyecto-4', 'tarjeta-proyecto-4');
         
