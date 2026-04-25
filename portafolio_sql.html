@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Portafolio SQL SERVER | Marcelo Calderón</title>
+    <title>Portafolio SQL Server & SSIS | Marcelo Calderón</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -22,7 +22,6 @@
             min-height: 100vh;
         }
 
-        /* Fondo suave */
         .soft-bg {
             position: fixed;
             top: 0;
@@ -40,7 +39,6 @@
             z-index: 2;
         }
 
-        /* Header claro */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -75,7 +73,7 @@
         .highlight {
             background: linear-gradient(120deg, #e0edf5, #ffffff);
             padding: 0 0.2rem;
-            color: #1a73e8;
+            color: #cc2929;
             font-weight: 800;
         }
 
@@ -85,7 +83,6 @@
             margin-top: 0.2rem;
         }
 
-        /* Botones */
         .action-group {
             display: flex;
             flex-wrap: wrap;
@@ -126,7 +123,6 @@
         }
         .btn-volver:hover { background: #e2edf5; transform: translateY(-2px); }
 
-        /* Card de tecnologías */
         .tech-card {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 1.5rem;
@@ -165,7 +161,6 @@
             color: #1f6392;
         }
 
-        /* Cuadro del proyecto (visible siempre) */
         .proyecto-cuadro {
             background: white;
             border-radius: 1.2rem;
@@ -206,7 +201,6 @@
             transition: transform 0.2s;
         }
 
-        /* Tarjeta completa (oculta inicialmente) */
         .foto-card {
             background: white;
             border-radius: 1.5rem;
@@ -227,7 +221,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Contenedor de imagen */
         .image-wrapper {
             width: 100%;
             background: #f5f9fe;
@@ -378,9 +371,9 @@
     <!-- Header -->
     <div class="hero">
         <div class="title-section">
-            <div class="emoji-icon">🗄️📊💾</div>
+            <div class="emoji-icon">🗄️⚙️🔄</div>
             <div class="hero-text">
-                <h1>Portafolio <span class="highlight">SQL SERVER</span></h1>
+                <h1>Portafolio <span class="highlight">SQL Server & SSIS</span></h1>
                 <div class="subtitle">Marcelo Ricardo Gil Grados Calderón</div>
             </div>
         </div>
@@ -396,67 +389,69 @@
 
     <!-- Card de tecnologías -->
     <div class="tech-card">
-        <h2><i class="fas fa-database" style="margin-right: 0.5rem; color: #1a73e8;"></i> Especialista en SQL Server</h2>
-        <p>ETL, automatización, optimización de consultas y soluciones de Business Intelligence.</p>
+        <h2><i class="fas fa-database" style="margin-right: 0.5rem; color: #cc2929;"></i> Ingeniero de Datos | ETL & Base de Datos</h2>
+        <p>Diseño e implementación de soluciones ETL con Integration Services, optimización de consultas T-SQL y automatización de procesos empresariales.</p>
         <div class="skills-grid">
-            <div class="skill-item">T-SQL Avanzado</div>
-            <div class="skill-item">Procedimientos</div>
-            <div class="skill-item">Optimización</div>
-            <div class="skill-item">Indexación</div>
-            <div class="skill-item">ETL con SSIS</div>
-            <div class="skill-item">SSRS</div>
-            <div class="skill-item">SSAS</div>
-            <div class="skill-item">Reportes Automáticos</div>
+            <div class="skill-item">🔷 T-SQL Avanzado</div>
+            <div class="skill-item">🔷 SSIS (ETL)</div>
+            <div class="skill-item">🔷 Stored Procedures</div>
+            <div class="skill-item">🔷 Functions & Triggers</div>
+            <div class="skill-item">🔷 Query Optimization</div>
+            <div class="skill-item">🔷 Indexación</div>
+            <div class="skill-item">🔷 SQL Agent Jobs</div>
+            <div class="skill-item">🔷 Database Mail</div>
+            <div class="skill-item">🔷 SSRS Reporting</div>
+            <div class="skill-item">🔷 Modelado de Datos</div>
         </div>
     </div>
 
-    <!-- PROYECTO 1: Carga de Base Automático en SSIS -->
+    <!-- PROYECTO 1: ETL Completo con SSIS desde múltiples orígenes -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-1">
         <h3>
-            <i class="fas fa-boxes"></i> Carga de Base Automático en SSIS
+            <i class="fas fa-exchange-alt"></i> ETL Multiorigen con SSIS
             <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
         </h3>
-        <div class="etiquetas">ETL · Excel · Automatización · Correo</div>
+        <div class="etiquetas">SSIS · ETL · Excel · SQL Server · Data Warehouse</div>
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-1">
         <div id="wrapper-proyecto-1" class="image-wrapper">
-            <img id="foto-perfil-1" src="" alt="Proyecto SSIS - Carga Automática" class="foto-perfil" style="display: none;">
+            <img id="foto-perfil-1" src="" alt="ETL SSIS - Carga Multiorigen" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-1" class="image-placeholder">
                 <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <div class="placeholder-text">Haz clic para subir imagen del proyecto</div>
+                <div class="placeholder-text">Haz clic para subir imagen del flujo SSIS</div>
                 <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
             </div>
         </div>
         <div class="descripcion">
-            <p><strong>⚡ SQL SERVER | SSIS | ETL | CORREO AUTOMÁTICO</strong></p>
+            <p><strong>🚀 SQL SERVER INTEGRATION SERVICES | ETL | DATA WAREHOUSE</strong></p>
             <div class="desc-text">
-                <p>Flujo que carga datos desde archivos Excel, limpia y transforma la información automáticamente.</p>
-                <p>Al finalizar, envía un correo con el resumen de registros cargados y log del proceso.</p>
+                <p>Pipeline completo de extracción, transformación y carga que consolida datos desde Excel, CSV, y bases de datos origen hacia un Data Warehouse optimizado para análisis.</p>
             </div>
             <ul class="features-list">
-                <li>Carga masiva desde múltiples archivos Excel</li>
-                <li>Limpieza y transformación automática con T-SQL</li>
-                <li>Notificación por correo electrónico con adjuntos</li>
-                <li>Reporte detallado de registros insertados/errores</li>
-                <li>Programación mediante Agente SQL Server</li>
+                <li>Extracción desde múltiples fuentes (Excel, CSV, OLEDB, ODBC)</li>
+                <li>Transformaciones: limpieza, deduplicación, joins entre flujos</li>
+                <li>Slowly Changing Dimensions (SCD Type 1 y 2)</li>
+                <li>Manejo de errores y redirección de filas incorrectas</li>
+                <li>Logging personalizado y auditoría de procesos</li>
+                <li>Programación diaria mediante SQL Agent</li>
             </ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 2: Reporte de Correo Automatizado -->
+    <!-- PROYECTO 2: Automatización de Reportes por Correo con Database Mail -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-2">
         <h3>
-            <i class="fas fa-envelope"></i> Reporte de Correo Automatizado
+            <i class="fas fa-paper-plane"></i> Reportes Automáticos por Email
             <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
         </h3>
-        <div class="etiquetas">SQL · Automatización · Dashboard por Email</div>
+        <div class="etiquetas">Stored Procedures · Database Mail · SQL Agent · HTML</div>
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-2">
         <div id="wrapper-proyecto-2" class="image-wrapper">
-            <img id="foto-perfil-2" src="" alt="Reporte Automático por Correo" class="foto-perfil" style="display: none;">
+            <img id="foto-perfil-2" src="" alt="Reportes Automáticos Email" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-2" class="image-placeholder">
                 <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                 <div class="placeholder-text">Haz clic para subir imagen del reporte</div>
@@ -464,24 +459,94 @@
             </div>
         </div>
         <div class="descripcion">
-            <p><strong>📬 SQL SERVER | ENVÍO DE CORREOS | AUTOMATIZACIÓN AVANZADA</strong></p>
+            <p><strong>📧 SQL SERVER | DATABASE MAIL | AUTOMATIZACIÓN AVANZADA</strong></p>
             <div class="desc-text">
-                <p>Automatización programada que envía correos con el progreso diario, mostrando listas gestionadas, cantidad de leads trabajados, ventas y llamadas pendientes.</p>
-                <p>El sistema genera reportes HTML incrustados, métricas de rendimiento y se ejecuta sin intervención manual mediante Jobs de SQL Agent.</p>
+                <p>Sistema de generación y envío automático de reportes ejecutivos con formato HTML, tablas dinámicas y gráficos embebidos. Incluye KPIs de negocio y alertas condicionales.</p>
             </div>
             <ul class="features-list">
-                <li>Notificación periódica configurable (diaria/semanal)</li>
-                <li>Reporte detallado de gestión comercial con KPIs clave</li>
-                <li>Envío automático con Database Mail y HTML incrustado</li>
-                <li>Métricas de rendimiento: conversión, pendientes, eficacia</li>
-                <li>Logs de envío para auditoría</li>
+                <li>Procedimientos almacenados que generan HTML responsivo</li>
+                <li>Envío masivo personalizado con Database Mail</li>
+                <li>KPIs: ventas, productividad, metas vs reales</li>
+                <li>Alertas automáticas por umbrales definidos</li>
+                <li>Adjuntos de archivos (Excel, PDF, CSV)</li>
+                <li>Ejecución programada y logs de monitoreo</li>
             </ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
     </div>
 
+    <!-- PROYECTO 3: Optimización de Base de Datos y Query Tuning -->
+    <div class="proyecto-cuadro" id="cuadro-proyecto-3">
+        <h3>
+            <i class="fas fa-tachometer-alt"></i> Optimización & Performance Tuning
+            <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+        </h3>
+        <div class="etiquetas">Query Tuning · Índices · Planes de Ejecución · Particionamiento</div>
+    </div>
+
+    <div class="foto-card" id="tarjeta-proyecto-3">
+        <div id="wrapper-proyecto-3" class="image-wrapper">
+            <img id="foto-perfil-3" src="" alt="Optimización SQL Server" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto-3" class="image-placeholder">
+                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <div class="placeholder-text">Haz clic para subir imagen del plan de ejecución</div>
+                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
+            </div>
+        </div>
+        <div class="descripcion">
+            <p><strong>⚡ SQL SERVER | QUERY OPTIMIZATION | INDEXING | STATISTICS</strong></p>
+            <div class="desc-text">
+                <p>Proyecto integral de mejora de rendimiento: reducción de tiempo de consultas críticas de minutos a segundos mediante análisis de planes de ejecución y estrategias de indexación avanzada.</p>
+            </div>
+            <ul class="features-list">
+                <li>Análisis y rediseño de índices (clúster, no clúster, columnstore)</li>
+                <li>Reescritura de consultas problemáticas (CTEs, subconsultas, joins)</li>
+                <li>Implementación de particionamiento de tablas</li>
+                <li>Mantenimiento de estadísticas y fragmentación</li>
+                <li>Monitoreo con DMVs y Query Store</li>
+                <li>Reducción de tiempo de respuesta >70%</li>
+            </ul>
+        </div>
+        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-3">✖ Cerrar</div>
+    </div>
+
+    <!-- PROYECTO 4: Base de Datos para CRM Comercial -->
+    <div class="proyecto-cuadro" id="cuadro-proyecto-4">
+        <h3>
+            <i class="fas fa-building"></i> Base de Datos CRM Comercial
+            <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+        </h3>
+        <div class="etiquetas">Modelado de Datos · Normalización · Stored Procedures · Triggers</div>
+    </div>
+
+    <div class="foto-card" id="tarjeta-proyecto-4">
+        <div id="wrapper-proyecto-4" class="image-wrapper">
+            <img id="foto-perfil-4" src="" alt="Modelado CRM" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto-4" class="image-placeholder">
+                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <div class="placeholder-text">Haz clic para subir imagen del diagrama ER</div>
+                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
+            </div>
+        </div>
+        <div class="descripcion">
+            <p><strong>🏢 SQL SERVER | MODELADO DE DATOS | CRM</strong></p>
+            <div class="desc-text">
+                <p>Diseño e implementación de base de datos relacional para sistema CRM comercial con gestión de clientes, oportunidades, seguimiento y pipeline de ventas.</p>
+            </div>
+            <ul class="features-list">
+                <li>Modelo normalizado hasta 3FN con integridad referencial</li>
+                <li>Procedimientos para gestión de leads y oportunidades</li>
+                <li>Triggers para auditoría automática de cambios</li>
+                <li>Vistas materializadas para reportes rápidos</li>
+                <li>Funciones escalares y de tabla para cálculos recurrentes</li>
+                <li>Documentación completa del esquema</li>
+            </ul>
+        </div>
+        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-4">✖ Cerrar</div>
+    </div>
+
     <footer>
-        <i class="far fa-copyright"></i> 2026 Marcelo Ricardo Gil Grados Calderón — Especialista en SQL Server & Business Intelligence
+        <i class="far fa-copyright"></i> 2026 Marcelo Ricardo Gil Grados Calderón — Especialista en SQL Server, SSIS & Business Intelligence
     </footer>
 </div>
 
@@ -536,7 +601,7 @@
                         imgElement.src = loadEvent.target.result;
                         imgElement.style.display = 'block';
                         placeholder.style.display = 'none';
-                        wrapper.style.boxShadow = '0 0 0 2px #1a73e8';
+                        wrapper.style.boxShadow = '0 0 0 2px #cc2929';
                         setTimeout(() => { wrapper.style.boxShadow = ''; }, 400);
                     };
                     reader.readAsDataURL(file);
@@ -609,11 +674,15 @@
     }
     
     document.addEventListener('DOMContentLoaded', function() {
-        configurarCargaImagen('wrapper-proyecto-1', 'foto-perfil-1', 'placeholder-foto-1', ['fotoprueba.PNG', 'proyecto_ssis_ejemplo.png', 'ssis_carga.jpg']);
-        configurarCargaImagen('wrapper-proyecto-2', 'foto-perfil-2', 'placeholder-foto-2', ['correo_automatico.PNG', 'reporte_email.png', 'automail_sql.jpg']);
+        configurarCargaImagen('wrapper-proyecto-1', 'foto-perfil-1', 'placeholder-foto-1', ['ssis_etl_diagram.png', 'etl_pipeline.jpg', 'ssis_package.PNG']);
+        configurarCargaImagen('wrapper-proyecto-2', 'foto-perfil-2', 'placeholder-foto-2', ['database_mail_report.png', 'email_report.jpg', 'sql_report_automation.PNG']);
+        configurarCargaImagen('wrapper-proyecto-3', 'foto-perfil-3', 'placeholder-foto-3', ['execution_plan.png', 'query_tuning.jpg', 'sql_performance.PNG']);
+        configurarCargaImagen('wrapper-proyecto-4', 'foto-perfil-4', 'placeholder-foto-4', ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG']);
         
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
+        setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
+        setupProyecto('cuadro-proyecto-4', 'tarjeta-proyecto-4');
         
         configurarBotonesCerrar();
     });
