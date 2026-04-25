@@ -2,253 +2,449 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Portafolio | Marcelo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Marcelo Calderón | Portafolio Data & BI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 50px;
-            background: linear-gradient(135deg, #4facfe 0%, #764ba2 100%);
-            color: #fff;
-            min-height: 100vh;
+            padding: 0;
+            box-sizing: border-box;
         }
-        header {
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f4f9ff;
+            color: #1a2c3e;
+            line-height: 1.5;
+        }
+
+        /* Fondo suave con ondas claras */
+        .soft-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(145deg, #f0f7fe 0%, #ffffff 100%);
+        }
+
+        .soft-bg::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(180, 210, 240, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 2rem 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* header atractivo pero claro */
+        .hero {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 20px;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 20, 40, 0.05);
+            border: 1px solid rgba(70, 130, 200, 0.2);
         }
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        .fecha-actualizada {
-            font-size: 0.85rem;
-            opacity: 0.8;
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .fecha-actualizada::before {
-            content: "📅";
-            font-size: 0.9rem;
-        }
-        .highlight {
-            color: #ffd700;
-        }
-        .buttons {
-            display: flex;
-            gap: 15px;
-            position: relative;
-            align-items: center;
-        }
-        .btn {
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-size: 0.9rem;
-        }
-        .btn:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
-        }
-        .btn-linkedin { background: #0077b5; color: white; }
-        .btn-cv { background: #28a745; color: white; }
-        .btn-pdf { background: #dc3545; color: white; }
-        .btn-proyectos { background: #ff9800; color: white; }
 
-        /* Botones desplegables - SEPARACIÓN EXTREMA */
-        .submenu {
+        .hero-text h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0b3b5f;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.4rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #eef4ff, #ffffff);
+            padding: 0 0.2rem;
+            color: #0066cc;
+            font-weight: 800;
+        }
+
+        .badge-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #e6f0fa;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #2c5a7a;
+            border: 1px solid #cbdde9;
+        }
+
+        .badge-date i {
+            font-size: 0.75rem;
+            color: #3b82f6;
+        }
+
+        /* Botones principales - estilo moderno y claro */
+        .action-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            border: 1px solid #cfdfed;
+            color: #1f4e79;
+        }
+
+        .btn i {
+            font-size: 1rem;
+        }
+
+        .btn-linkedin {
+            background: #eef3fc;
+            border-color: #b8d0e7;
+            color: #0a66c2;
+        }
+
+        .btn-linkedin:hover {
+            background: #0a66c2;
+            color: white;
+            border-color: #0a66c2;
+            transform: translateY(-2px);
+        }
+
+        .btn-cv, .btn-pdf {
+            background: #ffffff;
+        }
+
+        .btn-cv:hover, .btn-pdf:hover {
+            background: #e2edf7;
+            transform: translateY(-2px);
+            border-color: #8eb3d0;
+        }
+
+        .btn-proyectos {
+            background: #f5f9ff;
+            border-color: #bdd4ec;
+            color: #1e5a88;
+            cursor: pointer;
+        }
+
+        .btn-proyectos:hover {
+            background: #e4eff9;
+            transform: translateY(-2px);
+        }
+
+        /* MENU DESPLEGABLE - estilo tarjetas claras */
+        .submenu-moderno {
             display: none;
             position: absolute;
-            top: 50px;
+            top: 65px;
             right: 0;
+            background: #ffffff;
+            backdrop-filter: blur(0);
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+            padding: 1rem;
+            min-width: 260px;
+            z-index: 200;
+            border: 1px solid #dce9f2;
             flex-direction: column;
-            gap: 25px;
-            background: rgba(0,0,0,0.3);
-            padding: 20px 25px;
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            min-width: 200px;
-            z-index: 100;
-            border: 1px solid rgba(255,215,0,0.5);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
-        
-        /* Botón SQL */
-        .submenu .btn-sql { 
-            background: linear-gradient(135deg, #2196f3 0%, #0b5e9e 100%);
-            color: white;
-            font-size: 1rem;
-            padding: 12px 24px;
-            text-align: center;
-            border-radius: 30px;
-            margin: 0;
-            box-shadow: 0 4px 12px rgba(33,150,243,0.4);
-        }
-        
-        /* Botón Power BI */
-        .submenu .btn-powerbi { 
-            background: linear-gradient(135deg, #f1c40f 0%, #d4a017 100%);
-            color: #1a1a2e;
-            font-size: 1rem;
-            padding: 12px 24px;
-            text-align: center;
-            border-radius: 30px;
-            margin: 0;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(241,196,15,0.4);
-        }
-        
-        /* Botón Python - NUEVO */
-        .submenu .btn-python { 
-            background: linear-gradient(135deg, #306998 0%, #1e415e 100%);
-            color: #ffd43b;
-            font-size: 1rem;
-            padding: 12px 24px;
-            text-align: center;
-            border-radius: 30px;
-            margin: 0;
-            font-weight: bold;
-            box-shadow: 0 4px 12px rgba(48,105,152,0.4);
-        }
-        
-        /* Separador más grande y visible */
-        .submenu .separador {
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #ffd700, #ffd700, transparent);
-            margin: 5px 0;
-            border-radius: 3px;
-            width: 100%;
-        }
-        
-        /* Espacio extra alrededor del separador */
-        .submenu .separador-wrapper {
-            padding: 5px 0;
+            gap: 0.75rem;
         }
 
-        .card {
-            background: rgba(255,255,255,0.15);
-            border-radius: 15px;
-            padding: 40px;
-            max-width: 600px;
-            margin: auto;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            backdrop-filter: blur(12px);
-        }
-        .card p {
-            line-height: 1.6;
-            margin: 15px 0;
-        }
-        footer {
-            margin-top: 30px;
+        .submenu-moderno a {
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.9rem 1rem;
+            border-radius: 40px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 0.9rem;
-            opacity: 0.8;
+        }
+
+        .btn-sql {
+            background: #eff6ff;
+            color: #0369a1;
+            border: 1px solid #b9def0;
+        }
+        .btn-sql i { color: #0c7cbd; }
+
+        .btn-powerbi {
+            background: #fff9e8;
+            color: #b45309;
+            border: 1px solid #ffddb0;
+        }
+        .btn-powerbi i { color: #e68a2e; }
+
+        .btn-python {
+            background: #f0f9ff;
+            color: #2b6e9e;
+            border: 1px solid #cce5ff;
+        }
+        .btn-python i { color: #3776ab; }
+
+        .submenu-moderno a:hover {
+            transform: translateX(5px);
+            filter: brightness(0.97);
+        }
+
+        .separador-light {
+            height: 1px;
+            background: linear-gradient(90deg, #cce0ee, #92b3d1, #cce0ee);
+            margin: 0.25rem 0;
+        }
+
+        /* Tarjeta principal de presentación */
+        .card-welcome {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            padding: 2.2rem 2rem;
+            margin: 2rem 0 2.5rem;
             text-align: center;
+            border: 1px solid rgba(100, 150, 220, 0.2);
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.05);
         }
 
-        /* Efecto hover extra para los botones del submenú */
-        .submenu .btn-sql:hover, 
-        .submenu .btn-powerbi:hover,
-        .submenu .btn-python:hover {
-            transform: translateY(-4px) scale(1.02);
-            filter: brightness(1.05);
+        .card-welcome h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #155a8a;
+            margin-bottom: 1rem;
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 20px;
+        .card-welcome p {
+            color: #2c4b6e;
+            max-width: 750px;
+            margin: 0 auto 1rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Grid de especialidades estilo tarjetas claras */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.5rem 1.2rem;
+            flex: 1;
+            min-width: 190px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 20, 40, 0.04);
+            transition: all 0.3s ease;
+            border: 1px solid #e2edf5;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -12px rgba(0, 70, 120, 0.1);
+            border-color: #bdd6ec;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1f6392;
+        }
+
+        .skill-card p {
+            font-size: 0.85rem;
+            color: #4b6f8c;
+        }
+
+        /* footer suave */
+        .footer-clean {
+            margin-top: 3.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6e8eae;
+            border-top: 1px solid #d4e2ef;
+            padding-top: 2rem;
+        }
+
+        /* responsive */
+        @media (max-width: 750px) {
+            .container {
+                padding: 1.2rem;
             }
-            header {
+            .hero {
                 flex-direction: column;
+                align-items: stretch;
                 text-align: center;
             }
-            .buttons {
-                flex-wrap: wrap;
+            .action-group {
                 justify-content: center;
             }
-            .submenu {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            .submenu-moderno {
                 position: fixed;
                 top: auto;
-                bottom: auto;
-                left: 50%;
-                transform: translateX(-50%);
-                right: auto;
-                width: 280px;
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+                width: auto;
+                transform: none;
+                background: #ffffffdd;
+                backdrop-filter: blur(20px);
             }
+        }
+
+        /* efecto foco */
+        .relative {
+            position: relative;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div>
-            <h1>Hola, soy <span class="highlight">Marcelo Ricardo Gil Grados Calderón</span></h1>
-            <div class="fecha-actualizada">Datos actualizados al 20-04-2026</div>
-        </div>
-        <div class="buttons">
-            <a href="https://www.linkedin.com/in/marcelo-gil-grados-calderon-895a46225/" target="_blank" class="btn btn-linkedin">🔗 LinkedIn</a>
-            <a href="CV_Marcelo.GG.docx" download class="btn btn-cv">📄 CV.docx</a>
-            <a href="CV_Marcelo.GG.pdf" download class="btn btn-pdf">📑 CV.pdf</a>
-            <button class="btn btn-proyectos" onclick="toggleSubmenu()">📂 Proyectos ▼</button>
-            <div class="submenu" id="submenu">
-                <a href="portafolio_sql.html" class="btn btn-sql">🗄️ SQL Server</a>
-                <div class="separador-wrapper">
-                    <div class="separador"></div>
-                </div>
-                <a href="portafolio_powerbi.html" class="btn btn-powerbi">📊 Power BI</a>
-                <div class="separador-wrapper">
-                    <div class="separador"></div>
-                </div>
-                <a href="portafolio_python.html" class="btn btn-python">💻 Python</a>
+<div class="soft-bg"></div>
+<div class="container">
+    <!-- Header claro y agradable -->
+    <div class="hero">
+        <div class="hero-text">
+            <h1>✨ Hola, soy <span class="highlight">Marcelo Ricardo Gil Grados Calderón</span></h1>
+            <div class="badge-date">
+                <i class="fas fa-calendar-alt"></i> Datos actualizados al 20-04-2026
             </div>
         </div>
-    </header>
+        <div class="action-group relative">
+            <a href="https://www.linkedin.com/in/marcelo-gil-grados-calderon-895a46225/" target="_blank" class="btn btn-linkedin">
+                <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="CV_Marcelo.GG.docx" download class="btn btn-cv">
+                <i class="fas fa-file-word"></i> CV.docx
+            </a>
+            <a href="CV_Marcelo.GG.pdf" download class="btn btn-pdf">
+                <i class="fas fa-file-pdf"></i> CV.pdf
+            </a>
+            <button class="btn btn-proyectos" id="btnProyectos">
+                <i class="fas fa-folder-open"></i> Proyectos <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+            </button>
+            <!-- Submenú mejorado visualmente -->
+            <div class="submenu-moderno" id="submenuModerno">
+                <a href="portafolio_sql.html" class="btn-sql">
+                    <i class="fas fa-database"></i> SQL Server · Modelado & Consultas
+                </a>
+                <div class="separador-light"></div>
+                <a href="portafolio_powerbi.html" class="btn-powerbi">
+                    <i class="fas fa-chart-line"></i> Power BI · Dashboards Interactivos
+                </a>
+                <div class="separador-light"></div>
+                <a href="portafolio_python.html" class="btn-python">
+                    <i class="fab fa-python"></i> Python · Análisis & Automatización
+                </a>
+            </div>
+        </div>
+    </div>
 
-    <div class="card">
-        <h2> ¡Bienvenido a mi Portafolio Virtual! </h2>
+    <!-- Tarjeta principal con presentación amigable -->
+    <div class="card-welcome">
+        <h2><i class="fas fa-chart-simple" style="margin-right: 12px; color: #3b82f6;"></i> Bienvenido a mi espacio de datos</h2>
         <p>
-            Soy un Ingeniero de Sistemas especializado en <strong>Data Analysis</strong> y <strong>Business Intelligence</strong>. 
-            Aquí encontrarás proyectos en <strong>SQL</strong>, <strong>Power BI</strong> y automatización de flujos de trabajo, 
-            diseñados para transformar datos en información clara y útil para la toma de decisiones.
+            Soy <strong>Ingeniero de Sistemas</strong> con especialización en <strong>Data Analysis & Business Intelligence</strong>.  
+            Me apasiona convertir datos crudos en decisiones estratégicas. Aquí encontrarás proyectos prácticos en  
+            <strong>SQL, Power BI y Python</strong>, diseñados para eficiencia, claridad visual y escalabilidad.
         </p>
         <p>
-            Explora mis trabajos, descubre dashboards dinámicos y soluciones prácticas, 
-            y acompáñame en este camino hacia la innovación y la eficiencia.
+            Explora cada módulo, revisa dashboards dinámicos y conoce soluciones aplicadas al mundo real.  
+            ¡Construyamos insights juntos!
         </p>
     </div>
 
-    <footer>© 2026 Marcelo - Portafolio en construcción</footer>
+    <!-- Tarjetas de tecnologías como preview amigable -->
+    <div class="skills-grid">
+        <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-database" style="color: #2c7ab1;"></i></div>
+            <h3>SQL Server</h3>
+            <p>Consultas avanzadas, procedimientos almacenados, optimización y ETL.</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon"><i class="fas fa-chart-pie" style="color: #e67e22;"></i></div>
+            <h3>Power BI</h3>
+            <p>Dashboards interactivos, DAX, modelado de datos y KPIs estratégicos.</p>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon"><i class="fab fa-python" style="color: #306998;"></i></div>
+            <h3>Python</h3>
+            <p>Pandas, visualización, automatización de reportes y limpieza de datos.</p>
+        </div>
+    </div>
 
-    <script>
-        function toggleSubmenu() {
-            const submenu = document.getElementById("submenu");
-            if (submenu.style.display === "flex") {
-                submenu.style.display = "none";
+    <footer class="footer-clean">
+        <i class="far fa-copyright"></i> 2026 Marcelo Ricardo Gil Grados — Portafolio profesional en evolución
+    </footer>
+</div>
+
+<script>
+    (function() {
+        const boton = document.getElementById('btnProyectos');
+        const submenu = document.getElementById('submenuModerno');
+
+        function toggleSubmenu(e) {
+            e.stopPropagation();
+            if (submenu.style.display === 'flex') {
+                submenu.style.display = 'none';
             } else {
-                submenu.style.display = "flex";
+                submenu.style.display = 'flex';
             }
         }
 
-        // Cerrar submenú si se hace clic fuera de él
-        document.addEventListener('click', function(event) {
-            const submenu = document.getElementById("submenu");
-            const botonProyectos = document.querySelector('.btn-proyectos');
-            
-            if (submenu && botonProyectos && submenu.style.display === "flex") {
-                if (!botonProyectos.contains(event.target) && !submenu.contains(event.target)) {
-                    submenu.style.display = "none";
+        if (boton && submenu) {
+            boton.addEventListener('click', toggleSubmenu);
+            // Cerrar al hacer click fuera
+            document.addEventListener('click', function(event) {
+                if (submenu.style.display === 'flex' && !boton.contains(event.target) && !submenu.contains(event.target)) {
+                    submenu.style.display = 'none';
                 }
-            }
-        });
-    </script>
+            });
+            // Para evitar que el click dentro del submenu lo cierre accidentalmente
+            submenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+    })();
+</script>
 </body>
 </html>
