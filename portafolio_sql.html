@@ -221,7 +221,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Estilos para los sub-proyectos dentro de la tarjeta */
         .subproyecto {
             background: #f8fbfe;
             border-radius: 1rem;
@@ -321,70 +320,6 @@
             font-weight: bold;
         }
 
-        .image-wrapper {
-            width: 100%;
-            background: #f5f9fe;
-            border-radius: 1rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            min-height: 260px;
-            border: 1px dashed #c0d4e8;
-        }
-
-        .image-wrapper:hover {
-            background: #eef4fa;
-            border-color: #8ab3d0;
-        }
-
-        .foto-perfil {
-            max-width: 100%;
-            width: auto;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
-            border-radius: 12px;
-            display: block;
-            margin: 0 auto;
-        }
-
-        .image-placeholder {
-            width: 100%;
-            min-height: 240px;
-            background: linear-gradient(135deg, #e8f0f7 0%, #dce8f0 100%);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            padding: 2rem;
-        }
-
-        .image-placeholder:hover {
-            background: linear-gradient(135deg, #dfeaf3 0%, #d0dfea 100%);
-            transform: scale(0.99);
-        }
-
-        .placeholder-icon {
-            font-size: 3rem;
-        }
-
-        .placeholder-text {
-            font-size: 0.85rem;
-            font-weight: 500;
-            background: rgba(0, 0, 0, 0.05);
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            color: #3a6e8c;
-        }
-
         .descripcion {
             margin-top: 1rem;
             padding: 1.2rem;
@@ -460,9 +395,6 @@
             .title-section { justify-content: center; }
             .hero-text h1 { font-size: 1.4rem; }
             .proyecto-cuadro h3 { font-size: 1.1rem; }
-            .foto-perfil { max-height: 280px; }
-            .image-wrapper { min-height: 200px; }
-            .sub-foto { max-height: 200px; }
         }
     </style>
 </head>
@@ -506,7 +438,7 @@
         </div>
     </div>
 
-    <!-- PROYECTO 1: ETL Completo con SSIS desde múltiples orígenes -->
+    <!-- PROYECTO 1: ETL Completo con SSIS desde múltiples orígenes (AHORA CON MÚLTIPLES SUBPROYECTOS) -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-1">
         <h3>
             <i class="fas fa-exchange-alt"></i> ETL Multiorigen con SSIS
@@ -516,28 +448,75 @@
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-1">
-        <div id="wrapper-proyecto-1" class="image-wrapper">
-            <img id="foto-perfil-1" src="" alt="ETL SSIS - Carga Multiorigen" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-1" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <div class="placeholder-text">Haz clic para subir imagen del flujo SSIS</div>
-                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
-            </div>
+        <!-- DESCRIPCIÓN GENERAL DEL PROYECTO ETL -->
+        <div class="descripcion" style="margin-bottom: 1rem;">
+            <p><strong>🔄 SQL SERVER INTEGRATION SERVICES | ETL | DATA WAREHOUSE</strong></p>
+            <p>Pipeline completo de extracción, transformación y carga que consolida datos desde múltiples orígenes hacia un Data Warehouse optimizado para análisis. A continuación, 3 ejemplos implementados:</p>
         </div>
-        <div class="descripcion">
-            <p><strong>🚀 SQL SERVER INTEGRATION SERVICES | ETL | DATA WAREHOUSE</strong></p>
-            <div class="desc-text">
-                <p>Pipeline completo de extracción, transformación y carga que consolida datos desde Excel, CSV, y bases de datos origen hacia un Data Warehouse optimizado para análisis.</p>
+
+        <!-- EJEMPLO 1: Migración de Legacy System a Data Warehouse -->
+        <div class="subproyecto">
+            <h4><i class="fas fa-database"></i> Ejemplo 1: Migración Legacy → Data Warehouse</h4>
+            <div class="sub-etiquetas">Migración · Transformación · Limpieza</div>
+            <div id="wrapper-sub1" class="sub-image-wrapper">
+                <img id="sub-foto-1" src="" alt="Migración Legacy System" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub1" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 1</div>
+                </div>
             </div>
-            <ul class="features-list">
-                <li>Extracción desde múltiples fuentes (Excel, CSV, OLEDB, ODBC)</li>
-                <li>Transformaciones: limpieza, deduplicación, joins entre flujos</li>
-                <li>Slowly Changing Dimensions (SCD Type 1 y 2)</li>
-                <li>Manejo de errores y redirección de filas incorrectas</li>
-                <li>Logging personalizado y auditoría de procesos</li>
-                <li>Programación diaria mediante SQL Agent</li>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Migración completa de un sistema legacy (FoxPro) a SQL Server. Limpieza de datos históricos y transformación de esquemas obsoletos a un modelo relacional normalizado.</p>
+            <ul class="sub-features">
+                <li>Extracción desde tablas DBF y archivos planos</li>
+                <li>Limpieza de datos inconsistentes y nulos</li>
+                <li>Transformación de tipos de datos y codificaciones</li>
+                <li>Carga incremental con SCD Type 2</li>
+                <li>Validación de integridad referencial post-migración</li>
             </ul>
         </div>
+
+        <!-- EJEMPLO 2: Integración de Ventas Multicanal -->
+        <div class="subproyecto">
+            <h4><i class="fas fa-chart-pie"></i> Ejemplo 2: Integración de Ventas Multicanal</h4>
+            <div class="sub-etiquetas">CRM · ERP · Consolidación</div>
+            <div id="wrapper-sub2" class="sub-image-wrapper">
+                <img id="sub-foto-2" src="" alt="Integración Multicanal" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub2" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 2</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Consolidación de ventas provenientes de CRM, E-commerce y puntos de venta físico. Unificación de catálogo de productos y clientes.</p>
+            <ul class="sub-features">
+                <li>Orígenes: Dynamics CRM, Magento, SQL Server POS</li>
+                <li>Master Data Management (MDM) de clientes y productos</li>
+                <li>Detección y fusión de duplicados</li>
+                <li>Dimensiones de tiempo, producto, cliente y canal</li>
+                <li>Tabla de hechos de ventas con granularidad diaria</li>
+            </ul>
+        </div>
+
+        <!-- EJEMPLO 3: ETL desde Archivos Planos a Base de Datos -->
+        <div class="subproyecto">
+            <h4><i class="fas fa-file-csv"></i> Ejemplo 3: ETL desde Archivos Planos a Base de Datos</h4>
+            <div class="sub-etiquetas">Excel · CSV · Automatización · Validación</div>
+            <div id="wrapper-sub3" class="sub-image-wrapper">
+                <img id="sub-foto-3" src="" alt="ETL Archivos Planos" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub3" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 3</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Proceso ETL diario que consume archivos Excel y CSV generados por sistemas externos, validando estructuras y cargando a tablas staging antes de pasar a producción.</p>
+            <ul class="sub-features">
+                <li>Monitoreo de carpetas para detección de nuevos archivos</li>
+                <li>Validación de esquema y tipos de datos</li>
+                <li>Redirección de filas con errores a tablas de rechazos</li>
+                <li>Notificaciones automáticas en caso de fallo</li>
+                <li>Checkpoints para reinicio en punto de falla</li>
+            </ul>
+        </div>
+
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
     </div>
 
@@ -551,25 +530,22 @@
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-2">
-        <!-- DESCRIPCIÓN GENERAL DEL PROYECTO -->
         <div class="descripcion" style="margin-bottom: 1rem;">
             <p><strong>📧 SQL SERVER | DATABASE MAIL | AUTOMATIZACIÓN AVANZADA</strong></p>
             <p>Sistema de generación y envío automático de reportes ejecutivos con formato HTML, tablas dinámicas y gráficos embebidos. A continuación, 3 ejemplos implementados:</p>
         </div>
 
-        <!-- EJEMPLO 1: Reporte Diario de Ventas -->
         <div class="subproyecto">
             <h4><i class="fas fa-chart-line"></i> Ejemplo 1: Reporte Diario de Ventas</h4>
             <div class="sub-etiquetas">Envío diario · KPIs</div>
-            <div id="wrapper-sub1" class="sub-image-wrapper">
-                <img id="sub-foto-1" src="" alt="Reporte Diario Ventas" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub1" class="sub-placeholder">
+            <div id="wrapper-sub4" class="sub-image-wrapper">
+                <img id="sub-foto-4" src="" alt="Reporte Diario Ventas" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub4" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                     <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 1</div>
                 </div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte enviado cada dia desde las 8:00 AM al equipo comercial hasta las 20:00 PM.
-                Mostrando el seguimiento del progreso de las ventas del dia.</p>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte enviado cada dia desde las 8:00 AM al equipo comercial hasta las 20:00 PM. Mostrando el seguimiento del progreso de las ventas del dia.</p>
             <ul class="sub-features">
                 <li>Ventas totales, metas</li>
                 <li>Proceso automatizado para el seguimiento del progreso</li>
@@ -578,13 +554,12 @@
             </ul>
         </div>
 
-        <!-- EJEMPLO 2: Dashboard de Ventas por Email -->
         <div class="subproyecto">
             <h4><i class="fas fa-envelope-open-text"></i> Ejemplo 2: Dashboard de Ventas por Email</h4>
             <div class="sub-etiquetas">KPI · Automatización</div>
-            <div id="wrapper-sub2" class="sub-image-wrapper">
-                <img id="sub-foto-2" src="" alt="Dashboard Ventas Email" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub2" class="sub-placeholder">
+            <div id="wrapper-sub5" class="sub-image-wrapper">
+                <img id="sub-foto-5" src="" alt="Dashboard Ventas Email" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub5" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                     <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 2</div>
                 </div>
@@ -597,13 +572,12 @@
             </ul>
         </div>
 
-        <!-- EJEMPLO 3: Alerta de Stock Mínimo -->
         <div class="subproyecto">
             <h4><i class="fas fa-exclamation-triangle"></i> Ejemplo 3: Alerta de Stock Mínimo</h4>
             <div class="sub-etiquetas">Alertas · Thresholds · Automatización</div>
-            <div id="wrapper-sub3" class="sub-image-wrapper">
-                <img id="sub-foto-3" src="" alt="Alerta Stock Mínimo" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub3" class="sub-placeholder">
+            <div id="wrapper-sub6" class="sub-image-wrapper">
+                <img id="sub-foto-6" src="" alt="Alerta Stock Mínimo" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub6" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                     <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 3</div>
                 </div>
@@ -631,28 +605,68 @@
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-3">
-        <div id="wrapper-proyecto-3" class="image-wrapper">
-            <img id="foto-perfil-3" src="" alt="Optimización SQL Server" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-3" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <div class="placeholder-text">Haz clic para subir imagen del plan de ejecución</div>
-                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
-            </div>
-        </div>
-        <div class="descripcion">
+        <div class="descripcion" style="margin-bottom: 1rem;">
             <p><strong>⚡ SQL SERVER | QUERY OPTIMIZATION | INDEXING | STATISTICS</strong></p>
-            <div class="desc-text">
-                <p>Proyecto integral de mejora de rendimiento: reducción de tiempo de consultas críticas de minutos a segundos mediante análisis de planes de ejecución y estrategias de indexación avanzada.</p>
+            <p>Proyecto integral de mejora de rendimiento: reducción de tiempo de consultas críticas de minutos a segundos mediante análisis de planes de ejecución y estrategias de indexación avanzada. A continuación, 3 ejemplos implementados:</p>
+        </div>
+
+        <div class="subproyecto">
+            <h4><i class="fas fa-chart-line"></i> Ejemplo 1: Optimización de Reporte de Ventas</h4>
+            <div class="sub-etiquetas">Índices Columnstore · Batch Mode</div>
+            <div id="wrapper-sub7" class="sub-image-wrapper">
+                <img id="sub-foto-7" src="" alt="Optimización Reporte Ventas" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub7" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 1</div>
+                </div>
             </div>
-            <ul class="features-list">
-                <li>Análisis y rediseño de índices (clúster, no clúster, columnstore)</li>
-                <li>Reescritura de consultas problemáticas (CTEs, subconsultas, joins)</li>
-                <li>Implementación de particionamiento de tablas</li>
-                <li>Mantenimiento de estadísticas y fragmentación</li>
-                <li>Monitoreo con DMVs y Query Store</li>
-                <li>Reducción de tiempo de respuesta >70%</li>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte mensual de ventas que pasó de 45 segundos a 2 segundos mediante la implementación de índices columnstore y reescritura de consultas.</p>
+            <ul class="sub-features">
+                <li>Análisis de plan de ejecución y cuellos de botella</li>
+                <li>Implementación de índice columnstore clusterizado</li>
+                <li>Reescritura de subconsultas correlacionadas a CTEs</li>
+                <li>Reducción de lecturas lógicas del 92%</li>
             </ul>
         </div>
+
+        <div class="subproyecto">
+            <h4><i class="fas fa-tachometer-alt"></i> Ejemplo 2: Mantenimiento de Índices</h4>
+            <div class="sub-etiquetas>Rebuild · Reorganize · Statistics</div>
+            <div id="wrapper-sub8" class="sub-image-wrapper">
+                <img id="sub-foto-8" src="" alt="Mantenimiento Índices" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub8" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 2</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Automatización del mantenimiento de índices y actualización de estadísticas para mejorar el rendimiento general de la base de datos.</p>
+            <ul class="sub-features">
+                <li>Script dinámico para rebuild/reorganize según fragmentación</li>
+                <li>Actualización de estadísticas con FULLSCAN</li>
+                <li>Programación semanal mediante SQL Agent</li>
+                <li>Reducción de fragmentación promedio del 85% al 5%</li>
+            </ul>
+        </div>
+
+        <div class="subproyecto">
+            <h4><i class="fas fa-database"></i> Ejemplo 3: Particionamiento de Tabla Histórica</h4>
+            <div class="sub-etiquetas">Table Partitioning · Sliding Window</div>
+            <div id="wrapper-sub9" class="sub-image-wrapper">
+                <img id="sub-foto-9" src="" alt="Particionamiento Tabla" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub9" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 3</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Implementación de particionamiento por rango de fechas en tabla de transacciones con más de 500 millones de registros.</p>
+            <ul class="sub-features">
+                <li>Diseño de función y esquema de partición mensual</li>
+                <li>Estrategia sliding window para archivo de datos</li>
+                <li>Mantenimiento automatizado de particiones</li>
+                <li>Mejora en consultas por rango de fechas del 70%</li>
+            </ul>
+        </div>
+
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-3">✖ Cerrar</div>
     </div>
 
@@ -697,7 +711,6 @@
 </div>
 
 <script>
-    // Función para configurar carga de imágenes en subproyectos
     function configurarCargaImagenSub(wrapperId, imgId, placeholderId, rutasSugeridas = []) {
         const wrapper = document.getElementById(wrapperId);
         const imgElement = document.getElementById(imgId);
@@ -891,15 +904,23 @@
     }
     
     document.addEventListener('DOMContentLoaded', function() {
-        // Configurar imágenes de proyectos principales
-        configurarCargaImagen('wrapper-proyecto-1', 'foto-perfil-1', 'placeholder-foto-1', ['ssis_etl_diagram.png', 'etl_pipeline.jpg', 'ssis_package.PNG']);
-        configurarCargaImagen('wrapper-proyecto-3', 'foto-perfil-3', 'placeholder-foto-3', ['execution_plan.png', 'query_tuning.jpg', 'sql_performance.PNG']);
-        configurarCargaImagen('wrapper-proyecto-4', 'foto-perfil-4', 'placeholder-foto-4', ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG']);
+        // Configurar imágenes de subproyectos para ETL (ids wrapper-sub1, sub2, sub3)
+        configurarCargaImagenSub('wrapper-sub1', 'sub-foto-1', 'placeholder-sub1', ['migracion_legacy.png', 'etl_migracion.jpg']);
+        configurarCargaImagenSub('wrapper-sub2', 'sub-foto-2', 'placeholder-sub2', ['ventas_multicanal.png', 'integracion_crm.jpg']);
+        configurarCargaImagenSub('wrapper-sub3', 'sub-foto-3', 'placeholder-sub3', ['etl_archivos_planos.png', 'carga_excel.jpg']);
         
-        // Configurar imágenes de los 3 subproyectos dentro de Reportes Automáticos
-        configurarCargaImagenSub('wrapper-sub1', 'sub-foto-1', 'placeholder-sub1', ['correo_ventas.PNG', 'daily_sales_report.jpg', 'ventas_diarias.PNG']);
-        configurarCargaImagenSub('wrapper-sub2', 'sub-foto-2', 'placeholder-sub2', ['correo_automatico.PNG', 'dashboard_email.png', 'ventas_email.jpg']);
-        configurarCargaImagenSub('wrapper-sub3', 'sub-foto-3', 'placeholder-sub3', ['alerta_stock.png', 'stock_alert.jpg', 'inventario_critico.PNG']);
+        // Configurar imágenes de subproyectos para Reportes por Email (ids wrapper-sub4, sub5, sub6)
+        configurarCargaImagenSub('wrapper-sub4', 'sub-foto-4', 'placeholder-sub4', ['correo_ventas.PNG', 'daily_sales_report.jpg']);
+        configurarCargaImagenSub('wrapper-sub5', 'sub-foto-5', 'placeholder-sub5', ['correo_automatico.PNG', 'dashboard_email.png']);
+        configurarCargaImagenSub('wrapper-sub6', 'sub-foto-6', 'placeholder-sub6', ['alerta_stock.png', 'stock_alert.jpg']);
+        
+        // Configurar imágenes de subproyectos para Optimización (ids wrapper-sub7, sub8, sub9)
+        configurarCargaImagenSub('wrapper-sub7', 'sub-foto-7', 'placeholder-sub7', ['optimizacion_ventas.png', 'columnstore_performance.jpg']);
+        configurarCargaImagenSub('wrapper-sub8', 'sub-foto-8', 'placeholder-sub8', ['mantenimiento_indices.png', 'rebuild_index.jpg']);
+        configurarCargaImagenSub('wrapper-sub9', 'sub-foto-9', 'placeholder-sub9', ['particionamiento.png', 'table_partition.jpg']);
+        
+        // Configurar imagen principal del proyecto CRM
+        configurarCargaImagen('wrapper-proyecto-4', 'foto-perfil-4', 'placeholder-foto-4', ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG']);
         
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
