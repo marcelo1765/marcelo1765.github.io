@@ -38,7 +38,7 @@
             z-index: 2;
         }
 
-        /* Header con foto */
+        /* Header con foto cuadrada */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -85,7 +85,7 @@
             margin-top: 0.3rem;
         }
 
-        /* Foto de perfil */
+        /* Foto de perfil - CUADRADA y más GRANDE */
         .foto-perfil-container {
             display: flex;
             flex-direction: column;
@@ -94,9 +94,9 @@
         }
 
         .foto-wrapper {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            border-radius: 16px;
             background: linear-gradient(135deg, #c0d9e8, #e8f0f7);
             display: flex;
             align-items: center;
@@ -117,7 +117,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none;
+            display: block;
         }
 
         .foto-placeholder {
@@ -126,7 +126,7 @@
         }
 
         .foto-label {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             color: #6e8eae;
             cursor: pointer;
             text-decoration: underline;
@@ -256,16 +256,16 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
         }
 
-        /* Foto dentro de la tarjeta (opcional) */
+        /* Foto dentro de la tarjeta - CUADRADA y más GRANDE */
         .foto-inline {
             display: flex;
             justify-content: center;
             margin-bottom: 1.5rem;
         }
         .foto-inline-wrapper {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            border-radius: 20px;
             background: linear-gradient(135deg, #c0d9e8, #e8f0f7);
             display: flex;
             align-items: center;
@@ -279,7 +279,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none;
+            display: block;
         }
 
         .card-welcome h2 {
@@ -335,7 +335,7 @@
             .container { padding: 1rem; }
             .hero { flex-direction: column; align-items: center; text-align: center; }
             .action-group { justify-content: center; }
-            .hero-text h1 { font-size: 1.5rem; }
+            .hero-text h1 { font-size: 1.3rem; }
             .submenu-desplegable {
                 position: fixed;
                 top: auto;
@@ -346,14 +346,15 @@
                 background: #ffffffea;
                 backdrop-filter: blur(15px);
             }
-            .foto-wrapper { width: 70px; height: 70px; }
+            .foto-wrapper { width: 100px; height: 100px; }
+            .foto-inline-wrapper { width: 120px; height: 120px; }
         }
     </style>
 </head>
 <body>
 <div class="soft-bg"></div>
 <div class="container">
-    <!-- Header con foto -->
+    <!-- Header con foto cuadrada -->
     <div class="hero">
         <div class="hero-left">
             <div class="hero-text">
@@ -392,22 +393,21 @@
         </div>
         <div class="foto-perfil-container">
             <div class="foto-wrapper" id="fotoWrapper">
-                <img id="fotoPerfil" class="foto-perfil" src="" alt="Foto de perfil">
-                <div id="fotoPlaceholder" class="foto-placeholder">
+                <img id="fotoPerfil" class="foto-perfil" src="fotoprueba.PNG" alt="Foto de perfil">
+                <div id="fotoPlaceholder" class="foto-placeholder" style="display: none;">
                     <i class="fas fa-user-circle"></i>
                 </div>
             </div>
-            <span class="foto-label" id="fotoLabel">📷 Subir foto</span>
+            <span class="foto-label" id="fotoLabel">📷 Cambiar foto</span>
         </div>
     </div>
 
-    <!-- Tarjeta de bienvenida (con foto opcional inline) -->
+    <!-- Tarjeta de bienvenida con foto cuadrada -->
     <div class="card-welcome">
-        <!-- Foto inline opcional (comenta o elimina si no quieres dos fotos) -->
         <div class="foto-inline">
             <div class="foto-inline-wrapper" id="fotoInlineWrapper">
-                <img id="fotoInline" class="foto-inline-img" src="" alt="Foto">
-                <div id="fotoInlinePlaceholder" style="font-size: 3rem; color: #6e8eae;">
+                <img id="fotoInline" class="foto-inline-img" src="fotoprueba.PNG" alt="Foto">
+                <div id="fotoInlinePlaceholder" style="font-size: 3rem; color: #6e8eae; display: none;">
                     <i class="fas fa-user-circle"></i>
                 </div>
             </div>
@@ -449,7 +449,7 @@
 
 <script>
     (function() {
-        // ----- LÓGICA PARA SUBIR FOTO (PERFIL PRINCIPAL Y FOTO INLINE) -----
+        // ----- LÓGICA PARA SUBIR/CAMBIAR FOTO -----
         const fotoWrapper = document.getElementById('fotoWrapper');
         const fotoPerfil = document.getElementById('fotoPerfil');
         const fotoPlaceholder = document.getElementById('fotoPlaceholder');
@@ -461,10 +461,10 @@
 
         // Función para actualizar ambas fotos con la misma imagen
         function actualizarFoto(url) {
-            // Foto principal (circular)
+            // Foto principal (cuadrada)
             fotoPerfil.src = url;
             fotoPerfil.style.display = 'block';
-            fotoPlaceholder.style.display = 'none';
+            if (fotoPlaceholder) fotoPlaceholder.style.display = 'none';
             
             // Foto inline (dentro de la tarjeta)
             if (fotoInline) {
@@ -497,13 +497,24 @@
             input.click();
         }
 
-        // Cargar foto guardada al iniciar
+        // Cargar foto guardada al iniciar (si existe, sino usa fotoprueba.PNG)
         const fotoGuardada = localStorage.getItem('fotoPerfilURL');
         if (fotoGuardada) {
             actualizarFoto(fotoGuardada);
+        } else {
+            // Intentar cargar fotoprueba.PNG si existe
+            const testImg = new Image();
+            testImg.onload = function() {
+                actualizarFoto('fotoprueba.PNG');
+            };
+            testImg.onerror = function() {
+                // Si no existe el archivo, se queda el placeholder
+                console.log('No se encontró fotoprueba.PNG');
+            };
+            testImg.src = 'fotoprueba.PNG';
         }
 
-        // Eventos para subir foto
+        // Eventos para subir/cambiar foto
         if (fotoWrapper) fotoWrapper.addEventListener('click', seleccionarFoto);
         if (fotoLabel) fotoLabel.addEventListener('click', seleccionarFoto);
         if (fotoInlineWrapper) fotoInlineWrapper.addEventListener('click', seleccionarFoto);
