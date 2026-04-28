@@ -260,7 +260,7 @@
             cursor: pointer;
             transition: all 0.2s;
             min-height: 200px;
-            border: 1px solid #c0d4e8;
+            border: 1px dashed #c0d4e8;
         }
 
         .sub-image-wrapper:hover {
@@ -277,39 +277,47 @@
             border-radius: 12px;
             display: block;
             margin: 0 auto;
-            cursor: pointer;
         }
 
-        .image-wrapper {
+        .sub-placeholder {
             width: 100%;
-            background: #f5f9fe;
+            min-height: 180px;
+            background: linear-gradient(135deg, #e8f0f7 0%, #dce8f0 100%);
             border-radius: 1rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.8rem;
             cursor: pointer;
             transition: all 0.2s;
-            min-height: 260px;
-            border: 1px solid #c0d4e8;
+            padding: 1.5rem;
         }
 
-        .image-wrapper:hover {
-            background: #eef4fa;
-            border-color: #8ab3d0;
+        .sub-placeholder:hover {
+            background: linear-gradient(135deg, #dfeaf3 0%, #d0dfea 100%);
         }
 
-        .foto-perfil {
-            max-width: 100%;
-            width: auto;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
-            border-radius: 12px;
-            display: block;
-            margin: 0 auto;
-            cursor: pointer;
+        .sub-features {
+            list-style: none;
+            padding: 0;
+            margin: 0.8rem 0 0 0;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .sub-features li {
+            margin: 0.4rem 0;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sub-features li::before {
+            content: "✓";
+            color: #2e7d32;
+            font-weight: bold;
         }
 
         .descripcion {
@@ -353,28 +361,6 @@
             font-weight: bold;
         }
 
-        .sub-features {
-            list-style: none;
-            padding: 0;
-            margin: 0.8rem 0 0 0;
-            display: inline-block;
-            text-align: left;
-        }
-
-        .sub-features li {
-            margin: 0.4rem 0;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .sub-features li::before {
-            content: "✓";
-            color: #2e7d32;
-            font-weight: bold;
-        }
-
         .cerrar-tarjeta {
             background: #eef3fc;
             border: 1px solid #c0d4e8;
@@ -394,46 +380,6 @@
             transform: translateY(-1px);
         }
 
-        /* MODAL PARA ZOOM DE IMAGEN */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            cursor: pointer;
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 90%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 8px;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .close-modal:hover {
-            color: #bbb;
-        }
-
         footer {
             margin-top: 2.5rem;
             text-align: center;
@@ -449,7 +395,6 @@
             .title-section { justify-content: center; }
             .hero-text h1 { font-size: 1.4rem; }
             .proyecto-cuadro h3 { font-size: 1.1rem; }
-            .modal-content { max-width: 95%; max-height: 95%; }
         }
     </style>
 </head>
@@ -493,7 +438,7 @@
         </div>
     </div>
 
-    <!-- PROYECTO 1: ETL Completo con SSIS desde múltiples orígenes -->
+    <!-- PROYECTO 1: ETL Completo con SSIS desde múltiples orígenes (AHORA CON MÚLTIPLES SUBPROYECTOS) -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-1">
         <h3>
             <i class="fas fa-exchange-alt"></i> ETL Multiorigen con SSIS
@@ -503,57 +448,79 @@
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-1">
+        <!-- DESCRIPCIÓN GENERAL DEL PROYECTO ETL -->
         <div class="descripcion" style="margin-bottom: 1rem;">
             <p><strong>🔄 SQL SERVER INTEGRATION SERVICES | ETL | DATA WAREHOUSE</strong></p>
             <p>Pipeline completo de extracción, transformación y carga que consolida datos desde múltiples orígenes hacia un Data Warehouse optimizado para análisis. A continuación, 3 ejemplos implementados:</p>
         </div>
 
+        <!-- EJEMPLO 1: Migración de Legacy System a Data Warehouse -->
         <div class="subproyecto">
             <h4><i class="fas fa-database"></i> Ejemplo 1: Migración Legacy → Data Warehouse</h4>
             <div class="sub-etiquetas">Migración · Transformación · Limpieza</div>
-            <div class="sub-image-wrapper" data-img-src="migracion_legacy.png">
-                <img class="sub-foto" src="migracion_legacy.png" alt="Migración Legacy System" onerror="this.style.display='none'; this.parentElement.style.background='#e8f0f7'; this.parentElement.innerHTML='<div style=\"text-align:center; padding:2rem;\"><i class=\"fas fa-image\" style=\"font-size:3rem; color:#8ab3d0;\"></i><p style=\"margin-top:0.5rem;\">Imagen: Migración Legacy</p></div>'">
+            <div id="wrapper-sub1" class="sub-image-wrapper">
+                <img id="sub-foto-1" src="" alt="Migración Legacy System" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub1" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 1</div>
+                </div>
             </div>
             <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Migración completa de un sistema legacy (FoxPro) a SQL Server. Limpieza de datos históricos y transformación de esquemas obsoletos a un modelo relacional normalizado.</p>
             <ul class="sub-features">
                 <li>Extracción desde tablas DBF y archivos planos</li>
                 <li>Limpieza de datos inconsistentes y nulos</li>
+                <li>Transformación de tipos de datos y codificaciones</li>
                 <li>Carga incremental con SCD Type 2</li>
+                <li>Validación de integridad referencial post-migración</li>
             </ul>
         </div>
 
+        <!-- EJEMPLO 2: Integración de Ventas Multicanal -->
         <div class="subproyecto">
             <h4><i class="fas fa-chart-pie"></i> Ejemplo 2: Integración de Ventas Multicanal</h4>
             <div class="sub-etiquetas">CRM · ERP · Consolidación</div>
-            <div class="sub-image-wrapper" data-img-src="ventas_multicanal.png">
-                <img class="sub-foto" src="ventas_multicanal.png" alt="Integración Multicanal" onerror="this.style.display='none'; this.parentElement.style.background='#e8f0f7'; this.parentElement.innerHTML='<div style=\"text-align:center; padding:2rem;\"><i class=\"fas fa-image\" style=\"font-size:3rem; color:#8ab3d0;\"></i><p style=\"margin-top:0.5rem;\">Imagen: Integración Multicanal</p></div>'">
+            <div id="wrapper-sub2" class="sub-image-wrapper">
+                <img id="sub-foto-2" src="" alt="Integración Multicanal" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub2" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 2</div>
+                </div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Consolidación de ventas provenientes de CRM, E-commerce y puntos de venta físico.</p>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Consolidación de ventas provenientes de CRM, E-commerce y puntos de venta físico. Unificación de catálogo de productos y clientes.</p>
             <ul class="sub-features">
-                <li>Master Data Management (MDM) de clientes</li>
+                <li>Orígenes: Dynamics CRM, Magento, SQL Server POS</li>
+                <li>Master Data Management (MDM) de clientes y productos</li>
                 <li>Detección y fusión de duplicados</li>
+                <li>Dimensiones de tiempo, producto, cliente y canal</li>
                 <li>Tabla de hechos de ventas con granularidad diaria</li>
             </ul>
         </div>
 
+        <!-- EJEMPLO 3: ETL desde Archivos Planos a Base de Datos -->
         <div class="subproyecto">
-            <h4><i class="fas fa-file-csv"></i> Ejemplo 3: ETL desde Archivos Planos</h4>
-            <div class="sub-etiquetas">Excel · CSV · Automatización</div>
-            <div class="sub-image-wrapper" data-img-src="etl_archivos_planos.png">
-                <img class="sub-foto" src="etl_archivos_planos.png" alt="ETL Archivos Planos" onerror="this.style.display='none'; this.parentElement.style.background='#e8f0f7'; this.parentElement.innerHTML='<div style=\"text-align:center; padding:2rem;\"><i class=\"fas fa-image\" style=\"font-size:3rem; color:#8ab3d0;\"></i><p style=\"margin-top:0.5rem;\">Imagen: ETL Archivos Planos</p></div>'">
+            <h4><i class="fas fa-file-csv"></i> Ejemplo 3: ETL desde Archivos Planos a Base de Datos</h4>
+            <div class="sub-etiquetas">Excel · CSV · Automatización · Validación</div>
+            <div id="wrapper-sub3" class="sub-image-wrapper">
+                <img id="sub-foto-3" src="" alt="ETL Archivos Planos" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub3" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 3</div>
+                </div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Proceso ETL diario que consume archivos Excel y CSV generados por sistemas externos.</p>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Proceso ETL diario que consume archivos Excel y CSV generados por sistemas externos, validando estructuras y cargando a tablas staging antes de pasar a producción.</p>
             <ul class="sub-features">
                 <li>Monitoreo de carpetas para detección de nuevos archivos</li>
-                <li>Redirección de filas con errores</li>
+                <li>Validación de esquema y tipos de datos</li>
+                <li>Redirección de filas con errores a tablas de rechazos</li>
                 <li>Notificaciones automáticas en caso de fallo</li>
+                <li>Checkpoints para reinicio en punto de falla</li>
             </ul>
         </div>
 
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 2: Reportes Automáticos por Email -->
+    <!-- PROYECTO 2: Automatización de Reportes por Correo con Database Mail (con múltiples ejemplos) -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-2">
         <h3>
             <i class="fas fa-paper-plane"></i> Reportes Automáticos por Email
@@ -565,30 +532,40 @@
     <div class="foto-card" id="tarjeta-proyecto-2">
         <div class="descripcion" style="margin-bottom: 1rem;">
             <p><strong>📧 SQL SERVER | DATABASE MAIL | AUTOMATIZACIÓN AVANZADA</strong></p>
-            <p>Sistema de generación y envío automático de reportes ejecutivos con formato HTML. A continuación, 3 ejemplos implementados:</p>
+            <p>Sistema de generación y envío automático de reportes ejecutivos con formato HTML, tablas dinámicas y gráficos embebidos. A continuación, 3 ejemplos implementados:</p>
         </div>
 
         <div class="subproyecto">
             <h4><i class="fas fa-chart-line"></i> Ejemplo 1: Reporte Diario de Ventas</h4>
             <div class="sub-etiquetas">Envío diario · KPIs</div>
-            <div class="sub-image-wrapper" data-img-src="correo_ventas.png">
-                <img class="sub-foto" src="correo_ventas.png" alt="Reporte Diario Ventas" onerror="this.style.display='none'; this.parentElement.style.background='#e8f0f7'; this.parentElement.innerHTML='<div style=\"text-align:center; padding:2rem;\"><i class=\"fas fa-image\" style=\"font-size:3rem; color:#8ab3d0;\"></i><p style=\"margin-top:0.5rem;\">Imagen: Reporte Diario</p></div>'">
+            <div id="wrapper-sub4" class="sub-image-wrapper">
+                <img id="sub-foto-4" src="" alt="Reporte Diario Ventas" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub4" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 1</div>
+                </div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte enviado cada día desde las 8:00 AM al equipo comercial. Mostrando el seguimiento del progreso de las ventas del día.</p>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte enviado cada dia desde las 8:00 AM al equipo comercial hasta las 20:00 PM. Mostrando el seguimiento del progreso de las ventas del dia.</p>
             <ul class="sub-features">
-                <li>Ventas totales vs metas</li>
-                <li>Cálculo de progreso para cumplir la meta</li>
+                <li>Ventas totales, metas</li>
+                <li>Proceso automatizado para el seguimiento del progreso</li>
+                <li>Calculo para ver el progreso para cumplir la meta</li>
                 <li>Formato HTML responsivo con CSS embebido</li>
             </ul>
         </div>
 
         <div class="subproyecto">
-            <h4><i class="fas fa-envelope-open-text"></i> Ejemplo 2: Dashboard de Ventas</h4>
+            <h4><i class="fas fa-envelope-open-text"></i> Ejemplo 2: Dashboard de Ventas por Email</h4>
             <div class="sub-etiquetas">KPI · Automatización</div>
-            <div class="sub-image-wrapper" data-img-src="dashboard_email.png">
-                <img class="sub-foto" src="dashboard_email.png" alt="Dashboard Ventas" onerror="this.style.display='none'; this.parentElement.style.background='#e8f0f7'; this.parentElement.innerHTML='<div style=\"text-align:center; padding:2rem;\"><i class=\"fas fa-image\" style=\"font-size:3rem; color:#8ab3d0;\"></i><p style=\"margin-top:0.5rem;\">Imagen: Dashboard Ventas</p></div>'">
+            <div id="wrapper-sub5" class="sub-image-wrapper">
+                <img id="sub-foto-5" src="" alt="Dashboard Ventas Email" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub5" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 2</div>
+                </div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Dashboard completo enviado automáticamente a sistemas@ejemplo.com. Incluye ventas y cálculo de mejor lista del día.</p>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Dashboard completo enviado automáticamente a
+                <strong>sistemas@ejemplo.com</strong>. Incluye las ventas, volver a llamar, calculo que determina cual es la mejor lista del dia.</p>
             <ul class="sub-features">
                 <li>Indicadores de cumplimiento de metas</li>
                 <li>Log de envío para auditoría</li>
@@ -597,13 +574,19 @@
 
         <div class="subproyecto">
             <h4><i class="fas fa-exclamation-triangle"></i> Ejemplo 3: Alerta de Stock Mínimo</h4>
-            <div class="sub-etiquetas">Alertas · Thresholds</div>
-            <div class="sub-image-wrapper" data-img-src="alerta_stock.png">
-                <img class="sub-foto" src="alerta_stock.png" alt="Alerta Stock" onerror="this.style.display='none'; this.parentElement.style.background='#e8f0f7'; this.parentElement.innerHTML='<div style=\"text-align:center; padding:2rem;\"><i class=\"fas fa-image\" style=\"font-size:3rem; color:#8ab3d0;\"></i><p style=\"margin-top:0.5rem;\">Imagen: Alerta Stock</p></div>'">
+            <div class="sub-etiquetas">Alertas · Thresholds · Automatización</div>
+            <div id="wrapper-sub6" class="sub-image-wrapper">
+                <img id="sub-foto-6" src="" alt="Alerta Stock Mínimo" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub6" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 3</div>
+                </div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Sistema de alertas que envía notificaciones cuando el stock baja del mínimo establecido.</p>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Sistema de alertas que envía notificaciones cuando el stock de productos baja del mínimo establecido. Correo enviado al área de compras y logística.</p>
             <ul class="sub-features">
                 <li>Monitoreo automático de niveles de inventario</li>
+                <li>Alerta solo cuando stock < punto de reorden</li>
+                <li>Lista de productos críticos con prioridad</li>
                 <li>Recomendación de cantidad a comprar</li>
                 <li>Ejecución cada 2 horas mediante SQL Agent</li>
             </ul>
@@ -612,61 +595,111 @@
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 3: Optimización -->
+    <!-- PROYECTO 3: Optimización de Base de Datos y Query Tuning -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-3">
         <h3>
             <i class="fas fa-tachometer-alt"></i> Optimización & Performance Tuning
             <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
         </h3>
-        <div class="etiquetas">Query Tuning · Índices · Planes de Ejecución</div>
+        <div class="etiquetas">Query Tuning · Índices · Planes de Ejecución · Particionamiento</div>
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-3">
         <div class="descripcion" style="margin-bottom: 1rem;">
-            <p><strong>⚡ SQL SERVER | QUERY OPTIMIZATION | INDEXING</strong></p>
-            <p>Proyecto integral de mejora de rendimiento de consultas críticas.</p>
+            <p><strong>⚡ SQL SERVER | QUERY OPTIMIZATION | INDEXING | STATISTICS</strong></p>
+            <p>Proyecto integral de mejora de rendimiento: reducción de tiempo de consultas críticas de minutos a segundos mediante análisis de planes de ejecución y estrategias de indexación avanzada. A continuación, 3 ejemplos implementados:</p>
         </div>
 
         <div class="subproyecto">
             <h4><i class="fas fa-chart-line"></i> Ejemplo 1: Optimización de Reporte de Ventas</h4>
-            <div class="sub-etiquetas">Índices Columnstore</div>
-            <div class="sub-image-wrapper" data-img-src="optimizacion_ventas.png">
-                <img class="sub-foto" src="optimizacion_ventas.png" alt="Optimización Reporte" onerror="this.style.display='none'; this.parentElement.style.background='#e8f0f7'; this.parentElement.innerHTML='<div style=\"text-align:center; padding:2rem;\"><i class=\"fas fa-image\" style=\"font-size:3rem; color:#8ab3d0;\"></i><p style=\"margin-top:0.5rem;\">Imagen: Optimización</p></div>'">
+            <div class="sub-etiquetas">Índices Columnstore · Batch Mode</div>
+            <div id="wrapper-sub7" class="sub-image-wrapper">
+                <img id="sub-foto-7" src="" alt="Optimización Reporte Ventas" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub7" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 1</div>
+                </div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte mensual de ventas que pasó de 45 segundos a 2 segundos.</p>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte mensual de ventas que pasó de 45 segundos a 2 segundos mediante la implementación de índices columnstore y reescritura de consultas.</p>
             <ul class="sub-features">
-                <li>Análisis de plan de ejecución</li>
-                <li>Implementación de índice columnstore</li>
+                <li>Análisis de plan de ejecución y cuellos de botella</li>
+                <li>Implementación de índice columnstore clusterizado</li>
+                <li>Reescritura de subconsultas correlacionadas a CTEs</li>
                 <li>Reducción de lecturas lógicas del 92%</li>
+            </ul>
+        </div>
+
+        <div class="subproyecto">
+            <h4><i class="fas fa-tachometer-alt"></i> Ejemplo 2: Mantenimiento de Índices</h4>
+            <div class="sub-etiquetas>Rebuild · Reorganize · Statistics</div>
+            <div id="wrapper-sub8" class="sub-image-wrapper">
+                <img id="sub-foto-8" src="" alt="Mantenimiento Índices" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub8" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 2</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Automatización del mantenimiento de índices y actualización de estadísticas para mejorar el rendimiento general de la base de datos.</p>
+            <ul class="sub-features">
+                <li>Script dinámico para rebuild/reorganize según fragmentación</li>
+                <li>Actualización de estadísticas con FULLSCAN</li>
+                <li>Programación semanal mediante SQL Agent</li>
+                <li>Reducción de fragmentación promedio del 85% al 5%</li>
+            </ul>
+        </div>
+
+        <div class="subproyecto">
+            <h4><i class="fas fa-database"></i> Ejemplo 3: Particionamiento de Tabla Histórica</h4>
+            <div class="sub-etiquetas">Table Partitioning · Sliding Window</div>
+            <div id="wrapper-sub9" class="sub-image-wrapper">
+                <img id="sub-foto-9" src="" alt="Particionamiento Tabla" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub9" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 3</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Implementación de particionamiento por rango de fechas en tabla de transacciones con más de 500 millones de registros.</p>
+            <ul class="sub-features">
+                <li>Diseño de función y esquema de partición mensual</li>
+                <li>Estrategia sliding window para archivo de datos</li>
+                <li>Mantenimiento automatizado de particiones</li>
+                <li>Mejora en consultas por rango de fechas del 70%</li>
             </ul>
         </div>
 
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-3">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 4: CRM Comercial -->
+    <!-- PROYECTO 4: Base de Datos para CRM Comercial -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-4">
         <h3>
             <i class="fas fa-building"></i> Base de Datos CRM Comercial
             <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
         </h3>
-        <div class="etiquetas">Modelado de Datos · Normalización · Stored Procedures</div>
+        <div class="etiquetas">Modelado de Datos · Normalización · Stored Procedures · Triggers</div>
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-4">
-        <div class="image-wrapper" data-img-src="crm_erd.png">
-            <img class="foto-perfil" src="crm_erd.png" alt="Modelado CRM" onerror="this.style.display='none'; this.parentElement.style.background='#e8f0f7'; this.parentElement.innerHTML='<div style=\"text-align:center; padding:2rem;\"><i class=\"fas fa-image\" style=\"font-size:3rem; color:#8ab3d0;\"></i><p style=\"margin-top:0.5rem;\">Diagrama ER del CRM</p></div>'">
+        <div id="wrapper-proyecto-4" class="image-wrapper">
+            <img id="foto-perfil-4" src="" alt="Modelado CRM" class="foto-perfil" style="display: none;">
+            <div id="placeholder-foto-4" class="image-placeholder">
+                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <div class="placeholder-text">Haz clic para subir imagen del diagrama ER</div>
+                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
+            </div>
         </div>
         <div class="descripcion">
             <p><strong>🏢 SQL SERVER | MODELADO DE DATOS | CRM</strong></p>
             <div class="desc-text">
-                <p>Diseño e implementación de base de datos relacional para sistema CRM comercial con gestión de clientes, oportunidades y pipeline de ventas.</p>
+                <p>Diseño e implementación de base de datos relacional para sistema CRM comercial con gestión de clientes, oportunidades, seguimiento y pipeline de ventas.</p>
             </div>
             <ul class="features-list">
-                <li>Modelo normalizado hasta 3FN</li>
-                <li>Procedimientos para gestión de leads</li>
-                <li>Triggers para auditoría automática</li>
-                <li>Vistas materializadas para reportes</li>
+                <li>Modelo normalizado hasta 3FN con integridad referencial</li>
+                <li>Procedimientos para gestión de leads y oportunidades</li>
+                <li>Triggers para auditoría automática de cambios</li>
+                <li>Vistas materializadas para reportes rápidos</li>
+                <li>Funciones escalares y de tabla para cálculos recurrentes</li>
+                <li>Documentación completa del esquema</li>
             </ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-4">✖ Cerrar</div>
@@ -677,42 +710,147 @@
     </footer>
 </div>
 
-<!-- MODAL PARA ZOOM -->
-<div id="imageModal" class="modal">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="modalImage">
-</div>
-
 <script>
-    // Configurar zoom en todas las imágenes del portafolio
-    function setupZoomEnImagenes() {
-        const imagenes = document.querySelectorAll('.sub-foto, .foto-perfil');
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const closeModal = document.querySelector('.close-modal');
-
-        imagenes.forEach(img => {
-            img.addEventListener('click', function(e) {
-                e.stopPropagation();
-                modal.style.display = 'block';
-                modalImg.src = this.src;
-            });
-        });
-
-        // Cerrar modal al hacer clic en la X o fuera de la imagen
-        if (closeModal) {
-            closeModal.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-        }
-
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
+    function configurarCargaImagenSub(wrapperId, imgId, placeholderId, rutasSugeridas = []) {
+        const wrapper = document.getElementById(wrapperId);
+        const imgElement = document.getElementById(imgId);
+        const placeholder = document.getElementById(placeholderId);
+        
+        if (!wrapper || !imgElement || !placeholder) return;
+        
+        let intentoActual = 0;
+        
+        function intentarCargarImagenPorDefecto() {
+            if (intentoActual >= rutasSugeridas.length) {
+                placeholder.style.display = 'flex';
+                imgElement.style.display = 'none';
+                return;
             }
-        });
+            
+            const ruta = rutasSugeridas[intentoActual];
+            const testImg = new Image();
+            testImg.onload = function() {
+                imgElement.src = ruta;
+                imgElement.style.display = 'block';
+                placeholder.style.display = 'none';
+            };
+            testImg.onerror = function() {
+                intentoActual++;
+                intentarCargarImagenPorDefecto();
+            };
+            testImg.src = ruta;
+        }
+        
+        if (rutasSugeridas.length > 0) {
+            intentarCargarImagenPorDefecto();
+        } else {
+            placeholder.style.display = 'flex';
+            imgElement.style.display = 'none';
+        }
+        
+        const subirImagen = (event) => {
+            event.stopPropagation();
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/jpeg, image/png, image/gif, image/webp';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (loadEvent) => {
+                        imgElement.src = loadEvent.target.result;
+                        imgElement.style.display = 'block';
+                        placeholder.style.display = 'none';
+                        wrapper.style.boxShadow = '0 0 0 2px #cc2929';
+                        setTimeout(() => { wrapper.style.boxShadow = ''; }, 400);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert("Selecciona una imagen válida (PNG, JPG, GIF)");
+                }
+            };
+            input.click();
+        };
+        
+        wrapper.addEventListener('click', subirImagen);
+        if (placeholder) placeholder.addEventListener('click', subirImagen);
+        
+        imgElement.onerror = () => {
+            imgElement.style.display = 'none';
+            placeholder.style.display = 'flex';
+        };
     }
-
+    
+    function configurarCargaImagen(wrapperId, imgId, placeholderId, rutasSugeridas = []) {
+        const wrapper = document.getElementById(wrapperId);
+        const imgElement = document.getElementById(imgId);
+        const placeholder = document.getElementById(placeholderId);
+        
+        if (!wrapper || !imgElement || !placeholder) return;
+        
+        let intentoActual = 0;
+        
+        function intentarCargarImagenPorDefecto() {
+            if (intentoActual >= rutasSugeridas.length) {
+                placeholder.style.display = 'flex';
+                imgElement.style.display = 'none';
+                return;
+            }
+            
+            const ruta = rutasSugeridas[intentoActual];
+            const testImg = new Image();
+            testImg.onload = function() {
+                imgElement.src = ruta;
+                imgElement.style.display = 'block';
+                placeholder.style.display = 'none';
+            };
+            testImg.onerror = function() {
+                intentoActual++;
+                intentarCargarImagenPorDefecto();
+            };
+            testImg.src = ruta;
+        }
+        
+        if (rutasSugeridas.length > 0) {
+            intentarCargarImagenPorDefecto();
+        } else {
+            placeholder.style.display = 'flex';
+            imgElement.style.display = 'none';
+        }
+        
+        const subirImagen = (event) => {
+            event.stopPropagation();
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/jpeg, image/png, image/gif, image/webp';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (loadEvent) => {
+                        imgElement.src = loadEvent.target.result;
+                        imgElement.style.display = 'block';
+                        placeholder.style.display = 'none';
+                        wrapper.style.boxShadow = '0 0 0 2px #cc2929';
+                        setTimeout(() => { wrapper.style.boxShadow = ''; }, 400);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert("Selecciona una imagen válida (PNG, JPG, GIF)");
+                }
+            };
+            input.click();
+        };
+        
+        wrapper.addEventListener('click', subirImagen);
+        if (placeholder) placeholder.addEventListener('click', subirImagen);
+        
+        imgElement.onerror = () => {
+            imgElement.style.display = 'none';
+            placeholder.style.display = 'flex';
+        };
+    }
+    
     function setupProyecto(cuadroId, tarjetaId) {
         const cuadro = document.getElementById(cuadroId);
         const tarjeta = document.getElementById(tarjetaId);
@@ -766,13 +904,30 @@
     }
     
     document.addEventListener('DOMContentLoaded', function() {
+        // Configurar imágenes de subproyectos para ETL (ids wrapper-sub1, sub2, sub3)
+        configurarCargaImagenSub('wrapper-sub1', 'sub-foto-1', 'placeholder-sub1', ['migracion_legacy.png', 'etl_migracion.jpg']);
+        configurarCargaImagenSub('wrapper-sub2', 'sub-foto-2', 'placeholder-sub2', ['ventas_multicanal.png', 'integracion_crm.jpg']);
+        configurarCargaImagenSub('wrapper-sub3', 'sub-foto-3', 'placeholder-sub3', ['etl_archivos_planos.png', 'carga_excel.jpg']);
+        
+        // Configurar imágenes de subproyectos para Reportes por Email (ids wrapper-sub4, sub5, sub6)
+        configurarCargaImagenSub('wrapper-sub4', 'sub-foto-4', 'placeholder-sub4', ['correo_ventas.PNG', 'daily_sales_report.jpg']);
+        configurarCargaImagenSub('wrapper-sub5', 'sub-foto-5', 'placeholder-sub5', ['correo_automatico.PNG', 'dashboard_email.png']);
+        configurarCargaImagenSub('wrapper-sub6', 'sub-foto-6', 'placeholder-sub6', ['alerta_stock.png', 'stock_alert.jpg']);
+        
+        // Configurar imágenes de subproyectos para Optimización (ids wrapper-sub7, sub8, sub9)
+        configurarCargaImagenSub('wrapper-sub7', 'sub-foto-7', 'placeholder-sub7', ['optimizacion_ventas.png', 'columnstore_performance.jpg']);
+        configurarCargaImagenSub('wrapper-sub8', 'sub-foto-8', 'placeholder-sub8', ['mantenimiento_indices.png', 'rebuild_index.jpg']);
+        configurarCargaImagenSub('wrapper-sub9', 'sub-foto-9', 'placeholder-sub9', ['particionamiento.png', 'table_partition.jpg']);
+        
+        // Configurar imagen principal del proyecto CRM
+        configurarCargaImagen('wrapper-proyecto-4', 'foto-perfil-4', 'placeholder-foto-4', ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG']);
+        
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
         setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
         setupProyecto('cuadro-proyecto-4', 'tarjeta-proyecto-4');
         
         configurarBotonesCerrar();
-        setupZoomEnImagenes();
     });
 </script>
 </body>
