@@ -85,7 +85,7 @@
             margin-top: 0.3rem;
         }
 
-        /* Foto de perfil - CUADRADA y más GRANDE */
+        /* Foto de perfil - CUADRADA (sin cursor pointer) */
         .foto-perfil-container {
             display: flex;
             flex-direction: column;
@@ -102,15 +102,8 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            cursor: pointer;
             border: 3px solid white;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .foto-wrapper:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
         }
 
         .foto-perfil {
@@ -118,18 +111,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        .foto-placeholder {
-            font-size: 2.5rem;
-            color: #6e8eae;
-        }
-
-        .foto-label {
-            font-size: 0.7rem;
-            color: #6e8eae;
-            cursor: pointer;
-            text-decoration: underline;
         }
 
         /* Botones */
@@ -256,7 +237,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
         }
 
-        /* Foto dentro de la tarjeta - CUADRADA y más GRANDE */
+        /* Foto dentro de la tarjeta - CUADRADA (sin cursor pointer) */
         .foto-inline {
             display: flex;
             justify-content: center;
@@ -271,7 +252,6 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            cursor: pointer;
             border: 3px solid white;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -392,24 +372,17 @@
             </div>
         </div>
         <div class="foto-perfil-container">
-            <div class="foto-wrapper" id="fotoWrapper">
+            <div class="foto-wrapper">
                 <img id="fotoPerfil" class="foto-perfil" src="fotoprueba.PNG" alt="Foto de perfil">
-                <div id="fotoPlaceholder" class="foto-placeholder" style="display: none;">
-                    <i class="fas fa-user-circle"></i>
-                </div>
             </div>
-            <span class="foto-label" id="fotoLabel">📷 Cambiar foto</span>
         </div>
     </div>
 
     <!-- Tarjeta de bienvenida con foto cuadrada -->
     <div class="card-welcome">
         <div class="foto-inline">
-            <div class="foto-inline-wrapper" id="fotoInlineWrapper">
+            <div class="foto-inline-wrapper">
                 <img id="fotoInline" class="foto-inline-img" src="fotoprueba.PNG" alt="Foto">
-                <div id="fotoInlinePlaceholder" style="font-size: 3rem; color: #6e8eae; display: none;">
-                    <i class="fas fa-user-circle"></i>
-                </div>
             </div>
         </div>
         <h2><i class="fas fa-chart-simple" style="margin-right: 12px; color: #3b82f6;"></i> Bienvenido a mi espacio de datos</h2>
@@ -449,76 +422,6 @@
 
 <script>
     (function() {
-        // ----- LÓGICA PARA SUBIR/CAMBIAR FOTO -----
-        const fotoWrapper = document.getElementById('fotoWrapper');
-        const fotoPerfil = document.getElementById('fotoPerfil');
-        const fotoPlaceholder = document.getElementById('fotoPlaceholder');
-        const fotoLabel = document.getElementById('fotoLabel');
-        
-        const fotoInlineWrapper = document.getElementById('fotoInlineWrapper');
-        const fotoInline = document.getElementById('fotoInline');
-        const fotoInlinePlaceholder = document.getElementById('fotoInlinePlaceholder');
-
-        // Función para actualizar ambas fotos con la misma imagen
-        function actualizarFoto(url) {
-            // Foto principal (cuadrada)
-            fotoPerfil.src = url;
-            fotoPerfil.style.display = 'block';
-            if (fotoPlaceholder) fotoPlaceholder.style.display = 'none';
-            
-            // Foto inline (dentro de la tarjeta)
-            if (fotoInline) {
-                fotoInline.src = url;
-                fotoInline.style.display = 'block';
-                if (fotoInlinePlaceholder) fotoInlinePlaceholder.style.display = 'none';
-            }
-        }
-
-        // Función para abrir selector de archivos
-        function seleccionarFoto() {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/jpeg, image/png, image/jpg, image/webp';
-            input.onchange = (e) => {
-                const file = e.target.files[0];
-                if (file && file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = (loadEvent) => {
-                        const imageUrl = loadEvent.target.result;
-                        actualizarFoto(imageUrl);
-                        // Guardar en localStorage para que persista al recargar
-                        localStorage.setItem('fotoPerfilURL', imageUrl);
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    alert("Por favor selecciona una imagen válida (PNG, JPG, JPEG, WEBP)");
-                }
-            };
-            input.click();
-        }
-
-        // Cargar foto guardada al iniciar (si existe, sino usa fotoprueba.PNG)
-        const fotoGuardada = localStorage.getItem('fotoPerfilURL');
-        if (fotoGuardada) {
-            actualizarFoto(fotoGuardada);
-        } else {
-            // Intentar cargar fotoprueba.PNG si existe
-            const testImg = new Image();
-            testImg.onload = function() {
-                actualizarFoto('fotoprueba.PNG');
-            };
-            testImg.onerror = function() {
-                // Si no existe el archivo, se queda el placeholder
-                console.log('No se encontró fotoprueba.PNG');
-            };
-            testImg.src = 'fotoprueba.PNG';
-        }
-
-        // Eventos para subir/cambiar foto
-        if (fotoWrapper) fotoWrapper.addEventListener('click', seleccionarFoto);
-        if (fotoLabel) fotoLabel.addEventListener('click', seleccionarFoto);
-        if (fotoInlineWrapper) fotoInlineWrapper.addEventListener('click', seleccionarFoto);
-
         // ----- LÓGICA DEL SUBMENÚ (PROYECTOS) -----
         const botonProyectos = document.getElementById('botonProyectosPrincipal');
         const submenu = document.getElementById('submenuCompleto');
