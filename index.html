@@ -38,7 +38,7 @@
             z-index: 2;
         }
 
-        /* Header con foto cuadrada */
+        /* Header sin foto - diseño más limpio */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -49,7 +49,7 @@
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(8px);
             border-radius: 1.5rem;
-            padding: 1.2rem 2rem;
+            padding: 1.5rem 2rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(72, 144, 200, 0.2);
         }
@@ -83,34 +83,6 @@
             font-weight: 500;
             color: #2c6b8f;
             margin-top: 0.3rem;
-        }
-
-        /* Foto de perfil - CUADRADA (sin cursor pointer) */
-        .foto-perfil-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .foto-wrapper {
-            width: 140px;
-            height: 140px;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #c0d9e8, #e8f0f7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border: 3px solid white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .foto-perfil {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
         }
 
         /* Botones */
@@ -226,7 +198,7 @@
             margin: 0.2rem 0;
         }
 
-        /* Tarjeta principal */
+        /* Tarjeta principal - sin foto */
         .card-welcome {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 1.8rem;
@@ -235,31 +207,6 @@
             text-align: center;
             border: 1px solid #dce9f2;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
-        }
-
-        /* Foto dentro de la tarjeta - CUADRADA (sin cursor pointer) */
-        .foto-inline {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-        .foto-inline-wrapper {
-            width: 160px;
-            height: 160px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #c0d9e8, #e8f0f7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border: 3px solid white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .foto-inline-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
         }
 
         .card-welcome h2 {
@@ -326,15 +273,13 @@
                 background: #ffffffea;
                 backdrop-filter: blur(15px);
             }
-            .foto-wrapper { width: 100px; height: 100px; }
-            .foto-inline-wrapper { width: 120px; height: 120px; }
         }
     </style>
 </head>
 <body>
 <div class="soft-bg"></div>
 <div class="container">
-    <!-- Header con foto cuadrada -->
+    <!-- Header renovado: sin foto, solo información -->
     <div class="hero">
         <div class="hero-left">
             <div class="hero-text">
@@ -371,20 +316,11 @@
                 </div>
             </div>
         </div>
-        <div class="foto-perfil-container">
-            <div class="foto-wrapper">
-                <img id="fotoPerfil" class="foto-perfil" src="foto.jpg" alt="Foto de perfil">
-            </div>
-        </div>
+        <!-- Se eliminó por completo el div .foto-perfil-container y la foto circular/cuadrada -->
     </div>
 
-    <!-- Tarjeta de bienvenida con foto cuadrada -->
+    <!-- Tarjeta de bienvenida simplificada (sin foto) -->
     <div class="card-welcome">
-        <div class="foto-inline">
-            <div class="foto-inline-wrapper">
-                <img id="fotoInline" class="foto-inline-img" src="foto.jpg" alt="Foto">
-            </div>
-        </div>
         <h2><i class="fas fa-chart-simple" style="margin-right: 12px; color: #3b82f6;"></i> Bienvenido a mi espacio de datos</h2>
         <p>
             Soy <strong>Ingeniero de Sistemas</strong> con especialización en <strong>Data Analysis & Business Intelligence</strong>.  
@@ -396,7 +332,7 @@
         </p>
     </div>
 
-    <!-- Tarjetas de preview -->
+    <!-- Tarjetas de preview (área central) -->
     <div class="skills-grid">
         <div class="skill-card">
             <div class="skill-icon"><i class="fas fa-database" style="color: #2c7ab1;"></i></div>
@@ -452,6 +388,8 @@
         }
 
         if(submenu) submenu.style.display = 'none';
+
+        // NOTA: No hay referencias a ninguna imagen; se ha limpiado todo rastro de foto de perfil.
     })();
 </script>
 </body>
