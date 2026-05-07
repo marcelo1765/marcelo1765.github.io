@@ -38,7 +38,7 @@
             z-index: 2;
         }
 
-        /* Header sin la foto circular (solo se eliminó ese contenedor) */
+        /* Header sin la foto circular */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -198,7 +198,7 @@
             margin: 0.2rem 0;
         }
 
-        /* Tarjeta principal - conserva la foto cuadrada (la que NO está en círculo) */
+        /* Tarjeta principal - foto mejorada */
         .card-welcome {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 1.8rem;
@@ -209,7 +209,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
         }
 
-        /* Foto dentro de la tarjeta - CUADRADA (se conserva) */
+        /* Contenedor de foto con mejoras de nitidez */
         .foto-inline {
             display: flex;
             justify-content: center;
@@ -225,13 +225,30 @@
             justify-content: center;
             overflow: hidden;
             border: 3px solid white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease;
         }
+        .foto-inline-wrapper:hover {
+            transform: scale(1.03);
+        }
+        
+        /* MEJORAS DE NITIDEZ Y CALIDAD DE IMAGEN */
         .foto-inline-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            /* Mejora el renderizado de la imagen */
+            image-rendering: crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: high-quality;
+            /* Filtros para mayor nitidez y contraste */
+            filter: brightness(1.02) contrast(1.08) saturate(1.03) drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+            transition: all 0.3s ease;
+        }
+        
+        .foto-inline-img:hover {
+            filter: brightness(1.03) contrast(1.1) saturate(1.04);
         }
 
         .card-welcome h2 {
@@ -298,14 +315,14 @@
                 background: #ffffffea;
                 backdrop-filter: blur(15px);
             }
-            .foto-inline-wrapper { width: 120px; height: 120px; }
+            .foto-inline-wrapper { width: 130px; height: 130px; }
         }
     </style>
 </head>
 <body>
 <div class="soft-bg"></div>
 <div class="container">
-    <!-- Header SIN la foto circular (eliminado el div .foto-perfil-container) -->
+    <!-- Header SIN la foto circular -->
     <div class="hero">
         <div class="hero-left">
             <div class="hero-text">
@@ -342,14 +359,13 @@
                 </div>
             </div>
         </div>
-        <!-- ELIMINADO: div completo de la foto circular de la esquina -->
     </div>
 
-    <!-- Tarjeta de bienvenida CONSERVANDO la foto cuadrada (la que no estaba en círculo) -->
+    <!-- Tarjeta de bienvenida con foto mejorada -->
     <div class="card-welcome">
         <div class="foto-inline">
             <div class="foto-inline-wrapper">
-                <img class="foto-inline-img" src="foto.jpg" alt="Foto de perfil">
+                <img class="foto-inline-img" src="foto.jpg" alt="Marcelo Calderón - Ingeniero de Sistemas">
             </div>
         </div>
         <h2><i class="fas fa-chart-simple" style="margin-right: 12px; color: #3b82f6;"></i> Bienvenido a mi espacio de datos</h2>
@@ -419,6 +435,17 @@
         }
 
         if(submenu) submenu.style.display = 'none';
+        
+        // MEJORA ADICIONAL: Si la imagen es pequeña, se escala con mejor calidad
+        const foto = document.querySelector('.foto-inline-img');
+        if (foto) {
+            foto.addEventListener('load', function() {
+                if (this.naturalWidth < 200 || this.naturalHeight < 200) {
+                    this.style.transform = 'scale(1.01)';
+                    this.style.filter = 'brightness(1.04) contrast(1.1) saturate(1.05)';
+                }
+            });
+        }
     })();
 </script>
 </body>
