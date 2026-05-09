@@ -431,8 +431,8 @@
 
     <div class="foto-card" id="tarjeta-proyecto-1">
         <div id="wrapper-proyecto-1" class="image-wrapper" data-img-id="foto-perfil-1">
-            <img id="foto-perfil-1" src="dashboard_flota.png" alt="Dashboard Ventas Power BI" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-1" class="image-placeholder">
+            <img id="foto-perfil-1" src="dashboard_flota.png" alt="Dashboard Ventas Power BI" class="foto-perfil">
+            <div id="placeholder-foto-1" class="image-placeholder" style="display: none;">
                 <div class="placeholder-icon"><i class="fas fa-chart-pie"></i></div>
                 <div class="placeholder-text">Ejemplo de Dashboard de Ventas</div>
             </div>
@@ -544,89 +544,61 @@
         document.getElementById('imageModal').style.display = 'none';
     }
 
-    // Función para mostrar imagen si existe localmente, de lo contrario mostrar placeholder
-    function mostrarImagenSiExiste(imgElement, placeholderElement, rutasSugeridas) {
-        if (!imgElement || !placeholderElement) return;
+    // Configurar eventos de clic para las imágenes
+    function configurarEventosImagen() {
+        // Proyecto 1 - Dashboard de Ventas (imagen ya cargada)
+        const img1 = document.getElementById('foto-perfil-1');
+        const wrapper1 = document.getElementById('wrapper-proyecto-1');
         
-        let intentoActual = 0;
-        
-        function intentarCargar() {
-            if (intentoActual >= rutasSugeridas.length) {
-                imgElement.style.display = 'none';
-                placeholderElement.style.display = 'flex';
-                return;
-            }
-            
-            const ruta = rutasSugeridas[intentoActual];
-            const testImg = new Image();
-            testImg.onload = function() {
-                imgElement.src = ruta;
-                imgElement.style.display = 'block';
-                placeholderElement.style.display = 'none';
-                // Agregar evento de clic a la imagen para abrir modal
-                imgElement.onclick = function(e) {
-                    e.stopPropagation();
-                    abrirModal(ruta);
-                };
+        if (img1 && img1.src && img1.src !== '') {
+            img1.onclick = function(e) {
+                e.stopPropagation();
+                abrirModal(img1.src);
             };
-            testImg.onerror = function() {
-                intentoActual++;
-                intentarCargar();
+            wrapper1.onclick = function(e) {
+                e.stopPropagation();
+                if (img1.src) abrirModal(img1.src);
             };
-            testImg.src = ruta;
         }
         
-        intentarCargar();
-    }
-    
-    // Configurar los wrappers para que al hacer clic en el área también abran la imagen si existe
-    function configurarWrapperClick(wrapperId, imgId) {
-        const wrapper = document.getElementById(wrapperId);
-        if (!wrapper) return;
+        // Proyecto 2
+        const img2 = document.getElementById('foto-perfil-2');
+        const wrapper2 = document.getElementById('wrapper-proyecto-2');
+        const placeholder2 = document.getElementById('placeholder-foto-2');
         
-        const imgElement = document.getElementById(imgId);
-        if (imgElement) {
-            // Función para obtener la ruta final de la imagen después de cargar
-            const obtenerRutaFinal = setInterval(() => {
-                if (imgElement.style.display === 'block' && imgElement.src && imgElement.src !== '') {
-                    clearInterval(obtenerRutaFinal);
-                    wrapper.onclick = function(e) {
-                        e.stopPropagation();
-                        if (imgElement.src) {
-                            abrirModal(imgElement.src);
-                        }
-                    };
-                } else {
-                    // Si no hay imagen (placeholder visible), no se hace nada al hacer clic en el wrapper
-                    const placeholder = wrapper.querySelector('.image-placeholder');
-                    if (placeholder && placeholder.style.display !== 'none') {
-                        wrapper.onclick = null;
-                    }
-                }
-            }, 100);
+        if (img2 && img2.src && img2.src !== '') {
+            img2.onclick = function(e) {
+                e.stopPropagation();
+                abrirModal(img2.src);
+            };
+            wrapper2.onclick = function(e) {
+                e.stopPropagation();
+                if (img2.src) abrirModal(img2.src);
+            };
+        } else if (placeholder2) {
+            wrapper2.onclick = null;
+        }
+        
+        // Proyecto 3
+        const img3 = document.getElementById('foto-perfil-3');
+        const wrapper3 = document.getElementById('wrapper-proyecto-3');
+        const placeholder3 = document.getElementById('placeholder-foto-3');
+        
+        if (img3 && img3.src && img3.src !== '') {
+            img3.onclick = function(e) {
+                e.stopPropagation();
+                abrirModal(img3.src);
+            };
+            wrapper3.onclick = function(e) {
+                e.stopPropagation();
+                if (img3.src) abrirModal(img3.src);
+            };
+        } else if (placeholder3) {
+            wrapper3.onclick = null;
         }
     }
     
-    // Configurar las imágenes de todos los proyectos
-    function configurarImagenes() {
-        // Proyecto 1 - Dashboard de Ventas - AHORA con dashboard_flota.png como primera opción
-        mostrarImagenSiExiste(document.getElementById('foto-perfil-1'), document.getElementById('placeholder-foto-1'), 
-            ['dashboard_flota.png', 'dashboard_ventas.png', 'ventas_dashboard.jpg', 'powerbi_ventas.PNG']);
-        
-        mostrarImagenSiExiste(document.getElementById('foto-perfil-2'), document.getElementById('placeholder-foto-2'), 
-            ['gestion_comercial.png', 'comercial_dashboard.jpg', 'powerbi_comercial.PNG']);
-        
-        mostrarImagenSiExiste(document.getElementById('foto-perfil-3'), document.getElementById('placeholder-foto-3'), 
-            ['rfm_clientes.png', 'segmentacion_clientes.jpg', 'powerbi_rfm.PNG']);
-        
-        // Configurar clicks en los wrappers después de cargar las imágenes
-        setTimeout(() => {
-            configurarWrapperClick('wrapper-proyecto-1', 'foto-perfil-1');
-            configurarWrapperClick('wrapper-proyecto-2', 'foto-perfil-2');
-            configurarWrapperClick('wrapper-proyecto-3', 'foto-perfil-3');
-        }, 500);
-    }
-    
+    // Funciones para expandir/colapsar proyectos
     function setupProyecto(cuadroId, tarjetaId) {
         const cuadro = document.getElementById(cuadroId);
         const tarjeta = document.getElementById(tarjetaId);
@@ -680,11 +652,11 @@
     }
     
     document.addEventListener('DOMContentLoaded', function() {
-        configurarImagenes();
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
         setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
         configurarBotonesCerrar();
+        configurarEventosImagen();
     });
 </script>
 </body>
