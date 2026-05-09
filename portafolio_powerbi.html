@@ -420,7 +420,7 @@
         </div>
     </div>
 
-    <!-- PROYECTO 1: Dashboard Ventas -->
+    <!-- PROYECTO 1: Dashboard Ventas (RUTA DE IMAGEN CORREGIDA) -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-1">
         <h3>
             <i class="fas fa-chart-pie"></i> Dashboard de Ventas y Rentabilidad
@@ -431,10 +431,13 @@
 
     <div class="foto-card" id="tarjeta-proyecto-1">
         <div id="wrapper-proyecto-1" class="image-wrapper" data-img-id="foto-perfil-1">
-            <img id="foto-perfil-1" src="dashboard flota.png" alt="Dashboard Ventas Power BI" class="foto-perfil">
+            <!-- Ruta corregida: sin espacio y usando nombre consistente -->
+            <img id="foto-perfil-1" src="dashboard_flota.png" alt="Dashboard Ventas Power BI" class="foto-perfil" 
+                 onerror="this.style.display='none'; document.getElementById('placeholder-foto-1').style.display='flex';">
             <div id="placeholder-foto-1" class="image-placeholder" style="display: none;">
                 <div class="placeholder-icon"><i class="fas fa-chart-pie"></i></div>
-                <div class="placeholder-text">Ejemplo de Dashboard de Ventas</div>
+                <div class="placeholder-text">Vista previa: Dashboard de Ventas (Power BI)</div>
+                <div style="font-size:0.7rem; margin-top:8px;">📁 Archivo: dashboard_flota.png</div>
             </div>
         </div>
         <div class="descripcion">
@@ -468,6 +471,7 @@
             <div id="placeholder-foto-2" class="image-placeholder">
                 <div class="placeholder-icon"><i class="fas fa-chart-line"></i></div>
                 <div class="placeholder-text">Ejemplo de Tablero de Gestión Comercial</div>
+                <div style="font-size:0.7rem; margin-top:8px;">🖼️ (Demo - Vista previa no disponible)</div>
             </div>
         </div>
         <div class="descripcion">
@@ -477,7 +481,7 @@
             </div>
             <ul class="features-list">
                 <li>Medidores de cumplimiento de cuota</li>
-                <li>Análisis de漏斗 de ventas (oportunidades)</li>
+                <li>Análisis de funnel de ventas (oportunidades)</li>
                 <li>Ranking de vendedores por desempeño</li>
                 <li>Alertas condicionales por semáforo</li>
                 <li>Exportación a PDF y PowerPoint</li>
@@ -501,6 +505,7 @@
             <div id="placeholder-foto-3" class="image-placeholder">
                 <div class="placeholder-icon"><i class="fas fa-users"></i></div>
                 <div class="placeholder-text">Ejemplo de Segmentación RFM de Clientes</div>
+                <div style="font-size:0.7rem; margin-top:8px;">📊 (Demo interactiva en Power BI Service)</div>
             </div>
         </div>
         <div class="descripcion">
@@ -544,57 +549,40 @@
         document.getElementById('imageModal').style.display = 'none';
     }
 
-    // Configurar eventos de clic para las imágenes
+    // Configurar eventos de clic para imágenes reales (solo si existen y tienen src)
     function configurarEventosImagen() {
-        // Proyecto 1 - Dashboard de Ventas (imagen ya cargada)
+        // Proyecto 1: Verificar si la imagen cargó correctamente
         const img1 = document.getElementById('foto-perfil-1');
         const wrapper1 = document.getElementById('wrapper-proyecto-1');
         
-        if (img1 && img1.src && img1.src !== '') {
+        // Si la imagen tiene una URL válida y no está oculta por error
+        if (img1 && img1.src && img1.src !== '' && img1.style.display !== 'none') {
             img1.onclick = function(e) {
                 e.stopPropagation();
                 abrirModal(img1.src);
             };
-            wrapper1.onclick = function(e) {
-                e.stopPropagation();
-                if (img1.src) abrirModal(img1.src);
-            };
+            if (wrapper1) {
+                wrapper1.onclick = function(e) {
+                    e.stopPropagation();
+                    if (img1.src && img1.style.display !== 'none') abrirModal(img1.src);
+                };
+            }
         }
         
-        // Proyecto 2
+        // Proyecto 2 (placeholder, no hay imagen real)
         const img2 = document.getElementById('foto-perfil-2');
         const wrapper2 = document.getElementById('wrapper-proyecto-2');
-        const placeholder2 = document.getElementById('placeholder-foto-2');
-        
-        if (img2 && img2.src && img2.src !== '') {
-            img2.onclick = function(e) {
-                e.stopPropagation();
-                abrirModal(img2.src);
-            };
-            wrapper2.onclick = function(e) {
-                e.stopPropagation();
-                if (img2.src) abrirModal(img2.src);
-            };
-        } else if (placeholder2) {
-            wrapper2.onclick = null;
+        if (img2 && img2.src && img2.src !== '' && img2.style.display !== 'none') {
+            img2.onclick = function(e) { e.stopPropagation(); abrirModal(img2.src); };
+            if (wrapper2) wrapper2.onclick = function(e) { e.stopPropagation(); if (img2.src) abrirModal(img2.src); };
         }
         
         // Proyecto 3
         const img3 = document.getElementById('foto-perfil-3');
         const wrapper3 = document.getElementById('wrapper-proyecto-3');
-        const placeholder3 = document.getElementById('placeholder-foto-3');
-        
-        if (img3 && img3.src && img3.src !== '') {
-            img3.onclick = function(e) {
-                e.stopPropagation();
-                abrirModal(img3.src);
-            };
-            wrapper3.onclick = function(e) {
-                e.stopPropagation();
-                if (img3.src) abrirModal(img3.src);
-            };
-        } else if (placeholder3) {
-            wrapper3.onclick = null;
+        if (img3 && img3.src && img3.src !== '' && img3.style.display !== 'none') {
+            img3.onclick = function(e) { e.stopPropagation(); abrirModal(img3.src); };
+            if (wrapper3) wrapper3.onclick = function(e) { e.stopPropagation(); if (img3.src) abrirModal(img3.src); };
         }
     }
     
@@ -608,6 +596,7 @@
         
         cuadro.addEventListener('click', function(e) {
             e.stopPropagation();
+            // Colapsar cualquier otra tarjeta abierta
             document.querySelectorAll('.foto-card').forEach(card => {
                 if (card.id !== tarjetaId && card.classList.contains('visible')) {
                     card.classList.remove('visible');
