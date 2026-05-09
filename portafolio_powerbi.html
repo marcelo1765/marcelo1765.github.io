@@ -22,7 +22,6 @@
             min-height: 100vh;
         }
 
-        /* Fondo suave */
         .soft-bg {
             position: fixed;
             top: 0;
@@ -40,7 +39,6 @@
             z-index: 2;
         }
 
-        /* Header claro */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -85,7 +83,6 @@
             margin-top: 0.2rem;
         }
 
-        /* Botones */
         .action-group {
             display: flex;
             flex-wrap: wrap;
@@ -126,7 +123,6 @@
         }
         .btn-volver:hover { background: #e2edf5; transform: translateY(-2px); }
 
-        /* Card de tecnologías */
         .tech-card {
             background: rgba(255, 255, 255, 0.9);
             border-radius: 1.5rem;
@@ -165,7 +161,6 @@
             color: #1f6392;
         }
 
-        /* Cuadro del proyecto (visible siempre) */
         .proyecto-cuadro {
             background: white;
             border-radius: 1.2rem;
@@ -206,7 +201,6 @@
             transition: transform 0.2s;
         }
 
-        /* Tarjeta completa (oculta inicialmente) */
         .foto-card {
             background: white;
             border-radius: 1.5rem;
@@ -227,7 +221,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Contenedor de imagen */
         .image-wrapper {
             width: 100%;
             background: #f5f9fe;
@@ -240,7 +233,7 @@
             cursor: pointer;
             transition: all 0.2s;
             min-height: 260px;
-            border: 1px dashed #c0d4e8;
+            border: 1px solid #c0d4e8;
         }
 
         .image-wrapper:hover {
@@ -257,6 +250,7 @@
             border-radius: 12px;
             display: block;
             margin: 0 auto;
+            cursor: pointer;
         }
 
         .image-placeholder {
@@ -269,27 +263,9 @@
             justify-content: center;
             flex-direction: column;
             gap: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
             padding: 2rem;
-        }
-
-        .image-placeholder:hover {
-            background: linear-gradient(135deg, #dfeaf3 0%, #d0dfea 100%);
-            transform: scale(0.99);
-        }
-
-        .placeholder-icon {
-            font-size: 3rem;
-        }
-
-        .placeholder-text {
-            font-size: 0.85rem;
-            font-weight: 500;
-            background: rgba(0, 0, 0, 0.05);
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            color: #3a6e8c;
+            color: #4a7c9e;
+            cursor: default;
         }
 
         .descripcion {
@@ -350,6 +326,42 @@
         .cerrar-tarjeta:hover {
             background: #e2eaf2;
             transform: translateY(-1px);
+        }
+
+        /* MODAL PARA IMAGEN GRANDE */
+        .modal-img {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content-img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .modal-cerrar {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .modal-cerrar:hover {
+            color: #bbb;
         }
 
         footer {
@@ -418,12 +430,11 @@
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-1">
-        <div id="wrapper-proyecto-1" class="image-wrapper">
+        <div id="wrapper-proyecto-1" class="image-wrapper" data-img-id="foto-perfil-1">
             <img id="foto-perfil-1" src="" alt="Dashboard Ventas Power BI" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-1" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <div class="placeholder-text">Haz clic para subir imagen del dashboard</div>
-                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
+                <div class="placeholder-icon"><i class="fas fa-chart-pie"></i></div>
+                <div class="placeholder-text">Ejemplo de Dashboard de Ventas</div>
             </div>
         </div>
         <div class="descripcion">
@@ -452,12 +463,11 @@
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-2">
-        <div id="wrapper-proyecto-2" class="image-wrapper">
+        <div id="wrapper-proyecto-2" class="image-wrapper" data-img-id="foto-perfil-2">
             <img id="foto-perfil-2" src="" alt="Tablero Gestión Comercial" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-2" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <div class="placeholder-text">Haz clic para subir imagen del tablero</div>
-                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
+                <div class="placeholder-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="placeholder-text">Ejemplo de Tablero de Gestión Comercial</div>
             </div>
         </div>
         <div class="descripcion">
@@ -476,7 +486,7 @@
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 3: Análisis de Clientes (Nuevo) -->
+    <!-- PROYECTO 3: Análisis de Clientes -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-3">
         <h3>
             <i class="fas fa-users"></i> Segmentación y RFM de Clientes
@@ -486,12 +496,11 @@
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-3">
-        <div id="wrapper-proyecto-3" class="image-wrapper">
+        <div id="wrapper-proyecto-3" class="image-wrapper" data-img-id="foto-perfil-3">
             <img id="foto-perfil-3" src="" alt="Segmentación RFM Clientes" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-3" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <div class="placeholder-text">Haz clic para subir imagen del análisis</div>
-                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
+                <div class="placeholder-icon"><i class="fas fa-users"></i></div>
+                <div class="placeholder-text">Ejemplo de Segmentación RFM de Clientes</div>
             </div>
         </div>
         <div class="descripcion">
@@ -515,20 +524,36 @@
     </footer>
 </div>
 
+<!-- MODAL PARA IMAGEN GRANDE -->
+<div id="imageModal" class="modal-img" onclick="cerrarModal()">
+    <span class="modal-cerrar" onclick="cerrarModal()">&times;</span>
+    <img class="modal-content-img" id="modalImage">
+</div>
+
 <script>
-    function configurarCargaImagen(wrapperId, imgId, placeholderId, rutasSugeridas = []) {
-        const wrapper = document.getElementById(wrapperId);
-        const imgElement = document.getElementById(imgId);
-        const placeholder = document.getElementById(placeholderId);
-        
-        if (!wrapper || !imgElement || !placeholder) return;
+    // Funciones para el modal de imagen grande
+    function abrirModal(src) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        if (src && src !== '') {
+            modal.style.display = 'flex';
+            modalImg.src = src;
+        }
+    }
+    function cerrarModal() {
+        document.getElementById('imageModal').style.display = 'none';
+    }
+
+    // Función para mostrar imagen si existe localmente, de lo contrario mostrar placeholder
+    function mostrarImagenSiExiste(imgElement, placeholderElement, rutasSugeridas) {
+        if (!imgElement || !placeholderElement) return;
         
         let intentoActual = 0;
         
-        function intentarCargarImagenPorDefecto() {
+        function intentarCargar() {
             if (intentoActual >= rutasSugeridas.length) {
-                placeholder.style.display = 'flex';
                 imgElement.style.display = 'none';
+                placeholderElement.style.display = 'flex';
                 return;
             }
             
@@ -537,53 +562,66 @@
             testImg.onload = function() {
                 imgElement.src = ruta;
                 imgElement.style.display = 'block';
-                placeholder.style.display = 'none';
+                placeholderElement.style.display = 'none';
+                // Agregar evento de clic a la imagen para abrir modal
+                imgElement.onclick = function(e) {
+                    e.stopPropagation();
+                    abrirModal(ruta);
+                };
             };
             testImg.onerror = function() {
                 intentoActual++;
-                intentarCargarImagenPorDefecto();
+                intentarCargar();
             };
             testImg.src = ruta;
         }
         
-        if (rutasSugeridas.length > 0) {
-            intentarCargarImagenPorDefecto();
-        } else {
-            placeholder.style.display = 'flex';
-            imgElement.style.display = 'none';
-        }
+        intentarCargar();
+    }
+    
+    // Configurar los wrappers para que al hacer clic en el área también abran la imagen si existe
+    function configurarWrapperClick(wrapperId, imgId) {
+        const wrapper = document.getElementById(wrapperId);
+        if (!wrapper) return;
         
-        const subirImagen = (event) => {
-            event.stopPropagation();
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/jpeg, image/png, image/gif, image/webp';
-            input.onchange = (e) => {
-                const file = e.target.files[0];
-                if (file && file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = (loadEvent) => {
-                        imgElement.src = loadEvent.target.result;
-                        imgElement.style.display = 'block';
-                        placeholder.style.display = 'none';
-                        wrapper.style.boxShadow = '0 0 0 2px #1a73e8';
-                        setTimeout(() => { wrapper.style.boxShadow = ''; }, 400);
+        const imgElement = document.getElementById(imgId);
+        if (imgElement) {
+            // Función para obtener la ruta final de la imagen después de cargar
+            const obtenerRutaFinal = setInterval(() => {
+                if (imgElement.style.display === 'block' && imgElement.src && imgElement.src !== '') {
+                    clearInterval(obtenerRutaFinal);
+                    wrapper.onclick = function(e) {
+                        e.stopPropagation();
+                        if (imgElement.src) {
+                            abrirModal(imgElement.src);
+                        }
                     };
-                    reader.readAsDataURL(file);
                 } else {
-                    alert("Selecciona una imagen válida (PNG, JPG, GIF)");
+                    // Si no hay imagen (placeholder visible), no se hace nada al hacer clic en el wrapper
+                    const placeholder = wrapper.querySelector('.image-placeholder');
+                    if (placeholder && placeholder.style.display !== 'none') {
+                        wrapper.onclick = null;
+                    }
                 }
-            };
-            input.click();
-        };
+            }, 100);
+        }
+    }
+    
+    // Configurar las imágenes de todos los proyectos
+    function configurarImagenes() {
+        mostrarImagenSiExiste(document.getElementById('foto-perfil-1'), document.getElementById('placeholder-foto-1'), 
+            ['dashboard_ventas.png', 'ventas_dashboard.jpg', 'powerbi_ventas.PNG']);
+        mostrarImagenSiExiste(document.getElementById('foto-perfil-2'), document.getElementById('placeholder-foto-2'), 
+            ['gestion_comercial.png', 'comercial_dashboard.jpg', 'powerbi_comercial.PNG']);
+        mostrarImagenSiExiste(document.getElementById('foto-perfil-3'), document.getElementById('placeholder-foto-3'), 
+            ['rfm_clientes.png', 'segmentacion_clientes.jpg', 'powerbi_rfm.PNG']);
         
-        wrapper.addEventListener('click', subirImagen);
-        if (placeholder) placeholder.addEventListener('click', subirImagen);
-        
-        imgElement.onerror = () => {
-            imgElement.style.display = 'none';
-            placeholder.style.display = 'flex';
-        };
+        // Configurar clicks en los wrappers después de cargar las imágenes
+        setTimeout(() => {
+            configurarWrapperClick('wrapper-proyecto-1', 'foto-perfil-1');
+            configurarWrapperClick('wrapper-proyecto-2', 'foto-perfil-2');
+            configurarWrapperClick('wrapper-proyecto-3', 'foto-perfil-3');
+        }, 500);
     }
     
     function setupProyecto(cuadroId, tarjetaId) {
@@ -639,14 +677,10 @@
     }
     
     document.addEventListener('DOMContentLoaded', function() {
-        configurarCargaImagen('wrapper-proyecto-1', 'foto-perfil-1', 'placeholder-foto-1', ['dashboard_ventas.png', 'ventas_dashboard.jpg', 'powerbi_ventas.PNG']);
-        configurarCargaImagen('wrapper-proyecto-2', 'foto-perfil-2', 'placeholder-foto-2', ['gestion_comercial.png', 'comercial_dashboard.jpg', 'powerbi_comercial.PNG']);
-        configurarCargaImagen('wrapper-proyecto-3', 'foto-perfil-3', 'placeholder-foto-3', ['rfm_clientes.png', 'segmentacion_clientes.jpg', 'powerbi_rfm.PNG']);
-        
+        configurarImagenes();
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
         setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
-        
         configurarBotonesCerrar();
     });
 </script>
