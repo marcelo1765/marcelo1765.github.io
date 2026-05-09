@@ -257,15 +257,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            transition: all 0.2s;
             min-height: 200px;
-            border: 1px dashed #c0d4e8;
-        }
-
-        .sub-image-wrapper:hover {
-            background: #eef4fa;
-            border-color: #8ab3d0;
+            border: 1px solid #c0d4e8;
+            /* Eliminamos el cursor pointer porque ya no es clickeable */
         }
 
         .sub-foto {
@@ -289,13 +283,8 @@
             justify-content: center;
             flex-direction: column;
             gap: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
             padding: 1.5rem;
-        }
-
-        .sub-placeholder:hover {
-            background: linear-gradient(135deg, #dfeaf3 0%, #d0dfea 100%);
+            color: #4a7c9e;
         }
 
         .sub-features {
@@ -380,6 +369,43 @@
             transform: translateY(-1px);
         }
 
+        /* Estilos para la imagen principal del proyecto CRM */
+        .image-wrapper {
+            width: 100%;
+            background: #f5f9fe;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 0.8rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+            border: 1px solid #c0d4e8;
+        }
+        .foto-perfil {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            max-height: 350px;
+            object-fit: contain;
+            border-radius: 12px;
+            display: block;
+            margin: 0 auto;
+        }
+        .image-placeholder {
+            width: 100%;
+            min-height: 180px;
+            background: linear-gradient(135deg, #e8f0f7 0%, #dce8f0 100%);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 1.5rem;
+            color: #4a7c9e;
+        }
+
         footer {
             margin-top: 2.5rem;
             text-align: center;
@@ -438,7 +464,7 @@
         </div>
     </div>
 
-    <!-- PROYECTO 1: ETL Completo con SSIS desde múltiples orígenes (AHORA CON MÚLTIPLES SUBPROYECTOS) -->
+    <!-- PROYECTO 1: ETL Completo con SSIS -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-1">
         <h3>
             <i class="fas fa-exchange-alt"></i> ETL Multiorigen con SSIS
@@ -448,21 +474,20 @@
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-1">
-        <!-- DESCRIPCIÓN GENERAL DEL PROYECTO ETL -->
         <div class="descripcion" style="margin-bottom: 1rem;">
             <p><strong>🔄 SQL SERVER INTEGRATION SERVICES | ETL | DATA WAREHOUSE</strong></p>
             <p>Pipeline completo de extracción, transformación y carga que consolida datos desde múltiples orígenes hacia un Data Warehouse optimizado para análisis. A continuación, 3 ejemplos implementados:</p>
         </div>
 
-        <!-- EJEMPLO 1: Migración de Legacy System a Data Warehouse -->
+        <!-- EJEMPLO 1 -->
         <div class="subproyecto">
             <h4><i class="fas fa-database"></i> Ejemplo 1: Migración Legacy → Data Warehouse</h4>
             <div class="sub-etiquetas">Migración · Transformación · Limpieza</div>
             <div id="wrapper-sub1" class="sub-image-wrapper">
                 <img id="sub-foto-1" src="" alt="Migración Legacy System" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub1" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 1</div>
+                    <div class="placeholder-icon"><i class="fas fa-database"></i></div>
+                    <div class="placeholder-text">Ejemplo de migración Legacy → Data Warehouse</div>
                 </div>
             </div>
             <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Migración completa de un sistema legacy (FoxPro) a SQL Server. Limpieza de datos históricos y transformación de esquemas obsoletos a un modelo relacional normalizado.</p>
@@ -475,15 +500,15 @@
             </ul>
         </div>
 
-        <!-- EJEMPLO 2: Integración de Ventas Multicanal -->
+        <!-- EJEMPLO 2 -->
         <div class="subproyecto">
             <h4><i class="fas fa-chart-pie"></i> Ejemplo 2: Integración de Ventas Multicanal</h4>
             <div class="sub-etiquetas">CRM · ERP · Consolidación</div>
             <div id="wrapper-sub2" class="sub-image-wrapper">
                 <img id="sub-foto-2" src="" alt="Integración Multicanal" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub2" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 2</div>
+                    <div class="placeholder-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="placeholder-text">Ejemplo de integración Multicanal</div>
                 </div>
             </div>
             <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Consolidación de ventas provenientes de CRM, E-commerce y puntos de venta físico. Unificación de catálogo de productos y clientes.</p>
@@ -496,15 +521,15 @@
             </ul>
         </div>
 
-        <!-- EJEMPLO 3: ETL desde Archivos Planos a Base de Datos -->
+        <!-- EJEMPLO 3 -->
         <div class="subproyecto">
             <h4><i class="fas fa-file-csv"></i> Ejemplo 3: ETL desde Archivos Planos a Base de Datos</h4>
             <div class="sub-etiquetas">Excel · CSV · Automatización · Validación</div>
             <div id="wrapper-sub3" class="sub-image-wrapper">
                 <img id="sub-foto-3" src="" alt="ETL Archivos Planos" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub3" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 3</div>
+                    <div class="placeholder-icon"><i class="fas fa-file-excel"></i></div>
+                    <div class="placeholder-text">Ejemplo de ETL desde Archivos Planos</div>
                 </div>
             </div>
             <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Proceso ETL diario que consume archivos Excel y CSV generados por sistemas externos, validando estructuras y cargando a tablas staging antes de pasar a producción.</p>
@@ -516,11 +541,10 @@
                 <li>Checkpoints para reinicio en punto de falla</li>
             </ul>
         </div>
-
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 2: Automatización de Reportes por Correo con Database Mail (con múltiples ejemplos) -->
+    <!-- PROYECTO 2: Automatización de Reportes por Correo -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-2">
         <h3>
             <i class="fas fa-paper-plane"></i> Reportes Automáticos por Email
@@ -541,15 +565,15 @@
             <div id="wrapper-sub4" class="sub-image-wrapper">
                 <img id="sub-foto-4" src="" alt="Reporte Diario Ventas" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub4" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 1</div>
+                    <div class="placeholder-icon"><i class="fas fa-chart-simple"></i></div>
+                    <div class="placeholder-text">Ejemplo de Reporte Diario de Ventas</div>
                 </div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte enviado cada dia desde las 8:00 AM al equipo comercial hasta las 20:00 PM. Mostrando el seguimiento del progreso de las ventas del dia.</p>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte enviado cada día desde las 8:00 AM al equipo comercial hasta las 20:00 PM. Mostrando el seguimiento del progreso de las ventas del día.</p>
             <ul class="sub-features">
                 <li>Ventas totales, metas</li>
                 <li>Proceso automatizado para el seguimiento del progreso</li>
-                <li>Calculo para ver el progreso para cumplir la meta</li>
+                <li>Cálculo para ver el progreso para cumplir la meta</li>
                 <li>Formato HTML responsivo con CSS embebido</li>
             </ul>
         </div>
@@ -560,12 +584,11 @@
             <div id="wrapper-sub5" class="sub-image-wrapper">
                 <img id="sub-foto-5" src="" alt="Dashboard Ventas Email" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub5" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 2</div>
+                    <div class="placeholder-icon"><i class="fas fa-chart-pie"></i></div>
+                    <div class="placeholder-text">Ejemplo de Dashboard de Ventas</div>
                 </div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Dashboard completo enviado automáticamente a
-                <strong>sistemas@ejemplo.com</strong>. Incluye las ventas, volver a llamar, calculo que determina cual es la mejor lista del dia.</p>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Dashboard completo enviado automáticamente a sistemas@ejemplo.com. Incluye las ventas, volver a llamar, cálculo que determina cuál es la mejor lista del día.</p>
             <ul class="sub-features">
                 <li>Indicadores de cumplimiento de metas</li>
                 <li>Log de envío para auditoría</li>
@@ -578,8 +601,8 @@
             <div id="wrapper-sub6" class="sub-image-wrapper">
                 <img id="sub-foto-6" src="" alt="Alerta Stock Mínimo" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub6" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 3</div>
+                    <div class="placeholder-icon"><i class="fas fa-boxes"></i></div>
+                    <div class="placeholder-text">Ejemplo de Alerta de Stock Mínimo</div>
                 </div>
             </div>
             <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Sistema de alertas que envía notificaciones cuando el stock de productos baja del mínimo establecido. Correo enviado al área de compras y logística.</p>
@@ -591,11 +614,10 @@
                 <li>Ejecución cada 2 horas mediante SQL Agent</li>
             </ul>
         </div>
-
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 3: Optimización de Base de Datos y Query Tuning -->
+    <!-- PROYECTO 3: Optimización de Base de Datos -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-3">
         <h3>
             <i class="fas fa-tachometer-alt"></i> Optimización & Performance Tuning
@@ -616,8 +638,8 @@
             <div id="wrapper-sub7" class="sub-image-wrapper">
                 <img id="sub-foto-7" src="" alt="Optimización Reporte Ventas" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub7" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 1</div>
+                    <div class="placeholder-icon"><i class="fas fa-gauge-high"></i></div>
+                    <div class="placeholder-text">Optimización de Reporte de Ventas</div>
                 </div>
             </div>
             <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Reporte mensual de ventas que pasó de 45 segundos a 2 segundos mediante la implementación de índices columnstore y reescritura de consultas.</p>
@@ -631,12 +653,12 @@
 
         <div class="subproyecto">
             <h4><i class="fas fa-tachometer-alt"></i> Ejemplo 2: Mantenimiento de Índices</h4>
-            <div class="sub-etiquetas>Rebuild · Reorganize · Statistics</div>
+            <div class="sub-etiquetas">Rebuild · Reorganize · Statistics</div>
             <div id="wrapper-sub8" class="sub-image-wrapper">
                 <img id="sub-foto-8" src="" alt="Mantenimiento Índices" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub8" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 2</div>
+                    <div class="placeholder-icon"><i class="fas fa-wrench"></i></div>
+                    <div class="placeholder-text">Mantenimiento de Índices</div>
                 </div>
             </div>
             <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Automatización del mantenimiento de índices y actualización de estadísticas para mejorar el rendimiento general de la base de datos.</p>
@@ -654,8 +676,8 @@
             <div id="wrapper-sub9" class="sub-image-wrapper">
                 <img id="sub-foto-9" src="" alt="Particionamiento Tabla" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub9" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <div class="placeholder-text">Haz clic para subir imagen - Ejemplo 3</div>
+                    <div class="placeholder-icon"><i class="fas fa-table"></i></div>
+                    <div class="placeholder-text">Particionamiento de Tabla Histórica</div>
                 </div>
             </div>
             <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Implementación de particionamiento por rango de fechas en tabla de transacciones con más de 500 millones de registros.</p>
@@ -666,7 +688,6 @@
                 <li>Mejora en consultas por rango de fechas del 70%</li>
             </ul>
         </div>
-
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-3">✖ Cerrar</div>
     </div>
 
@@ -683,9 +704,8 @@
         <div id="wrapper-proyecto-4" class="image-wrapper">
             <img id="foto-perfil-4" src="" alt="Modelado CRM" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-4" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                <div class="placeholder-text">Haz clic para subir imagen del diagrama ER</div>
-                <div style="font-size: 0.7rem;">Formatos: PNG, JPG, GIF</div>
+                <div class="placeholder-icon"><i class="fas fa-project-diagram"></i></div>
+                <div class="placeholder-text">Diagrama del modelo de datos CRM</div>
             </div>
         </div>
         <div class="descripcion">
@@ -711,19 +731,17 @@
 </div>
 
 <script>
-    function configurarCargaImagenSub(wrapperId, imgId, placeholderId, rutasSugeridas = []) {
-        const wrapper = document.getElementById(wrapperId);
-        const imgElement = document.getElementById(imgId);
-        const placeholder = document.getElementById(placeholderId);
-        
-        if (!wrapper || !imgElement || !placeholder) return;
+    // Función para mostrar imagen si existe localmente, de lo contrario mostrar placeholder
+    function mostrarImagenSiExiste(imgElement, placeholderElement, rutasSugeridas) {
+        if (!imgElement || !placeholderElement) return;
         
         let intentoActual = 0;
         
-        function intentarCargarImagenPorDefecto() {
+        function intentarCargar() {
             if (intentoActual >= rutasSugeridas.length) {
-                placeholder.style.display = 'flex';
+                // No se encontró ninguna imagen, mostrar placeholder
                 imgElement.style.display = 'none';
+                placeholderElement.style.display = 'flex';
                 return;
             }
             
@@ -732,125 +750,40 @@
             testImg.onload = function() {
                 imgElement.src = ruta;
                 imgElement.style.display = 'block';
-                placeholder.style.display = 'none';
+                placeholderElement.style.display = 'none';
             };
             testImg.onerror = function() {
                 intentoActual++;
-                intentarCargarImagenPorDefecto();
+                intentarCargar();
             };
             testImg.src = ruta;
         }
         
-        if (rutasSugeridas.length > 0) {
-            intentarCargarImagenPorDefecto();
-        } else {
-            placeholder.style.display = 'flex';
-            imgElement.style.display = 'none';
-        }
-        
-        const subirImagen = (event) => {
-            event.stopPropagation();
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/jpeg, image/png, image/gif, image/webp';
-            input.onchange = (e) => {
-                const file = e.target.files[0];
-                if (file && file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = (loadEvent) => {
-                        imgElement.src = loadEvent.target.result;
-                        imgElement.style.display = 'block';
-                        placeholder.style.display = 'none';
-                        wrapper.style.boxShadow = '0 0 0 2px #cc2929';
-                        setTimeout(() => { wrapper.style.boxShadow = ''; }, 400);
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    alert("Selecciona una imagen válida (PNG, JPG, GIF)");
-                }
-            };
-            input.click();
-        };
-        
-        wrapper.addEventListener('click', subirImagen);
-        if (placeholder) placeholder.addEventListener('click', subirImagen);
-        
-        imgElement.onerror = () => {
-            imgElement.style.display = 'none';
-            placeholder.style.display = 'flex';
-        };
+        intentarCargar();
     }
     
-    function configurarCargaImagen(wrapperId, imgId, placeholderId, rutasSugeridas = []) {
-        const wrapper = document.getElementById(wrapperId);
-        const imgElement = document.getElementById(imgId);
-        const placeholder = document.getElementById(placeholderId);
+    // Configurar las imágenes de todos los proyectos
+    function configurarImagenes() {
+        // Proyecto 1 - ETL
+        mostrarImagenSiExiste(document.getElementById('sub-foto-1'), document.getElementById('placeholder-sub1'), ['migracion_legacy.png', 'etl_migracion.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-2'), document.getElementById('placeholder-sub2'), ['ventas_multicanal.png', 'integracion_crm.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-3'), document.getElementById('placeholder-sub3'), ['etl_archivos_planos.png', 'carga_excel.jpg']);
         
-        if (!wrapper || !imgElement || !placeholder) return;
+        // Proyecto 2 - Reportes Email
+        mostrarImagenSiExiste(document.getElementById('sub-foto-4'), document.getElementById('placeholder-sub4'), ['correo_ventas.PNG', 'daily_sales_report.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-5'), document.getElementById('placeholder-sub5'), ['correo_automatico.PNG', 'dashboard_email.png']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-6'), document.getElementById('placeholder-sub6'), ['alerta_stock.png', 'stock_alert.jpg']);
         
-        let intentoActual = 0;
+        // Proyecto 3 - Optimización
+        mostrarImagenSiExiste(document.getElementById('sub-foto-7'), document.getElementById('placeholder-sub7'), ['optimizacion_ventas.png', 'columnstore_performance.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-8'), document.getElementById('placeholder-sub8'), ['mantenimiento_indices.png', 'rebuild_index.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-9'), document.getElementById('placeholder-sub9'), ['particionamiento.png', 'table_partition.jpg']);
         
-        function intentarCargarImagenPorDefecto() {
-            if (intentoActual >= rutasSugeridas.length) {
-                placeholder.style.display = 'flex';
-                imgElement.style.display = 'none';
-                return;
-            }
-            
-            const ruta = rutasSugeridas[intentoActual];
-            const testImg = new Image();
-            testImg.onload = function() {
-                imgElement.src = ruta;
-                imgElement.style.display = 'block';
-                placeholder.style.display = 'none';
-            };
-            testImg.onerror = function() {
-                intentoActual++;
-                intentarCargarImagenPorDefecto();
-            };
-            testImg.src = ruta;
-        }
-        
-        if (rutasSugeridas.length > 0) {
-            intentarCargarImagenPorDefecto();
-        } else {
-            placeholder.style.display = 'flex';
-            imgElement.style.display = 'none';
-        }
-        
-        const subirImagen = (event) => {
-            event.stopPropagation();
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/jpeg, image/png, image/gif, image/webp';
-            input.onchange = (e) => {
-                const file = e.target.files[0];
-                if (file && file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = (loadEvent) => {
-                        imgElement.src = loadEvent.target.result;
-                        imgElement.style.display = 'block';
-                        placeholder.style.display = 'none';
-                        wrapper.style.boxShadow = '0 0 0 2px #cc2929';
-                        setTimeout(() => { wrapper.style.boxShadow = ''; }, 400);
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    alert("Selecciona una imagen válida (PNG, JPG, GIF)");
-                }
-            };
-            input.click();
-        };
-        
-        wrapper.addEventListener('click', subirImagen);
-        if (placeholder) placeholder.addEventListener('click', subirImagen);
-        
-        imgElement.onerror = () => {
-            imgElement.style.display = 'none';
-            placeholder.style.display = 'flex';
-        };
+        // Proyecto 4 - CRM
+        mostrarImagenSiExiste(document.getElementById('foto-perfil-4'), document.getElementById('placeholder-foto-4'), ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG']);
     }
     
+    // Funciones para expandir/colapsar proyectos
     function setupProyecto(cuadroId, tarjetaId) {
         const cuadro = document.getElementById(cuadroId);
         const tarjeta = document.getElementById(tarjetaId);
@@ -860,6 +793,7 @@
         
         cuadro.addEventListener('click', function(e) {
             e.stopPropagation();
+            // Cerrar otras tarjetas abiertas
             document.querySelectorAll('.foto-card').forEach(card => {
                 if (card.id !== tarjetaId && card.classList.contains('visible')) {
                     card.classList.remove('visible');
@@ -904,29 +838,11 @@
     }
     
     document.addEventListener('DOMContentLoaded', function() {
-        // Configurar imágenes de subproyectos para ETL (ids wrapper-sub1, sub2, sub3)
-        configurarCargaImagenSub('wrapper-sub1', 'sub-foto-1', 'placeholder-sub1', ['migracion_legacy.png', 'etl_migracion.jpg']);
-        configurarCargaImagenSub('wrapper-sub2', 'sub-foto-2', 'placeholder-sub2', ['ventas_multicanal.png', 'integracion_crm.jpg']);
-        configurarCargaImagenSub('wrapper-sub3', 'sub-foto-3', 'placeholder-sub3', ['etl_archivos_planos.png', 'carga_excel.jpg']);
-        
-        // Configurar imágenes de subproyectos para Reportes por Email (ids wrapper-sub4, sub5, sub6)
-        configurarCargaImagenSub('wrapper-sub4', 'sub-foto-4', 'placeholder-sub4', ['correo_ventas.PNG', 'daily_sales_report.jpg']);
-        configurarCargaImagenSub('wrapper-sub5', 'sub-foto-5', 'placeholder-sub5', ['correo_automatico.PNG', 'dashboard_email.png']);
-        configurarCargaImagenSub('wrapper-sub6', 'sub-foto-6', 'placeholder-sub6', ['alerta_stock.png', 'stock_alert.jpg']);
-        
-        // Configurar imágenes de subproyectos para Optimización (ids wrapper-sub7, sub8, sub9)
-        configurarCargaImagenSub('wrapper-sub7', 'sub-foto-7', 'placeholder-sub7', ['optimizacion_ventas.png', 'columnstore_performance.jpg']);
-        configurarCargaImagenSub('wrapper-sub8', 'sub-foto-8', 'placeholder-sub8', ['mantenimiento_indices.png', 'rebuild_index.jpg']);
-        configurarCargaImagenSub('wrapper-sub9', 'sub-foto-9', 'placeholder-sub9', ['particionamiento.png', 'table_partition.jpg']);
-        
-        // Configurar imagen principal del proyecto CRM
-        configurarCargaImagen('wrapper-proyecto-4', 'foto-perfil-4', 'placeholder-foto-4', ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG']);
-        
+        configurarImagenes();
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
         setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
         setupProyecto('cuadro-proyecto-4', 'tarjeta-proyecto-4');
-        
         configurarBotonesCerrar();
     });
 </script>
