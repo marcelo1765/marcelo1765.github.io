@@ -259,7 +259,7 @@
             align-items: center;
             min-height: 200px;
             border: 1px solid #c0d4e8;
-            /* Eliminamos el cursor pointer porque ya no es clickeable */
+            cursor: pointer;
         }
 
         .sub-foto {
@@ -271,6 +271,7 @@
             border-radius: 12px;
             display: block;
             margin: 0 auto;
+            cursor: pointer;
         }
 
         .sub-placeholder {
@@ -285,6 +286,7 @@
             gap: 0.8rem;
             padding: 1.5rem;
             color: #4a7c9e;
+            cursor: default;
         }
 
         .sub-features {
@@ -381,6 +383,7 @@
             align-items: center;
             min-height: 200px;
             border: 1px solid #c0d4e8;
+            cursor: pointer;
         }
         .foto-perfil {
             max-width: 100%;
@@ -391,6 +394,7 @@
             border-radius: 12px;
             display: block;
             margin: 0 auto;
+            cursor: pointer;
         }
         .image-placeholder {
             width: 100%;
@@ -404,6 +408,43 @@
             gap: 0.8rem;
             padding: 1.5rem;
             color: #4a7c9e;
+            cursor: default;
+        }
+
+        /* MODAL PARA IMAGEN GRANDE */
+        .modal-img {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content-img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .modal-cerrar {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .modal-cerrar:hover {
+            color: #bbb;
         }
 
         footer {
@@ -483,7 +524,7 @@
         <div class="subproyecto">
             <h4><i class="fas fa-database"></i> Ejemplo 1: Migración Legacy → Data Warehouse</h4>
             <div class="sub-etiquetas">Migración · Transformación · Limpieza</div>
-            <div id="wrapper-sub1" class="sub-image-wrapper">
+            <div id="wrapper-sub1" class="sub-image-wrapper" data-img-id="sub-foto-1">
                 <img id="sub-foto-1" src="" alt="Migración Legacy System" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub1" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-database"></i></div>
@@ -504,7 +545,7 @@
         <div class="subproyecto">
             <h4><i class="fas fa-chart-pie"></i> Ejemplo 2: Integración de Ventas Multicanal</h4>
             <div class="sub-etiquetas">CRM · ERP · Consolidación</div>
-            <div id="wrapper-sub2" class="sub-image-wrapper">
+            <div id="wrapper-sub2" class="sub-image-wrapper" data-img-id="sub-foto-2">
                 <img id="sub-foto-2" src="" alt="Integración Multicanal" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub2" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-chart-line"></i></div>
@@ -525,7 +566,7 @@
         <div class="subproyecto">
             <h4><i class="fas fa-file-csv"></i> Ejemplo 3: ETL desde Archivos Planos a Base de Datos</h4>
             <div class="sub-etiquetas">Excel · CSV · Automatización · Validación</div>
-            <div id="wrapper-sub3" class="sub-image-wrapper">
+            <div id="wrapper-sub3" class="sub-image-wrapper" data-img-id="sub-foto-3">
                 <img id="sub-foto-3" src="" alt="ETL Archivos Planos" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub3" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-file-excel"></i></div>
@@ -562,7 +603,7 @@
         <div class="subproyecto">
             <h4><i class="fas fa-chart-line"></i> Ejemplo 1: Reporte Diario de Ventas</h4>
             <div class="sub-etiquetas">Envío diario · KPIs</div>
-            <div id="wrapper-sub4" class="sub-image-wrapper">
+            <div id="wrapper-sub4" class="sub-image-wrapper" data-img-id="sub-foto-4">
                 <img id="sub-foto-4" src="" alt="Reporte Diario Ventas" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub4" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-chart-simple"></i></div>
@@ -581,7 +622,7 @@
         <div class="subproyecto">
             <h4><i class="fas fa-envelope-open-text"></i> Ejemplo 2: Dashboard de Ventas por Email</h4>
             <div class="sub-etiquetas">KPI · Automatización</div>
-            <div id="wrapper-sub5" class="sub-image-wrapper">
+            <div id="wrapper-sub5" class="sub-image-wrapper" data-img-id="sub-foto-5">
                 <img id="sub-foto-5" src="" alt="Dashboard Ventas Email" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub5" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-chart-pie"></i></div>
@@ -598,7 +639,7 @@
         <div class="subproyecto">
             <h4><i class="fas fa-exclamation-triangle"></i> Ejemplo 3: Alerta de Stock Mínimo</h4>
             <div class="sub-etiquetas">Alertas · Thresholds · Automatización</div>
-            <div id="wrapper-sub6" class="sub-image-wrapper">
+            <div id="wrapper-sub6" class="sub-image-wrapper" data-img-id="sub-foto-6">
                 <img id="sub-foto-6" src="" alt="Alerta Stock Mínimo" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub6" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-boxes"></i></div>
@@ -635,7 +676,7 @@
         <div class="subproyecto">
             <h4><i class="fas fa-chart-line"></i> Ejemplo 1: Optimización de Reporte de Ventas</h4>
             <div class="sub-etiquetas">Índices Columnstore · Batch Mode</div>
-            <div id="wrapper-sub7" class="sub-image-wrapper">
+            <div id="wrapper-sub7" class="sub-image-wrapper" data-img-id="sub-foto-7">
                 <img id="sub-foto-7" src="" alt="Optimización Reporte Ventas" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub7" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-gauge-high"></i></div>
@@ -654,7 +695,7 @@
         <div class="subproyecto">
             <h4><i class="fas fa-tachometer-alt"></i> Ejemplo 2: Mantenimiento de Índices</h4>
             <div class="sub-etiquetas">Rebuild · Reorganize · Statistics</div>
-            <div id="wrapper-sub8" class="sub-image-wrapper">
+            <div id="wrapper-sub8" class="sub-image-wrapper" data-img-id="sub-foto-8">
                 <img id="sub-foto-8" src="" alt="Mantenimiento Índices" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub8" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-wrench"></i></div>
@@ -673,7 +714,7 @@
         <div class="subproyecto">
             <h4><i class="fas fa-database"></i> Ejemplo 3: Particionamiento de Tabla Histórica</h4>
             <div class="sub-etiquetas">Table Partitioning · Sliding Window</div>
-            <div id="wrapper-sub9" class="sub-image-wrapper">
+            <div id="wrapper-sub9" class="sub-image-wrapper" data-img-id="sub-foto-9">
                 <img id="sub-foto-9" src="" alt="Particionamiento Tabla" class="sub-foto" style="display: none;">
                 <div id="placeholder-sub9" class="sub-placeholder">
                     <div class="placeholder-icon"><i class="fas fa-table"></i></div>
@@ -701,7 +742,7 @@
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-4">
-        <div id="wrapper-proyecto-4" class="image-wrapper">
+        <div id="wrapper-proyecto-4" class="image-wrapper" data-img-id="foto-perfil-4">
             <img id="foto-perfil-4" src="" alt="Modelado CRM" class="foto-perfil" style="display: none;">
             <div id="placeholder-foto-4" class="image-placeholder">
                 <div class="placeholder-icon"><i class="fas fa-project-diagram"></i></div>
@@ -730,7 +771,24 @@
     </footer>
 </div>
 
+<!-- MODAL PARA IMAGEN GRANDE -->
+<div id="imageModal" class="modal-img" onclick="cerrarModal()">
+    <span class="modal-cerrar" onclick="cerrarModal()">&times;</span>
+    <img class="modal-content-img" id="modalImage">
+</div>
+
 <script>
+    // Modal functions
+    function abrirModal(src) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        modal.style.display = 'flex';
+        modalImg.src = src;
+    }
+    function cerrarModal() {
+        document.getElementById('imageModal').style.display = 'none';
+    }
+
     // Función para mostrar imagen si existe localmente, de lo contrario mostrar placeholder
     function mostrarImagenSiExiste(imgElement, placeholderElement, rutasSugeridas) {
         if (!imgElement || !placeholderElement) return;
@@ -739,7 +797,6 @@
         
         function intentarCargar() {
             if (intentoActual >= rutasSugeridas.length) {
-                // No se encontró ninguna imagen, mostrar placeholder
                 imgElement.style.display = 'none';
                 placeholderElement.style.display = 'flex';
                 return;
@@ -751,6 +808,11 @@
                 imgElement.src = ruta;
                 imgElement.style.display = 'block';
                 placeholderElement.style.display = 'none';
+                // Agregar evento de clic a la imagen recién cargada
+                imgElement.onclick = function(e) {
+                    e.stopPropagation();
+                    abrirModal(ruta);
+                };
             };
             testImg.onerror = function() {
                 intentoActual++;
@@ -760,6 +822,35 @@
         }
         
         intentarCargar();
+    }
+    
+    // Configurar los wrappers para que al hacer clic en el área del wrapper también abran la imagen si existe
+    function configurarWrapperClick(wrapperId, imgId, rutasSugeridas) {
+        const wrapper = document.getElementById(wrapperId);
+        if (!wrapper) return;
+        
+        // Esperar a que la imagen se cargue y luego asignar evento al wrapper
+        const imgElement = document.getElementById(imgId);
+        if (imgElement) {
+            // Función para obtener la ruta final de la imagen después de cargar
+            const obtenerRutaFinal = setInterval(() => {
+                if (imgElement.style.display === 'block' && imgElement.src) {
+                    clearInterval(obtenerRutaFinal);
+                    wrapper.onclick = function(e) {
+                        e.stopPropagation();
+                        if (imgElement.src) {
+                            abrirModal(imgElement.src);
+                        }
+                    };
+                } else {
+                    // Si no hay imagen, no hacer nada en el wrapper
+                    const placeholder = wrapper.querySelector('.sub-placeholder, .image-placeholder');
+                    if (placeholder && placeholder.style.display !== 'none') {
+                        wrapper.onclick = null;
+                    }
+                }
+            }, 100);
+        }
     }
     
     // Configurar las imágenes de todos los proyectos
@@ -781,6 +872,20 @@
         
         // Proyecto 4 - CRM
         mostrarImagenSiExiste(document.getElementById('foto-perfil-4'), document.getElementById('placeholder-foto-4'), ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG']);
+        
+        // Configurar clicks en los wrappers después de cargar las imágenes
+        setTimeout(() => {
+            configurarWrapperClick('wrapper-sub1', 'sub-foto-1');
+            configurarWrapperClick('wrapper-sub2', 'sub-foto-2');
+            configurarWrapperClick('wrapper-sub3', 'sub-foto-3');
+            configurarWrapperClick('wrapper-sub4', 'sub-foto-4');
+            configurarWrapperClick('wrapper-sub5', 'sub-foto-5');
+            configurarWrapperClick('wrapper-sub6', 'sub-foto-6');
+            configurarWrapperClick('wrapper-sub7', 'sub-foto-7');
+            configurarWrapperClick('wrapper-sub8', 'sub-foto-8');
+            configurarWrapperClick('wrapper-sub9', 'sub-foto-9');
+            configurarWrapperClick('wrapper-proyecto-4', 'foto-perfil-4');
+        }, 500);
     }
     
     // Funciones para expandir/colapsar proyectos
@@ -793,7 +898,6 @@
         
         cuadro.addEventListener('click', function(e) {
             e.stopPropagation();
-            // Cerrar otras tarjetas abiertas
             document.querySelectorAll('.foto-card').forEach(card => {
                 if (card.id !== tarjetaId && card.classList.contains('visible')) {
                     card.classList.remove('visible');
