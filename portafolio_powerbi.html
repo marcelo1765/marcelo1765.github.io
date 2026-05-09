@@ -609,10 +609,13 @@
     
     // Configurar las imágenes de todos los proyectos
     function configurarImagenes() {
+        // Proyecto 1 - Dashboard de Ventas - AHORA con dashboard_flota.png como primera opción
         mostrarImagenSiExiste(document.getElementById('foto-perfil-1'), document.getElementById('placeholder-foto-1'), 
-            ['dashboard_ventas.png', 'ventas_dashboard.jpg', 'powerbi_ventas.PNG']);
+            ['dashboard_flota.png', 'dashboard_ventas.png', 'ventas_dashboard.jpg', 'powerbi_ventas.PNG']);
+        
         mostrarImagenSiExiste(document.getElementById('foto-perfil-2'), document.getElementById('placeholder-foto-2'), 
             ['gestion_comercial.png', 'comercial_dashboard.jpg', 'powerbi_comercial.PNG']);
+        
         mostrarImagenSiExiste(document.getElementById('foto-perfil-3'), document.getElementById('placeholder-foto-3'), 
             ['rfm_clientes.png', 'segmentacion_clientes.jpg', 'powerbi_rfm.PNG']);
         
