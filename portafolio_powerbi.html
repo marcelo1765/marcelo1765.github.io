@@ -431,26 +431,29 @@
 
     <div class="foto-card" id="tarjeta-proyecto-1">
         <div id="wrapper-proyecto-1" class="image-wrapper" data-img-id="foto-perfil-1">
-            <!-- Ruta corregida: sin espacio y usando nombre consistente -->
-            <img id="foto-perfil-1" src="dashboard_flota.png" alt="Dashboard Ventas Power BI" class="foto-perfil" 
-                 onerror="this.style.display='none'; document.getElementById('placeholder-foto-1').style.display='flex';">
+            <!-- Ruta corregida para el archivo dashboard_flota.png -->
+            <img id="foto-perfil-1" src="dashboard_flota.png" alt="Dashboard de Ventas Power BI - Marcelo Calderón" class="foto-perfil" 
+                 onerror="this.onerror=null; this.style.display='none'; document.getElementById('placeholder-foto-1').style.display='flex';">
             <div id="placeholder-foto-1" class="image-placeholder" style="display: none;">
                 <div class="placeholder-icon"><i class="fas fa-chart-pie"></i></div>
-                <div class="placeholder-text">Vista previa: Dashboard de Ventas (Power BI)</div>
+                <div class="placeholder-text">Vista previa: Dashboard de Ventas y Rentabilidad (Power BI)</div>
                 <div style="font-size:0.7rem; margin-top:8px;">📁 Archivo: dashboard_flota.png</div>
+                <div style="font-size:0.7rem; margin-top:4px;">💡 Sugerencia: Verifica que el archivo 'dashboard_flota.png' esté en la misma carpeta que este HTML</div>
             </div>
         </div>
         <div class="descripcion">
-            <p><strong>📊 POWER BI | DASHBOARD INTERACTIVO | ANÁLISIS DE VENTAS</strong></p>
+            <p><strong>📊 POWER BI | DASHBOARD INTERACTIVO | ANÁLISIS DE VENTAS Y FLOTA</strong></p>
             <div class="desc-text">
-                <p>Dashboard completo que muestra evolución de ventas, rentabilidad por producto y análisis de segmentos de clientes. Incluye filtros dinámicos y drill-through para exploración detallada.</p>
+                <p>Dashboard integral que combina el análisis de rendimiento de ventas con métricas clave de la flota operativa. Ofrece una visión 360° para la toma de decisiones estratégicas.</p>
+                <p>Incluye indicadores de eficiencia operativa, rentabilidad por unidad, y costos asociados, integrando datos financieros y operacionales en tiempo real.</p>
             </div>
             <ul class="features-list">
-                <li>Métricas clave: Ingresos, Margen, Ticket promedio</li>
-                <li>Gráficos de tendencia y comparativa anual</li>
-                <li>Segmentación por categoría, región y vendedor</li>
-                <li>Medidas DAX optimizadas para rendimiento</li>
-                <li>Actualización automática desde SQL Server</li>
+                <li>Métricas duales: Ingresos/Margen + Eficiencia de flota</li>
+                <li>Gráficos de tendencia mensual y comparativa anual</li>
+                <li>Segmentación por categoría de vehículo, región y tipo de operación</li>
+                <li>Medidas DAX optimizadas para cálculos de rentabilidad por unidad</li>
+                <li>Actualización automática desde SQL Server y fuentes operativas</li>
+                <li>KPIs de mantenimiento y disponibilidad de flota</li>
             </ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
@@ -467,30 +470,26 @@
 
     <div class="foto-card" id="tarjeta-proyecto-2">
         <div id="wrapper-proyecto-2" class="image-wrapper" data-img-id="foto-perfil-2">
-            <img id="foto-perfil-2" src="" alt="Tablero Gestión Comercial" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-2" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-chart-line"></i></div>
-                <div class="placeholder-text">Ejemplo de Tablero de Gestión Comercial</div>
-                <div style="font-size:0.7rem; margin-top:8px;">🖼️ (Demo - Vista previa no disponible)</div>
-            </div>
+            <img id="foto-perfil-2" src="https://placehold.co/800x400/eef3fc/2c6e9e?text=Dashboard+Comercial+-+Power+BI" alt="Tablero Gestión Comercial Power BI" class="foto-perfil">
         </div>
         <div class="descripcion">
-            <p><strong>📈 POWER BI | MÉTRICAS COMERCIALES | RENDIMIENTO</strong></p>
+            <p><strong>📈 POWER BI | MÉTRICAS COMERCIALES | RENDIMIENTO DE EQUIPO</strong></p>
             <div class="desc-text">
                 <p>Tablero diseñado para el seguimiento de objetivos comerciales, con indicadores de conversión, pipeline de ventas y rendimiento del equipo. Actualización diaria mediante gateway.</p>
             </div>
             <ul class="features-list">
-                <li>Medidores de cumplimiento de cuota</li>
-                <li>Análisis de funnel de ventas (oportunidades)</li>
-                <li>Ranking de vendedores por desempeño</li>
-                <li>Alertas condicionales por semáforo</li>
-                <li>Exportación a PDF y PowerPoint</li>
+                <li>Medidores de cumplimiento de cuota por vendedor y región</li>
+                <li>Análisis de funnel de ventas (oportunidades por etapa)</li>
+                <li>Ranking de vendedores por desempeño y métricas de cierre</li>
+                <li>Alertas condicionales por semáforo (KPIs críticos)</li>
+                <li>Exportación a PDF y PowerPoint para juntas ejecutivas</li>
+                <li>Integración con CRM y proyección de ingresos</li>
             </ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 3: Análisis de Clientes -->
+    <!-- PROYECTO 3: Análisis de Clientes RFM -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-3">
         <h3>
             <i class="fas fa-users"></i> Segmentación y RFM de Clientes
@@ -501,31 +500,58 @@
 
     <div class="foto-card" id="tarjeta-proyecto-3">
         <div id="wrapper-proyecto-3" class="image-wrapper" data-img-id="foto-perfil-3">
-            <img id="foto-perfil-3" src="" alt="Segmentación RFM Clientes" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-3" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-users"></i></div>
-                <div class="placeholder-text">Ejemplo de Segmentación RFM de Clientes</div>
-                <div style="font-size:0.7rem; margin-top:8px;">📊 (Demo interactiva en Power BI Service)</div>
-            </div>
+            <img id="foto-perfil-3" src="https://placehold.co/800x400/eef3fc/2c6e9e?text=Analisis+RFM+Clientes+-+Power+BI" alt="Segmentación RFM Clientes Power BI" class="foto-perfil">
         </div>
         <div class="descripcion">
-            <p><strong>👥 POWER BI | MODELO RFM | SEGMENTACIÓN DE CLIENTES</strong></p>
+            <p><strong>👥 POWER BI | MODELO RFM | SEGMENTACIÓN DE CLIENTES ESTRATÉGICA</strong></p>
             <div class="desc-text">
-                <p>Análisis de comportamiento de clientes utilizando metodología RFM (Recencia, Frecuencia, Monto). Segmentación automática para campañas personalizadas.</p>
+                <p>Análisis avanzado de comportamiento de clientes utilizando la metodología RFM (Recencia, Frecuencia, Monto). Segmentación automática para campañas personalizadas y retención estratégica.</p>
             </div>
             <ul class="features-list">
-                <li>Cálculo automático de puntaje RFM</li>
-                <li>Matriz de segmentación (Campeones, Leales, Nuevos, etc.)</li>
-                <li>Gráficos de cohortes de retención</li>
-                <li>Recomendaciones de acción por segmento</li>
-                <li>Integración con CRM vía API</li>
+                <li>Cálculo automático de puntaje RFM por cliente (escala 1-5)</li>
+                <li>Matriz de segmentación visual (Campeones, Leales, Nuevos, En Riesgo, etc.)</li>
+                <li>Gráficos de cohortes de retención y análisis de生命周期</li>
+                <li>Recomendaciones de acción específicas por segmento de cliente</li>
+                <li>Integración con CRM vía API para actualización diaria</li>
+                <li>Métricas de valor de vida del cliente (CLV) proyectado</li>
             </ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-3">✖ Cerrar</div>
     </div>
 
+    <!-- PROYECTO 4: (Extra) Análisis de Logística y Cadena de Suministro -->
+    <div class="proyecto-cuadro" id="cuadro-proyecto-4">
+        <h3>
+            <i class="fas fa-truck"></i> Control Logístico y SCM
+            <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
+        </h3>
+        <div class="etiquetas">Power BI · Logística · SCM · Operaciones</div>
+    </div>
+
+    <div class="foto-card" id="tarjeta-proyecto-4">
+        <div id="wrapper-proyecto-4" class="image-wrapper" data-img-id="foto-perfil-4">
+            <img id="foto-perfil-4" src="https://placehold.co/800x400/eef3fc/2c6e9e?text=Panel+Logistico+SCM+-+Power+BI" alt="Dashboard Logístico Power BI" class="foto-perfil">
+        </div>
+        <div class="descripcion">
+            <p><strong>🚚 POWER BI | LOGÍSTICA Y CADENA DE SUMINISTRO | EFICIENCIA OPERATIVA</strong></p>
+            <div class="desc-text">
+                <p>Dashboard especializado en el seguimiento de la cadena de suministro, tiempos de entrega, costos logísticos y rendimiento de proveedores. Ideal para la optimización de rutas y reducción de costos.</p>
+            </div>
+            <ul class="features-list">
+                <li>Métricas OTIF (On Time In Full) y cumplimiento de entregas</li>
+                <li>Análisis de costos logísticos por ruta y transportista</li>
+                <li>Mapas de calor con incidencias por zona geográfica</li>
+                <li>KPIs de rotación de inventario y niveles de stock</li>
+                <li>Alertas de desviaciones en SLA con proveedores</li>
+                <li>Integración con WMS y TMS para datos en tiempo real</li>
+            </ul>
+        </div>
+        <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-4">✖ Cerrar</div>
+    </div>
+
     <footer>
         <i class="far fa-copyright"></i> 2026 Marcelo Ricardo Gil Grados Calderón — Especialista en Power BI & Business Intelligence
+        <br><small>Todos los dashboards y visualizaciones son propiedad intelectual del autor. Prohibida su reproducción sin autorización.</small>
     </footer>
 </div>
 
@@ -536,57 +562,59 @@
 </div>
 
 <script>
-    // Funciones para el modal de imagen grande
+    // Función mejorada para abrir el modal con la imagen
     function abrirModal(src) {
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
-        if (src && src !== '') {
+        if (src && src !== '' && src !== '#') {
             modal.style.display = 'flex';
             modalImg.src = src;
         }
     }
+    
     function cerrarModal() {
         document.getElementById('imageModal').style.display = 'none';
     }
 
-    // Configurar eventos de clic para imágenes reales (solo si existen y tienen src)
-    function configurarEventosImagen() {
-        // Proyecto 1: Verificar si la imagen cargó correctamente
-        const img1 = document.getElementById('foto-perfil-1');
-        const wrapper1 = document.getElementById('wrapper-proyecto-1');
+    // Configurar eventos de clic para TODAS las imágenes del proyecto (incluyendo las nuevas)
+    function configurarEventosImagenes() {
+        // Seleccionar todos los wrappers de imagen
+        const wrappers = document.querySelectorAll('.image-wrapper');
         
-        // Si la imagen tiene una URL válida y no está oculta por error
-        if (img1 && img1.src && img1.src !== '' && img1.style.display !== 'none') {
-            img1.onclick = function(e) {
-                e.stopPropagation();
-                abrirModal(img1.src);
-            };
-            if (wrapper1) {
-                wrapper1.onclick = function(e) {
+        wrappers.forEach(wrapper => {
+            // Buscar la imagen dentro del wrapper actual
+            const img = wrapper.querySelector('img');
+            if (img && img.src && img.src !== '' && img.src !== '#') {
+                // Remover eventos antiguos para evitar duplicados
+                const newImg = img.cloneNode(true);
+                img.parentNode.replaceChild(newImg, img);
+                
+                // Agregar evento click a la nueva imagen
+                newImg.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    if (img1.src && img1.style.display !== 'none') abrirModal(img1.src);
-                };
+                    if (this.src && !this.src.includes('placehold.co')) {
+                        abrirModal(this.src);
+                    } else if (this.src && this.src.includes('placehold.co')) {
+                        // Mostrar mensaje amigable si es placeholder
+                        alert('Esta es una imagen de demostración. Para ver el dashboard real, asegúrate de tener la imagen "dashboard_flota.png" en la misma carpeta.');
+                    }
+                });
+                
+                // También hacer click en el wrapper para abrir la imagen
+                wrapper.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const currentImg = this.querySelector('img');
+                    if (currentImg && currentImg.src && !currentImg.src.includes('placehold.co')) {
+                        abrirModal(currentImg.src);
+                    } else if (currentImg && currentImg.src.includes('placehold.co')) {
+                        alert('Esta es una imagen de demostración. Sube tus dashboards reales para una experiencia completa.');
+                    }
+                });
             }
-        }
-        
-        // Proyecto 2 (placeholder, no hay imagen real)
-        const img2 = document.getElementById('foto-perfil-2');
-        const wrapper2 = document.getElementById('wrapper-proyecto-2');
-        if (img2 && img2.src && img2.src !== '' && img2.style.display !== 'none') {
-            img2.onclick = function(e) { e.stopPropagation(); abrirModal(img2.src); };
-            if (wrapper2) wrapper2.onclick = function(e) { e.stopPropagation(); if (img2.src) abrirModal(img2.src); };
-        }
-        
-        // Proyecto 3
-        const img3 = document.getElementById('foto-perfil-3');
-        const wrapper3 = document.getElementById('wrapper-proyecto-3');
-        if (img3 && img3.src && img3.src !== '' && img3.style.display !== 'none') {
-            img3.onclick = function(e) { e.stopPropagation(); abrirModal(img3.src); };
-            if (wrapper3) wrapper3.onclick = function(e) { e.stopPropagation(); if (img3.src) abrirModal(img3.src); };
-        }
+        });
     }
     
-    // Funciones para expandir/colapsar proyectos
+    // Funciones para expandir/colapsar proyectos con mejor manejo
     function setupProyecto(cuadroId, tarjetaId) {
         const cuadro = document.getElementById(cuadroId);
         const tarjeta = document.getElementById(tarjetaId);
@@ -613,7 +641,8 @@
             if (!wasVisible) {
                 tarjeta.classList.add('visible');
                 if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-chevron-up"></i>';
-                setTimeout(() => tarjeta.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+                // Scroll suave hacia la tarjeta
+                setTimeout(() => tarjeta.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
             } else {
                 tarjeta.classList.remove('visible');
                 if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-chevron-down"></i>';
@@ -640,12 +669,26 @@
         });
     }
     
+    // Inicializar todo cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', function() {
+        // Configurar los 4 proyectos
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
         setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
+        setupProyecto('cuadro-proyecto-4', 'tarjeta-proyecto-4');
+        
         configurarBotonesCerrar();
-        configurarEventosImagen();
+        configurarEventosImagenes();
+        
+        // Verificar si la imagen real existe, si no, mostrar mensaje en consola
+        const imgTest = new Image();
+        imgTest.onload = function() {
+            console.log('✅ Dashboard de Ventas cargado correctamente: dashboard_flota.png');
+        };
+        imgTest.onerror = function() {
+            console.warn('⚠️ No se encontró el archivo "dashboard_flota.png". Asegúrate de que esté en la misma carpeta que este archivo HTML.');
+        };
+        imgTest.src = 'dashboard_flota.png';
     });
 </script>
 </body>
