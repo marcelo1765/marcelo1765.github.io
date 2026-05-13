@@ -161,6 +161,7 @@
             color: #1f6392;
         }
 
+        /* PROYECTOS PRINCIPALES (CUADROS) */
         .proyecto-cuadro {
             background: white;
             border-radius: 1.2rem;
@@ -201,6 +202,7 @@
             transition: transform 0.2s;
         }
 
+        /* TARJETA DESPLEGABLE (similar a SQL) */
         .foto-card {
             background: white;
             border-radius: 1.5rem;
@@ -221,41 +223,57 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .image-wrapper {
+        /* SUBPROYECTOS (3 EJEMPLOS DENTRO DE CADA PROYECTO) */
+        .subproyecto {
+            background: #f8fbfe;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e0ecf5;
+        }
+        .subproyecto:last-child {
+            margin-bottom: 0;
+        }
+        .subproyecto h4 {
+            color: #1a73e8;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .sub-etiquetas {
+            font-size: 0.7rem;
+            color: #6e8eae;
+            margin-bottom: 0.8rem;
+        }
+        .sub-image-wrapper {
             width: 100%;
             background: #f5f9fe;
             border-radius: 1rem;
             padding: 1rem;
-            margin-bottom: 1rem;
+            margin: 0.8rem 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            min-height: 260px;
+            min-height: 200px;
             border: 1px solid #c0d4e8;
+            cursor: pointer;
         }
-
-        .image-wrapper:hover {
-            background: #eef4fa;
-            border-color: #8ab3d0;
-        }
-
-        .foto-perfil {
+        .sub-foto {
             max-width: 100%;
             width: auto;
             height: auto;
-            max-height: 400px;
+            max-height: 260px;
             object-fit: contain;
             border-radius: 12px;
             display: block;
             margin: 0 auto;
             cursor: pointer;
         }
-
-        .image-placeholder {
+        .sub-placeholder {
             width: 100%;
-            min-height: 240px;
+            min-height: 180px;
             background: linear-gradient(135deg, #e8f0f7 0%, #dce8f0 100%);
             border-radius: 1rem;
             display: flex;
@@ -263,47 +281,25 @@
             justify-content: center;
             flex-direction: column;
             gap: 0.8rem;
-            padding: 2rem;
+            padding: 1.5rem;
             color: #4a7c9e;
             cursor: default;
         }
-
-        .descripcion {
-            margin-top: 1rem;
-            padding: 1.2rem;
-            background: #f8fbfe;
-            border-radius: 1rem;
-            text-align: center;
-        }
-
-        .descripcion p {
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #2a5a7a;
-        }
-
-        .descripcion strong {
-            color: #1a6f96;
-        }
-
-        .features-list {
+        .sub-features {
             list-style: none;
             padding: 0;
-            margin: 1rem 0 0 0;
+            margin: 0.8rem 0 0 0;
             display: inline-block;
             text-align: left;
         }
-
-        .features-list li {
-            margin: 0.5rem 0;
-            font-size: 0.85rem;
+        .sub-features li {
+            margin: 0.4rem 0;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-
-        .features-list li::before {
+        .sub-features li::before {
             content: "✓";
             color: #2e7d32;
             font-weight: bold;
@@ -322,12 +318,12 @@
             transition: all 0.2s;
             color: #1f5a7e;
         }
-
         .cerrar-tarjeta:hover {
             background: #e2eaf2;
             transform: translateY(-1px);
         }
 
+        /* MODAL IMAGEN */
         .modal-img {
             display: none;
             position: fixed;
@@ -378,14 +374,14 @@
             .title-section { justify-content: center; }
             .hero-text h1 { font-size: 1.4rem; }
             .proyecto-cuadro h3 { font-size: 1.1rem; }
-            .foto-perfil { max-height: 280px; }
-            .image-wrapper { min-height: 200px; }
+            .sub-foto { max-height: 180px; }
         }
     </style>
 </head>
 <body>
 <div class="soft-bg"></div>
 <div class="container">
+    <!-- Header -->
     <div class="hero">
         <div class="title-section">
             <div class="emoji-icon">📊💡</div>
@@ -404,123 +400,231 @@
         </div>
     </div>
 
+    <!-- Card de tecnologías Power BI -->
     <div class="tech-card">
-        <h2><i class="fas fa-chart-line" style="margin-right: 0.5rem; color: #1a73e8;"></i> Especialista en Business Intelligence</h2>
+        <h2><i class="fas fa-chart-line" style="margin-right: 0.5rem; color: #1a73e8;"></i> Business Intelligence & Analytics</h2>
         <p>Dashboards interactivos, modelado de datos, DAX avanzado y KPIs estratégicos para la toma de decisiones.</p>
         <div class="skills-grid">
-            <div class="skill-item">📊 Dashboards</div>
-            <div class="skill-item">📐 DAX</div>
-            <div class="skill-item">🎯 KPIs</div>
-            <div class="skill-item">🔄 Power Query</div>
+            <div class="skill-item">📊 Power BI Desktop</div>
+            <div class="skill-item">📐 DAX Avanzado</div>
+            <div class="skill-item">🎯 KPIs Estratégicos</div>
+            <div class="skill-item">🔄 Power Query M</div>
             <div class="skill-item">📈 Visualizaciones</div>
-            <div class="skill-item">🔗 Web Service</div>
+            <div class="skill-item">🔗 Servicios / Embed</div>
         </div>
     </div>
 
-    <!-- PROYECTO 1: Dashboard Ventas - Cambiado a icono de ventas/carrito -->
+    <!-- ================= PROYECTO 1: DASHBOARD DE VENTAS ================= -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-1">
         <h3>
-            <i class="fas fa-chart-pie"></i> Dashboard Ventas
+            <i class="fas fa-chart-pie"></i> Dashboard de Ventas
             <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
         </h3>
-        <div class="etiquetas">Power BI · DAX · KPIs ·</div>
+        <div class="etiquetas">Power BI · DAX · KPIs Comerciales · Forecast</div>
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-1">
-        <div id="wrapper-proyecto-1" class="image-wrapper" data-img-id="foto-perfil-1">
-            <img id="foto-perfil-1" src="foto_dashboard_flota.png" alt="Dashboard Ventas - Power BI" class="foto-perfil" 
-                 onerror="this.style.display='none'; document.getElementById('placeholder-foto-1').style.display='flex';">
-            <div id="placeholder-foto-1" class="image-placeholder" style="display: none;">
-                <div class="placeholder-icon"><i class="fas fa-chart-pie"></i></div>
-                <div class="placeholder-text">Vista previa: Dashboard Ventas (Análisis Comercial) - Power BI</div>
-                <div style="font-size:0.7rem; margin-top:8px;">📁 Archivo: dashboard_flota.png</div>
-            </div>
+        <div class="descripcion" style="margin-bottom: 1rem;">
+            <p><strong>📊 POWER BI | DASHBOARD COMERCIAL | ANÁLISIS DE VENTAS</strong></p>
+            <p>Soluciones de inteligencia de negocio para el área comercial: seguimiento de objetivos, rentabilidad y forecast de ventas.</p>
         </div>
-        <div class="descripcion">
-            <p><strong>⚙️ POWER BI | DASHBOARD DE VENTAS | ANÁLISIS COMERCIAL</strong></p>
-            <div class="desc-text">
-                <p>Panel interactivo diseñado para gestionar y optimizar el rendimiento de ventas.
-                   Permite visualizar indicadores clave de facturación y rentabilidad, 
-                   con filtros dinámicos por vendedor, producto y región.</p>
+        <!-- EJEMPLO 1.1 -->
+        <div class="subproyecto">
+            <h4><i class="fas fa-chart-line"></i> Ejemplo 1: Análisis de Rentabilidad por Canal</h4>
+            <div class="sub-etiquetas">Margen · ROI · Eficiencia comercial</div>
+            <div id="wrapper-sub1" class="sub-image-wrapper" data-img-id="sub-foto-1">
+                <img id="sub-foto-1" src="" alt="Dashboard Rentabilidad" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub1" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="placeholder-text">Ejemplo: Análisis de Rentabilidad por Canal (Power BI)</div>
+                </div>
             </div>
-            <ul class="features-list">
-                <li>Métricas principales: Ingresos totales, margen de beneficio, conversión de leads, tickets promedio por cliente</li>
-                <li>Gráficos de evolución de ventas (YoY, MoM) y ranking de productos más vendidos</li>
-                <li>Segmentación por categoría de producto y canal de venta (online/offline)</li>
-                <li>Tablas de vendedores con mayor facturación y cumplimiento de objetivos</li>
-                <li>Alertas de desviación de cuota de ventas</li>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Panel que desglosa el margen bruto y neto por canal de venta (online, tiendas físicas, distribuidores). Identificación de los canales más rentables y oportunidades de mejora.</p>
+            <ul class="sub-features">
+                <li>Cálculo de ROI por canal con segmentación temporal</li>
+                <li>Gráfico de evolución de margen vs ingresos</li>
+                <li>KPIs: Margen promedio, costo de adquisición, ticket medio</li>
+                <li>Tooltips interactivos con desglose de productos</li>
+            </ul>
+        </div>
+        <!-- EJEMPLO 1.2 -->
+        <div class="subproyecto">
+            <h4><i class="fas fa-chart-simple"></i> Ejemplo 2: Forecast de Ventas con Series Temporales</h4>
+            <div class="sub-etiquetas">Predicción · Estacionalidad · Machine Learning (Power BI)</div>
+            <div id="wrapper-sub2" class="sub-image-wrapper" data-img-id="sub-foto-2">
+                <img id="sub-foto-2" src="" alt="Forecast Ventas" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub2" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-chart-simple"></i></div>
+                    <div class="placeholder-text">Ejemplo: Forecast de Ventas (Power BI)</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Modelo predictivo integrado en Power BI para anticipar ventas a 6 meses utilizando análisis de series temporales con parámetros ajustables.</p>
+            <ul class="sub-features">
+                <li>Función DAX para pronóstico lineal y estacionalidad</li>
+                <li>Gráfico de predicción con bandas de confianza</li>
+                <li>Segmentación por categoría y región</li>
+                <li>Métrica de precisión del modelo (MAPE)</li>
+            </ul>
+        </div>
+        <!-- EJEMPLO 1.3 -->
+        <div class="subproyecto">
+            <h4><i class="fas fa-arrow-trend-up"></i> Ejemplo 3: Ranking de Vendedores y Metas</h4>
+            <div class="sub-etiquetas">Performance · Incentivos · Dashboard Gerencial</div>
+            <div id="wrapper-sub3" class="sub-image-wrapper" data-img-id="sub-foto-3">
+                <img id="sub-foto-3" src="" alt="Ranking Vendedores" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub3" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-arrow-trend-up"></i></div>
+                    <div class="placeholder-text">Ejemplo: Ranking de Vendedores y Metas</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Tablero gerencial que muestra el cumplimiento de cuota individual de los vendedores, ranking de ventas y cálculo de comisiones.</p>
+            <ul class="sub-features">
+                <li>Matriz de cumplimiento vs objetivo mensual/acumulado</li>
+                <li>Gráfico de embudo de conversión por vendedor</li>
+                <li>Alertas condicionales para bajo rendimiento</li>
+                <li>Drill-through a detalle de transacciones</li>
             </ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 2: Dashboard de Operaciones - Cambiado a icono de engranaje/operaciones -->
+    <!-- ================= PROYECTO 2: DASHBOARD DE OPERACIONES ================= -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-2">
         <h3>
             <i class="fas fa-cogs"></i> Dashboard de Operaciones
             <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
         </h3>
-        <div class="etiquetas">Power BI · KPIs Operacionales · Rendimiento · Logística</div>
+        <div class="etiquetas">Power BI · Logística · Flota · Eficiencia Operativa</div>
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-2">
-        <div id="wrapper-proyecto-2" class="image-wrapper" data-img-id="foto-perfil-2">
-            <img id="foto-perfil-2" src="foto_dashboard_flota.png" alt="Dashboard de Operaciones - Power BI" class="foto-perfil" 
-                 onerror="this.style.display='none'; document.getElementById('placeholder-foto-2').style.display='flex';">
-            <div id="placeholder-foto-2" class="image-placeholder" style="display: none;">
-                <div class="placeholder-icon"><i class="fas fa-cogs"></i></div>
-                <div class="placeholder-text">Dashboard de Operaciones - Power BI</div>
-                <div style="font-size:0.7rem; margin-top:8px;">📊 Panel de control operacional</div>
-            </div>
+        <div class="descripcion" style="margin-bottom: 1rem;">
+            <p><strong>⚙️ POWER BI | CONTROL OPERACIONAL | EFICIENCIA DE FLOTA Y LOGÍSTICA</strong></p>
+            <p>Monitoreo de rendimiento de unidades, costos operativos e indicadores de mantenimiento para la toma de decisiones en tiempo real.</p>
         </div>
-        <div class="descripcion">
-            <p><strong>📊 POWER BI | DASHBOARD DE OPERACIONES | ANÁLISIS DE RENDIMIENTO OPERACIONAL</strong></p>
-            <div class="desc-text">
-               <p>Panel interactivo diseñado para gestionar y optimizar el rendimiento de vehículos en operaciones logísticas y de transporte.
-                   Permite visualizar indicadores clave de operación y mantenimiento, 
-                   con filtros dinámicos por conductor, marca y ruta.</p>
+        <div class="subproyecto">
+            <h4><i class="fas fa-tachometer-alt"></i> Ejemplo 1: Rendimiento de Flota de Vehículos</h4>
+            <div class="sub-etiquetas">Consumo · Kilometraje · Multas</div>
+            <div id="wrapper-sub4" class="sub-image-wrapper" data-img-id="sub-foto-4">
+                <img id="sub-foto-4" src="" alt="Rendimiento Flota" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub4" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="placeholder-text">Ejemplo: Rendimiento de Flota</div>
+                </div>
             </div>
-            <ul class="features-list">
-                <li>Métricas principales: Kilómetros recorridos, consumo de combustible, costo por kilómetro, multas y fallas por vehículo</li>
-                <li>Gráficos de tendencia mensual y comparativas de desempeño operacional</li>
-                <li>Segmentación por unidad, ruta y estado de mantenimiento</li>
-                <li>Tablas de vehículos con mayor número de incidencias y horas de inactividad</li>
-                <li>Integración con bases de datos para actualización automática de la flota</li>
-                <li>Alertas de mantenimiento preventivo basadas en kilometraje y tiempo</li>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Panel que integra datos de GPS, consumo de combustible y partes de mantenimiento para optimizar la operación de la flota.</p>
+            <ul class="sub-features">
+                <li>Indicadores: km/litro, costo por km, tiempo de inactividad</li>
+                <li>Mapa de calor de rutas con mayor desgaste</li>
+                <li>Alertas de mantenimiento predictivo por horas motor</li>
+                <li>Comparativa de eficiencia entre conductores</li>
+            </ul>
+        </div>
+        <div class="subproyecto">
+            <h4><i class="fas fa-clock"></i> Ejemplo 2: OEE (Eficiencia Global de Equipos) en Planta</h4>
+            <div class="sub-etiquetas">Disponibilidad · Rendimiento · Calidad</div>
+            <div id="wrapper-sub5" class="sub-image-wrapper" data-img-id="sub-foto-5">
+                <img id="sub-foto-5" src="" alt="OEE Industrial" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub5" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-clock"></i></div>
+                    <div class="placeholder-text">Ejemplo: OEE Industrial</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Dashboard OEE (Overall Equipment Effectiveness) para líneas de producción, identificando pérdidas por paradas, velocidad reducida y defectos.</p>
+            <ul class="sub-features">
+                <li>Cálculo automático de disponibilidad, performance y calidad</li>
+                <li>Gráfico de Pareto de principales causas de parada</li>
+                <li>Tendencia semanal/mensual de OEE</li>
+                <li>Simulación de mejora al reducir tiempos muertos</li>
+            </ul>
+        </div>
+        <div class="subproyecto">
+            <h4><i class="fas fa-boxes"></i> Ejemplo 3: Gestión de Inventarios y Rotación</h4>
+            <div class="sub-etiquetas">Stock · Rotación · Obsolescencia</div>
+            <div id="wrapper-sub6" class="sub-image-wrapper" data-img-id="sub-foto-6">
+                <img id="sub-foto-6" src="" alt="Gestión Inventarios" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub6" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-boxes"></i></div>
+                    <div class="placeholder-text">Ejemplo: Gestión de Inventarios</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Análisis de rotación de inventarios, productos de baja rotación y recomendaciones de compra basadas en lead time y demanda.</p>
+            <ul class="sub-features">
+                <li>Métrica de días de inventario (DSI) por SKU</li>
+                <li>Clasificación ABC de productos según valor de consumo</li>
+                <li>Alertas de stock mínimo / máximo</li>
+                <li>Pronóstico de demanda integrado con histórico de ventas</li>
             </ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-2">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 3: Segmentación y RFM de Clientes - Cambiado a icono de target/segmentación -->
+    <!-- ================= PROYECTO 3: SEGMENTACIÓN RFM DE CLIENTES ================= -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-3">
         <h3>
-            <i class="fas fa-bullseye"></i> Segmentación y RFM de Clientes
+            <i class="fas fa-bullseye"></i> Segmentación RFM de Clientes
             <span class="expand-icon"><i class="fas fa-chevron-down"></i></span>
         </h3>
-        <div class="etiquetas">Power BI · RFM · Segmentación · Cohortes</div>
+        <div class="etiquetas">RFM · Cohortes · Customer Analytics · Power BI</div>
     </div>
 
     <div class="foto-card" id="tarjeta-proyecto-3">
-        <div id="wrapper-proyecto-3" class="image-wrapper" data-img-id="foto-perfil-3">
-            <img id="foto-perfil-3" src="" alt="Segmentación RFM Clientes" class="foto-perfil" style="display: none;">
-            <div id="placeholder-foto-3" class="image-placeholder">
-                <div class="placeholder-icon"><i class="fas fa-bullseye"></i></div>
-                <div class="placeholder-text">Ejemplo de Segmentación RFM de Clientes</div>
-                <div style="font-size:0.7rem; margin-top:8px;">📊 (Demo interactiva en Power BI Service)</div>
-            </div>
+        <div class="descripcion" style="margin-bottom: 1rem;">
+            <p><strong>👥 POWER BI | CUSTOMER ANALYTICS | MODELO RFM Y RETENCIÓN</strong></p>
+            <p>Segmentación avanzada de clientes basada en recencia, frecuencia y monto. Estrategias de fidelización y campañas personalizadas.</p>
         </div>
-        <div class="descripcion">
-            <p><strong>👥 POWER BI | MODELO RFM | SEGMENTACIÓN DE CLIENTES</strong></p>
-            <div class="desc-text">
-                <p>Análisis de comportamiento de clientes utilizando metodología RFM (Recencia, Frecuencia, Monto). Segmentación automática para campañas personalizadas y estrategias de retención.</p>
+        <div class="subproyecto">
+            <h4><i class="fas fa-chart-pie"></i> Ejemplo 1: Matriz RFM y Segmentación de Clientes</h4>
+            <div class="sub-etiquetas">Clústeres · Valor del Cliente · LTV</div>
+            <div id="wrapper-sub7" class="sub-image-wrapper" data-img-id="sub-foto-7">
+                <img id="sub-foto-7" src="" alt="Matriz RFM" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub7" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-chart-pie"></i></div>
+                    <div class="placeholder-text">Ejemplo: Matriz RFM y Segmentación</div>
+                </div>
             </div>
-            <ul class="features-list">
-                <li>Cálculo automático de puntaje RFM con DAX</li>
-                <li>Matriz de segmentación (Campeones, Leales, Nuevos, En riesgo, etc.)</li>
-                <li>Gráficos de cohortes de retención y análisis de abandono</li>
-                <li>Recomendaciones de acción por segmento (cross-selling, reactivación)</li>
-                <li>Integración con CRM vía API para actualización dinámica</li>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Construcción de matriz de 11 segmentos (Campeones, Leales, Potenciales, En riesgo, etc.) a partir de puntajes RFM calculados con DAX.</p>
+            <ul class="sub-features">
+                <li>Cálculo dinámico de percentiles para R,F,M</li>
+                <li>Segmentador de cohortes por antigüedad y categoría</li>
+                <li>Tarjeta resumen con valor LTV por segmento</li>
+                <li>Recomendaciones de acciones comerciales para cada clúster</li>
+            </ul>
+        </div>
+        <div class="subproyecto">
+            <h4><i class="fas fa-chart-line"></i> Ejemplo 2: Análisis de Cohortes de Retención</h4>
+            <div class="sub-etiquetas">Retención · Churn · Customer Lifetime</div>
+            <div id="wrapper-sub8" class="sub-image-wrapper" data-img-id="sub-foto-8">
+                <img id="sub-foto-8" src="" alt="Cohortes Retención" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub8" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="placeholder-text">Ejemplo: Análisis de Cohortes de Retención</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Matriz de cohortes que muestra la tasa de retención de clientes mes a mes, identificando patrones de abandono y estacionalidad.</p>
+            <ul class="sub-features">
+                <li>Cálculo de retención por cohorte de primera compra</li>
+                <li>Gráfico de curvas de retención comparativas</li>
+                <li>Tasa de churn mensual y segmentada</li>
+                <li>Valor de vida del cliente (LTV) proyectado a 12 meses</li>
+            </ul>
+        </div>
+        <div class="subproyecto">
+            <h4><i class="fas fa-chart-simple"></i> Ejemplo 3: Recomendaciones Next Best Action</h4>
+            <div class="sub-etiquetas">Cross-selling · Upselling · Automatización</div>
+            <div id="wrapper-sub9" class="sub-image-wrapper" data-img-id="sub-foto-9">
+                <img id="sub-foto-9" src="" alt="Next Best Action" class="sub-foto" style="display: none;">
+                <div id="placeholder-sub9" class="sub-placeholder">
+                    <div class="placeholder-icon"><i class="fas fa-chart-simple"></i></div>
+                    <div class="placeholder-text">Ejemplo: Next Best Action</div>
+                </div>
+            </div>
+            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Dashboard que sugiere la mejor acción comercial para cada cliente basado en afinidad, historial de compras y reglas de negocio.</p>
+            <ul class="sub-features">
+                <li>Reglas de asociación (productos frecuentemente comprados juntos)</li>
+                <li>Recomendador de upsell por categoría preferida</li>
+                <li>Integración con Power Automate para enviar correos personalizados</li>
+                <li>Medición de tasa de conversión de recomendaciones</li>
             </ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-3">✖ Cerrar</div>
@@ -531,12 +635,14 @@
     </footer>
 </div>
 
+<!-- MODAL PARA IMÁGENES -->
 <div id="imageModal" class="modal-img" onclick="cerrarModal()">
     <span class="modal-cerrar" onclick="cerrarModal()">&times;</span>
     <img class="modal-content-img" id="modalImage">
 </div>
 
 <script>
+    // Funciones del modal
     function abrirModal(src) {
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
@@ -549,39 +655,79 @@
         document.getElementById('imageModal').style.display = 'none';
     }
 
-    function configurarEventosImagen() {
-        // Proyecto 1
-        const img1 = document.getElementById('foto-perfil-1');
-        const wrapper1 = document.getElementById('wrapper-proyecto-1');
-        if (img1 && img1.src && img1.src !== '' && img1.style.display !== 'none') {
-            img1.onclick = function(e) { e.stopPropagation(); abrirModal(img1.src); };
-            if (wrapper1) wrapper1.onclick = function(e) { e.stopPropagation(); if (img1.src && img1.style.display !== 'none') abrirModal(img1.src); };
+    // Función para intentar cargar imagen local, si no existe mostrar placeholder
+    function mostrarImagenSiExiste(imgElement, placeholderElement, rutasSugeridas) {
+        if (!imgElement || !placeholderElement) return;
+        let intentoActual = 0;
+        function intentarCargar() {
+            if (intentoActual >= rutasSugeridas.length) {
+                imgElement.style.display = 'none';
+                placeholderElement.style.display = 'flex';
+                return;
+            }
+            const ruta = rutasSugeridas[intentoActual];
+            const testImg = new Image();
+            testImg.onload = function() {
+                imgElement.src = ruta;
+                imgElement.style.display = 'block';
+                placeholderElement.style.display = 'none';
+                imgElement.onclick = function(e) {
+                    e.stopPropagation();
+                    abrirModal(ruta);
+                };
+            };
+            testImg.onerror = function() {
+                intentoActual++;
+                intentarCargar();
+            };
+            testImg.src = ruta;
         }
-        
-        // Proyecto 2
-        const img2 = document.getElementById('foto-perfil-2');
-        const wrapper2 = document.getElementById('wrapper-proyecto-2');
-        if (img2 && img2.src && img2.src !== '' && img2.style.display !== 'none') {
-            img2.onclick = function(e) { e.stopPropagation(); abrirModal(img2.src); };
-            if (wrapper2) wrapper2.onclick = function(e) { e.stopPropagation(); if (img2.src && img2.style.display !== 'none') abrirModal(img2.src); };
-        }
-        
-        // Proyecto 3
-        const img3 = document.getElementById('foto-perfil-3');
-        const wrapper3 = document.getElementById('wrapper-proyecto-3');
-        if (img3 && img3.src && img3.src !== '' && img3.style.display !== 'none') {
-            img3.onclick = function(e) { e.stopPropagation(); abrirModal(img3.src); };
-            if (wrapper3) wrapper3.onclick = function(e) { e.stopPropagation(); if (img3.src) abrirModal(img3.src); };
+        intentarCargar();
+    }
+
+    function configurarWrapperClick(wrapperId, imgId, rutas) {
+        const wrapper = document.getElementById(wrapperId);
+        if (!wrapper) return;
+        const imgElement = document.getElementById(imgId);
+        if (imgElement) {
+            const intervalo = setInterval(() => {
+                if (imgElement.style.display === 'block' && imgElement.src) {
+                    clearInterval(intervalo);
+                    wrapper.onclick = function(e) {
+                        e.stopPropagation();
+                        if (imgElement.src) abrirModal(imgElement.src);
+                    };
+                } else {
+                    const placeholder = wrapper.querySelector('.sub-placeholder');
+                    if (placeholder && placeholder.style.display !== 'none') wrapper.onclick = null;
+                }
+            }, 100);
         }
     }
-    
+
+    // Configurar todos los ejemplos (9 subproyectos)
+    function configurarImagenesPowerBI() {
+        mostrarImagenSiExiste(document.getElementById('sub-foto-1'), document.getElementById('placeholder-sub1'), ['dashboard_rentabilidad.png', 'powerbi_rentabilidad.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-2'), document.getElementById('placeholder-sub2'), ['forecast_ventas.png', 'powerbi_forecast.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-3'), document.getElementById('placeholder-sub3'), ['ranking_vendedores.png', 'vendedores_metas.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-4'), document.getElementById('placeholder-sub4'), ['flota_rendimiento.png', 'powerbi_flota.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-5'), document.getElementById('placeholder-sub5'), ['oee_industrial.png', 'powerbi_oee.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-6'), document.getElementById('placeholder-sub6'), ['inventario_rotacion.png', 'powerbi_inventario.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-7'), document.getElementById('placeholder-sub7'), ['rfm_matriz.png', 'segmentacion_rfm.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-8'), document.getElementById('placeholder-sub8'), ['cohortes_retencion.png', 'retencion_cohorte.jpg']);
+        mostrarImagenSiExiste(document.getElementById('sub-foto-9'), document.getElementById('placeholder-sub9'), ['next_best_action.png', 'powerbi_recomendaciones.jpg']);
+
+        setTimeout(() => {
+            for(let i=1;i<=9;i++) configurarWrapperClick(`wrapper-sub${i}`, `sub-foto-${i}`);
+        }, 500);
+    }
+
+    // Funciones para expandir/colapsar proyectos
     function setupProyecto(cuadroId, tarjetaId) {
         const cuadro = document.getElementById(cuadroId);
         const tarjeta = document.getElementById(tarjetaId);
         if (!cuadro || !tarjeta) return;
-        
         const iconSpan = cuadro.querySelector('.expand-icon');
-        
         cuadro.addEventListener('click', function(e) {
             e.stopPropagation();
             document.querySelectorAll('.foto-card').forEach(card => {
@@ -595,7 +741,6 @@
                     }
                 }
             });
-            
             const wasVisible = tarjeta.classList.contains('visible');
             if (!wasVisible) {
                 tarjeta.classList.add('visible');
@@ -607,7 +752,7 @@
             }
         });
     }
-    
+
     function configurarBotonesCerrar() {
         document.querySelectorAll('.cerrar-tarjeta').forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -626,13 +771,13 @@
             });
         });
     }
-    
+
     document.addEventListener('DOMContentLoaded', function() {
+        configurarImagenesPowerBI();
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
         setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
         configurarBotonesCerrar();
-        configurarEventosImagen();
     });
 </script>
 </body>
