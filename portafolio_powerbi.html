@@ -328,7 +328,6 @@
             transform: translateY(-1px);
         }
 
-        /* MODAL PARA IMAGEN GRANDE */
         .modal-img {
             display: none;
             position: fixed;
@@ -387,7 +386,6 @@
 <body>
 <div class="soft-bg"></div>
 <div class="container">
-    <!-- Header -->
     <div class="hero">
         <div class="title-section">
             <div class="emoji-icon">📊💡</div>
@@ -406,7 +404,6 @@
         </div>
     </div>
 
-    <!-- Card de tecnologías -->
     <div class="tech-card">
         <h2><i class="fas fa-chart-line" style="margin-right: 0.5rem; color: #1a73e8;"></i> Especialista en Business Intelligence</h2>
         <p>Dashboards interactivos, modelado de datos, DAX avanzado y KPIs estratégicos para la toma de decisiones.</p>
@@ -420,7 +417,7 @@
         </div>
     </div>
 
-    <!-- PROYECTO 1: Dashboard Operacional (Flota de Vehículos) -->
+    <!-- PROYECTO 1: Dashboard Operacional - Flota -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-1">
         <h3>
             <i class="fas fa-tachometer-alt"></i> Dashboard Operacional - Flota
@@ -458,7 +455,7 @@
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
     </div>
 
-    <!-- PROYECTO 2: Dashboard de Operaciones (con la misma imagen funcionando) -->
+    <!-- PROYECTO 2: Dashboard de Operaciones - CORREGIDO con imagen visible -->
     <div class="proyecto-cuadro" id="cuadro-proyecto-2">
         <h3>
             <i class="fas fa-chart-line"></i> Dashboard de Operaciones
@@ -469,7 +466,7 @@
 
     <div class="foto-card" id="tarjeta-proyecto-2">
         <div id="wrapper-proyecto-2" class="image-wrapper" data-img-id="foto-perfil-2">
-            <!-- Ahora la imagen se muestra correctamente, sin display:none -->
+            <!-- CORREGIDO: La imagen ahora se muestra sin display:none -->
             <img id="foto-perfil-2" src="foto_dashboard_flota.png" alt="Dashboard de Operaciones - Power BI" class="foto-perfil" 
                  onerror="this.style.display='none'; document.getElementById('placeholder-foto-2').style.display='flex';">
             <div id="placeholder-foto-2" class="image-placeholder" style="display: none;">
@@ -535,14 +532,12 @@
     </footer>
 </div>
 
-<!-- MODAL PARA IMAGEN GRANDE -->
 <div id="imageModal" class="modal-img" onclick="cerrarModal()">
     <span class="modal-cerrar" onclick="cerrarModal()">&times;</span>
     <img class="modal-content-img" id="modalImage">
 </div>
 
 <script>
-    // Funciones para el modal de imagen grande
     function abrirModal(src) {
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImage');
@@ -555,40 +550,21 @@
         document.getElementById('imageModal').style.display = 'none';
     }
 
-    // Configurar eventos de clic para imágenes reales
     function configurarEventosImagen() {
         // Proyecto 1
         const img1 = document.getElementById('foto-perfil-1');
         const wrapper1 = document.getElementById('wrapper-proyecto-1');
-        
         if (img1 && img1.src && img1.src !== '' && img1.style.display !== 'none') {
-            img1.onclick = function(e) {
-                e.stopPropagation();
-                abrirModal(img1.src);
-            };
-            if (wrapper1) {
-                wrapper1.onclick = function(e) {
-                    e.stopPropagation();
-                    if (img1.src && img1.style.display !== 'none') abrirModal(img1.src);
-                };
-            }
+            img1.onclick = function(e) { e.stopPropagation(); abrirModal(img1.src); };
+            if (wrapper1) wrapper1.onclick = function(e) { e.stopPropagation(); if (img1.src && img1.style.display !== 'none') abrirModal(img1.src); };
         }
         
-        // Proyecto 2 - Ahora con imagen visible
+        // Proyecto 2 - CORREGIDO
         const img2 = document.getElementById('foto-perfil-2');
         const wrapper2 = document.getElementById('wrapper-proyecto-2');
-        
         if (img2 && img2.src && img2.src !== '' && img2.style.display !== 'none') {
-            img2.onclick = function(e) {
-                e.stopPropagation();
-                abrirModal(img2.src);
-            };
-            if (wrapper2) {
-                wrapper2.onclick = function(e) {
-                    e.stopPropagation();
-                    if (img2.src && img2.style.display !== 'none') abrirModal(img2.src);
-                };
-            }
+            img2.onclick = function(e) { e.stopPropagation(); abrirModal(img2.src); };
+            if (wrapper2) wrapper2.onclick = function(e) { e.stopPropagation(); if (img2.src && img2.style.display !== 'none') abrirModal(img2.src); };
         }
         
         // Proyecto 3
@@ -600,7 +576,6 @@
         }
     }
     
-    // Funciones para expandir/colapsar proyectos
     function setupProyecto(cuadroId, tarjetaId) {
         const cuadro = document.getElementById(cuadroId);
         const tarjeta = document.getElementById(tarjetaId);
@@ -610,7 +585,6 @@
         
         cuadro.addEventListener('click', function(e) {
             e.stopPropagation();
-            // Colapsar cualquier otra tarjeta abierta
             document.querySelectorAll('.foto-card').forEach(card => {
                 if (card.id !== tarjetaId && card.classList.contains('visible')) {
                     card.classList.remove('visible');
