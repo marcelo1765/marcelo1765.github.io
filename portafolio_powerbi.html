@@ -161,7 +161,6 @@
             color: #1f6392;
         }
 
-        /* PROYECTOS PRINCIPALES (CUADROS) */
         .proyecto-cuadro {
             background: white;
             border-radius: 1.2rem;
@@ -202,7 +201,6 @@
             transition: transform 0.2s;
         }
 
-        /* TARJETA DESPLEGABLE (similar a SQL) */
         .foto-card {
             background: white;
             border-radius: 1.5rem;
@@ -223,7 +221,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* SUBPROYECTOS (3 EJEMPLOS DENTRO DE CADA PROYECTO) */
         .subproyecto {
             background: #f8fbfe;
             border-radius: 1rem;
@@ -247,33 +244,40 @@
             color: #6e8eae;
             margin-bottom: 0.8rem;
         }
-        .sub-image-wrapper {
+
+        /* GALERÍA DE IMÁGENES */
+        .gallery-container {
             width: 100%;
             background: #f5f9fe;
             border-radius: 1rem;
             padding: 1rem;
             margin: 0.8rem 0;
+            border: 1px solid #c0d4e8;
+            position: relative;
+        }
+
+        .gallery-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 200px;
-            border: 1px solid #c0d4e8;
-            cursor: pointer;
+            min-height: 240px;
+            position: relative;
         }
-        .sub-foto {
+
+        .gallery-image {
             max-width: 100%;
-            width: auto;
-            height: auto;
-            max-height: 260px;
+            max-height: 280px;
             object-fit: contain;
             border-radius: 12px;
             display: block;
             margin: 0 auto;
             cursor: pointer;
+            transition: opacity 0.2s;
         }
-        .sub-placeholder {
+
+        .gallery-placeholder {
             width: 100%;
-            min-height: 180px;
+            min-height: 200px;
             background: linear-gradient(135deg, #e8f0f7 0%, #dce8f0 100%);
             border-radius: 1rem;
             display: flex;
@@ -283,8 +287,42 @@
             gap: 0.8rem;
             padding: 1.5rem;
             color: #4a7c9e;
-            cursor: default;
         }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.8rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            background: white;
+            border: 1px solid #b8d0e5;
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1f5a7e;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-btn:hover {
+            background: #e2edf5;
+            transform: translateY(-1px);
+        }
+
+        .counter {
+            font-size: 0.75rem;
+            color: #4a7c9e;
+            font-weight: 500;
+        }
+
         .sub-features {
             list-style: none;
             padding: 0;
@@ -323,7 +361,7 @@
             transform: translateY(-1px);
         }
 
-        /* MODAL IMAGEN */
+        /* MODAL CON NAVEGACIÓN */
         .modal-img {
             display: none;
             position: fixed;
@@ -332,21 +370,31 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.95);
             justify-content: center;
             align-items: center;
         }
-        .modal-content-img {
+        
+        .modal-content {
+            position: relative;
             max-width: 90%;
             max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content-img {
+            max-width: 90vw;
+            max-height: 85vh;
             object-fit: contain;
             border-radius: 8px;
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
+        
         .modal-cerrar {
             position: absolute;
-            top: 25px;
+            top: 20px;
             right: 35px;
             color: #f1f1f1;
             font-size: 40px;
@@ -355,8 +403,51 @@
             cursor: pointer;
             z-index: 1001;
         }
+        
         .modal-cerrar:hover {
             color: #bbb;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 2rem;
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s;
+            z-index: 1001;
+            user-select: none;
+        }
+        
+        .modal-nav:hover {
+            background: rgba(0,0,0,0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .modal-prev {
+            left: 20px;
+        }
+        
+        .modal-next {
+            right: 20px;
+        }
+        
+        .modal-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            z-index: 1001;
         }
 
         footer {
@@ -374,7 +465,10 @@
             .title-section { justify-content: center; }
             .hero-text h1 { font-size: 1.4rem; }
             .proyecto-cuadro h3 { font-size: 1.1rem; }
-            .sub-foto { max-height: 180px; }
+            .gallery-image { max-height: 200px; }
+            .modal-nav { font-size: 1.2rem; padding: 0.6rem 0.8rem; }
+            .modal-prev { left: 5px; }
+            .modal-next { right: 5px; }
         }
     </style>
 </head>
@@ -432,14 +526,10 @@
         <div class="subproyecto">
             <h4><i class="fas fa-chart-line"></i> Ejemplo 1: Análisis de Rentabilidad por Canal</h4>
             <div class="sub-etiquetas">Margen · ROI · Eficiencia comercial</div>
-            <div id="wrapper-sub1" class="sub-image-wrapper" data-img-id="sub-foto-1">
-                <img id="sub-foto-1" src="" alt="Dashboard Rentabilidad" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub1" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-chart-line"></i></div>
-                    <div class="placeholder-text">Ejemplo: Análisis de Rentabilidad por Canal (Power BI)</div>
-                </div>
+            <div class="gallery-container" data-gallery="gallery-1-1">
+                <div class="gallery-wrapper"><img class="gallery-image" alt="Rentabilidad" style="display:none;"><div class="gallery-placeholder">Cargando imágenes...</div></div>
+                <div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Panel que desglosa el margen bruto y neto por canal de venta (online, tiendas físicas, distribuidores). Identificación de los canales más rentables y oportunidades de mejora.</p>
             <ul class="sub-features">
                 <li>Cálculo de ROI por canal con segmentación temporal</li>
                 <li>Gráfico de evolución de margen vs ingresos</li>
@@ -450,15 +540,11 @@
         <!-- EJEMPLO 1.2 -->
         <div class="subproyecto">
             <h4><i class="fas fa-chart-simple"></i> Ejemplo 2: Forecast de Ventas con Series Temporales</h4>
-            <div class="sub-etiquetas">Predicción · Estacionalidad · Machine Learning (Power BI)</div>
-            <div id="wrapper-sub2" class="sub-image-wrapper" data-img-id="sub-foto-2">
-                <img id="sub-foto-2" src="" alt="Forecast Ventas" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub2" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-chart-simple"></i></div>
-                    <div class="placeholder-text">Ejemplo: Forecast de Ventas (Power BI)</div>
-                </div>
+            <div class="sub-etiquetas">Predicción · Estacionalidad · Machine Learning</div>
+            <div class="gallery-container" data-gallery="gallery-1-2">
+                <div class="gallery-wrapper"><img class="gallery-image" style="display:none;"><div class="gallery-placeholder">Cargando...</div></div>
+                <div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Modelo predictivo integrado en Power BI para anticipar ventas a 6 meses utilizando análisis de series temporales con parámetros ajustables.</p>
             <ul class="sub-features">
                 <li>Función DAX para pronóstico lineal y estacionalidad</li>
                 <li>Gráfico de predicción con bandas de confianza</li>
@@ -470,14 +556,10 @@
         <div class="subproyecto">
             <h4><i class="fas fa-arrow-trend-up"></i> Ejemplo 3: Ranking de Vendedores y Metas</h4>
             <div class="sub-etiquetas">Performance · Incentivos · Dashboard Gerencial</div>
-            <div id="wrapper-sub3" class="sub-image-wrapper" data-img-id="sub-foto-3">
-                <img id="sub-foto-3" src="" alt="Ranking Vendedores" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub3" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-arrow-trend-up"></i></div>
-                    <div class="placeholder-text">Ejemplo: Ranking de Vendedores y Metas</div>
-                </div>
+            <div class="gallery-container" data-gallery="gallery-1-3">
+                <div class="gallery-wrapper"><img class="gallery-image" style="display:none;"><div class="gallery-placeholder">Cargando...</div></div>
+                <div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Tablero gerencial que muestra el cumplimiento de cuota individual de los vendedores, ranking de ventas y cálculo de comisiones.</p>
             <ul class="sub-features">
                 <li>Matriz de cumplimiento vs objetivo mensual/acumulado</li>
                 <li>Gráfico de embudo de conversión por vendedor</li>
@@ -505,14 +587,10 @@
         <div class="subproyecto">
             <h4><i class="fas fa-tachometer-alt"></i> Ejemplo 1: Rendimiento de Flota de Vehículos</h4>
             <div class="sub-etiquetas">Consumo · Kilometraje · Multas</div>
-            <div id="wrapper-sub4" class="sub-image-wrapper" data-img-id="sub-foto-4">
-                <img id="sub-foto-4" src="foto_dashboard_flota.png" alt="Rendimiento Flota" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub4" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    <div class="placeholder-text">Ejemplo: Rendimiento de Flota</div>
-                </div>
+            <div class="gallery-container" data-gallery="gallery-2-1">
+                <div class="gallery-wrapper"><img class="gallery-image" style="display:none;"><div class="gallery-placeholder">Cargando...</div></div>
+                <div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Panel que integra datos de GPS, consumo de combustible y partes de mantenimiento para optimizar la operación de la flota.</p>
             <ul class="sub-features">
                 <li>Indicadores: km/litro, costo por km, tiempo de inactividad</li>
                 <li>Mapa de calor de rutas con mayor desgaste</li>
@@ -523,33 +601,24 @@
         <div class="subproyecto">
             <h4><i class="fas fa-clock"></i> Ejemplo 2: Dashboard de Recursos Humanos — Control de Gastos</h4>
             <div class="sub-etiquetas">Planificación · Control · Optimización</div>
-            <div id="wrapper-sub5" class="sub-image-wrapper" data-img-id="sub-foto-5">
-                <img id="sub-foto-5" src="dasboard_RR_HH.jpg" alt="OEE Industrial" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub5" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-clock"></i></div>
-                    <div class="placeholder-text">Ejemplo: OEE Industrial</div>
-                </div>
+            <div class="gallery-container" data-gallery="gallery-2-2">
+                <div class="gallery-wrapper"><img class="gallery-image" style="display:none;"><div class="gallery-placeholder">Cargando...</div></div>
+                <div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Tablero interactivo que analiza el presupuesto y ejecución de gastos del área de Recursos Humanos. Presenta indicadores clave como porcentaje de gasto, saldo disponible y distribución por categorías, 
-                además de la evolución mensual, trimestral y semestral. Facilita la toma de decisiones estratégicas sobre eficiencia presupuestaria y optimización de recursos internos..</p>
             <ul class="sub-features">
                 <li>Seguimiento de presupuesto vs. gasto real</li>
                 <li>Distribución por categorías (sueldos, incentivos, capacitación.)</li>
-                <li> Evolución mensual, trimestral y semestral del gasto</li>
+                <li>Evolución mensual, trimestral y semestral del gasto</li>
                 <li>KPIs de eficiencia y control financiero</li>
             </ul>
         </div>
         <div class="subproyecto">
             <h4><i class="fas fa-boxes"></i> Ejemplo 3: Gestión de Inventarios y Rotación</h4>
             <div class="sub-etiquetas">Stock · Rotación · Obsolescencia</div>
-            <div id="wrapper-sub6" class="sub-image-wrapper" data-img-id="sub-foto-6">
-                <img id="sub-foto-6" src="" alt="Gestión Inventarios" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub6" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-boxes"></i></div>
-                    <div class="placeholder-text">Ejemplo: Gestión de Inventarios</div>
-                </div>
+            <div class="gallery-container" data-gallery="gallery-2-3">
+                <div class="gallery-wrapper"><img class="gallery-image" style="display:none;"><div class="gallery-placeholder">Cargando...</div></div>
+                <div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Análisis de rotación de inventarios, productos de baja rotación y recomendaciones de compra basadas en lead time y demanda.</p>
             <ul class="sub-features">
                 <li>Métrica de días de inventario (DSI) por SKU</li>
                 <li>Clasificación ABC de productos según valor de consumo</li>
@@ -577,14 +646,10 @@
         <div class="subproyecto">
             <h4><i class="fas fa-chart-pie"></i> Ejemplo 1: Matriz RFM y Segmentación de Clientes</h4>
             <div class="sub-etiquetas">Clústeres · Valor del Cliente · LTV</div>
-            <div id="wrapper-sub7" class="sub-image-wrapper" data-img-id="sub-foto-7">
-                <img id="sub-foto-7" src="" alt="Matriz RFM" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub7" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-chart-pie"></i></div>
-                    <div class="placeholder-text">Ejemplo: Matriz RFM y Segmentación</div>
-                </div>
+            <div class="gallery-container" data-gallery="gallery-3-1">
+                <div class="gallery-wrapper"><img class="gallery-image" style="display:none;"><div class="gallery-placeholder">Cargando...</div></div>
+                <div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Construcción de matriz de 11 segmentos (Campeones, Leales, Potenciales, En riesgo, etc.) a partir de puntajes RFM calculados con DAX.</p>
             <ul class="sub-features">
                 <li>Cálculo dinámico de percentiles para R,F,M</li>
                 <li>Segmentador de cohortes por antigüedad y categoría</li>
@@ -595,14 +660,10 @@
         <div class="subproyecto">
             <h4><i class="fas fa-chart-line"></i> Ejemplo 2: Análisis de Cohortes de Retención</h4>
             <div class="sub-etiquetas">Retención · Churn · Customer Lifetime</div>
-            <div id="wrapper-sub8" class="sub-image-wrapper" data-img-id="sub-foto-8">
-                <img id="sub-foto-8" src="" alt="Cohortes Retención" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub8" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-chart-line"></i></div>
-                    <div class="placeholder-text">Ejemplo: Análisis de Cohortes de Retención</div>
-                </div>
+            <div class="gallery-container" data-gallery="gallery-3-2">
+                <div class="gallery-wrapper"><img class="gallery-image" style="display:none;"><div class="gallery-placeholder">Cargando...</div></div>
+                <div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Matriz de cohortes que muestra la tasa de retención de clientes mes a mes, identificando patrones de abandono y estacionalidad.</p>
             <ul class="sub-features">
                 <li>Cálculo de retención por cohorte de primera compra</li>
                 <li>Gráfico de curvas de retención comparativas</li>
@@ -613,14 +674,10 @@
         <div class="subproyecto">
             <h4><i class="fas fa-chart-simple"></i> Ejemplo 3: Recomendaciones Next Best Action</h4>
             <div class="sub-etiquetas">Cross-selling · Upselling · Automatización</div>
-            <div id="wrapper-sub9" class="sub-image-wrapper" data-img-id="sub-foto-9">
-                <img id="sub-foto-9" src="" alt="Next Best Action" class="sub-foto" style="display: none;">
-                <div id="placeholder-sub9" class="sub-placeholder">
-                    <div class="placeholder-icon"><i class="fas fa-chart-simple"></i></div>
-                    <div class="placeholder-text">Ejemplo: Next Best Action</div>
-                </div>
+            <div class="gallery-container" data-gallery="gallery-3-3">
+                <div class="gallery-wrapper"><img class="gallery-image" style="display:none;"><div class="gallery-placeholder">Cargando...</div></div>
+                <div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Dashboard que sugiere la mejor acción comercial para cada cliente basado en afinidad, historial de compras y reglas de negocio.</p>
             <ul class="sub-features">
                 <li>Reglas de asociación (productos frecuentemente comprados juntos)</li>
                 <li>Recomendador de upsell por categoría preferida</li>
@@ -636,94 +693,182 @@
     </footer>
 </div>
 
-<!-- MODAL PARA IMÁGENES -->
-<div id="imageModal" class="modal-img" onclick="cerrarModal()">
+<!-- MODAL CON NAVEGACIÓN -->
+<div id="imageModal" class="modal-img" onclick="cerrarModalSiFondo(event)">
     <span class="modal-cerrar" onclick="cerrarModal()">&times;</span>
-    <img class="modal-content-img" id="modalImage">
+    <div class="modal-nav modal-prev" onclick="modalNavegar(-1)">&#10094;</div>
+    <div class="modal-nav modal-next" onclick="modalNavegar(1)">&#10095;</div>
+    <div class="modal-content">
+        <img class="modal-content-img" id="modalImage">
+    </div>
+    <div class="modal-counter" id="modalCounter">0 / 0</div>
 </div>
 
 <script>
-    // Funciones del modal
-    function abrirModal(src) {
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        if (src && src !== '') {
-            modal.style.display = 'flex';
-            modalImg.src = src;
+    // Variables globales para el modal con navegación
+    let currentGalleryId = null;
+    let currentImageIndex = 0;
+    let currentImageUrls = [];
+    
+    function cerrarModalSiFondo(event) {
+        if (event.target === document.getElementById('imageModal')) {
+            cerrarModal();
         }
     }
+    
     function cerrarModal() {
         document.getElementById('imageModal').style.display = 'none';
+        currentGalleryId = null;
+        currentImageUrls = [];
     }
-
-    // Función para intentar cargar imagen local, si no existe mostrar placeholder
-    function mostrarImagenSiExiste(imgElement, placeholderElement, rutasSugeridas) {
-        if (!imgElement || !placeholderElement) return;
-        let intentoActual = 0;
-        function intentarCargar() {
-            if (intentoActual >= rutasSugeridas.length) {
-                imgElement.style.display = 'none';
-                placeholderElement.style.display = 'flex';
-                return;
+    
+    function abrirModalConGaleria(galleryId, index) {
+        if (window.galleryData && window.galleryData[galleryId]) {
+            currentImageUrls = window.galleryData[galleryId].validUrls || [];
+            currentImageIndex = index;
+            
+            if (currentImageUrls.length > 0 && currentImageIndex >= 0 && currentImageIndex < currentImageUrls.length) {
+                const modalImg = document.getElementById('modalImage');
+                const modalCounter = document.getElementById('modalCounter');
+                modalImg.src = currentImageUrls[currentImageIndex];
+                modalCounter.innerText = `${currentImageIndex + 1} / ${currentImageUrls.length}`;
+                document.getElementById('imageModal').style.display = 'flex';
+                currentGalleryId = galleryId;
             }
-            const ruta = rutasSugeridas[intentoActual];
-            const testImg = new Image();
-            testImg.onload = function() {
-                imgElement.src = ruta;
-                imgElement.style.display = 'block';
-                placeholderElement.style.display = 'none';
-                imgElement.onclick = function(e) {
-                    e.stopPropagation();
-                    abrirModal(ruta);
-                };
-            };
-            testImg.onerror = function() {
-                intentoActual++;
-                intentarCargar();
-            };
-            testImg.src = ruta;
         }
-        intentarCargar();
     }
-
-    function configurarWrapperClick(wrapperId, imgId, rutas) {
-        const wrapper = document.getElementById(wrapperId);
-        if (!wrapper) return;
-        const imgElement = document.getElementById(imgId);
-        if (imgElement) {
-            const intervalo = setInterval(() => {
-                if (imgElement.style.display === 'block' && imgElement.src) {
-                    clearInterval(intervalo);
-                    wrapper.onclick = function(e) {
-                        e.stopPropagation();
-                        if (imgElement.src) abrirModal(imgElement.src);
+    
+    function modalNavegar(direccion) {
+        if (!currentGalleryId || currentImageUrls.length === 0) return;
+        
+        const newIndex = currentImageIndex + direccion;
+        if (newIndex >= 0 && newIndex < currentImageUrls.length) {
+            currentImageIndex = newIndex;
+            const modalImg = document.getElementById('modalImage');
+            const modalCounter = document.getElementById('modalCounter');
+            modalImg.src = currentImageUrls[currentImageIndex];
+            modalCounter.innerText = `${currentImageIndex + 1} / ${currentImageUrls.length}`;
+        }
+    }
+    
+    // Teclado: flechas izquierda/derecha para navegar en el modal
+    document.addEventListener('keydown', function(e) {
+        if (document.getElementById('imageModal').style.display === 'flex') {
+            if (e.key === 'ArrowLeft') {
+                modalNavegar(-1);
+                e.preventDefault();
+            } else if (e.key === 'ArrowRight') {
+                modalNavegar(1);
+                e.preventDefault();
+            } else if (e.key === 'Escape') {
+                cerrarModal();
+            }
+        }
+    });
+    
+    // Almacenar datos de galerías
+    window.galleryData = {};
+    
+    // Definir múltiples imágenes para cada subproyecto (¡AQUÍ PUEDES AGREGAR/CAMBIAR TUS IMÁGENES!)
+    const imageSets = {
+        // Proyecto 1 - Dashboard de Ventas
+        'gallery-1-1': ['dashboard_rentabilidad.png', 'powerbi_rentabilidad.jpg', 'rentabilidad_canal_extra.png'],
+        'gallery-1-2': ['forecast_ventas.png', 'powerbi_forecast.jpg', 'prediccion_demanda.png'],
+        'gallery-1-3': ['ranking_vendedores.png', 'vendedores_metas.jpg', 'performance_comercial.png'],
+        
+        // Proyecto 2 - Dashboard de Operaciones
+        'gallery-2-1': ['foto_dashboard_flota.png', 'powerbi_flota.jpg', 'dashboard_flota_extra.png'],
+        'gallery-2-2': ['dasboard_RR_HH.jpg', 'powerbi_oee.jpg', 'control_gastos_rrhh.png'],
+        'gallery-2-3': ['inventario_rotacion.png', 'powerbi_inventario.jpg', 'abc_inventario.png'],
+        
+        // Proyecto 3 - Segmentación RFM
+        'gallery-3-1': ['rfm_matriz.png', 'segmentacion_rfm.jpg', 'rfm_segmentos_detalle.png'],
+        'gallery-3-2': ['cohortes_retencion.png', 'retencion_cohorte.jpg', 'churn_analysis.png'],
+        'gallery-3-3': ['next_best_action.png', 'powerbi_recomendaciones.jpg', 'cross_selling.png']
+    };
+    
+    // Inicializar todas las galerías
+    function initGalleries() {
+        for (const [galleryId, urls] of Object.entries(imageSets)) {
+            const container = document.querySelector(`.gallery-container[data-gallery="${galleryId}"]`);
+            if (!container) continue;
+            const wrapperDiv = container.querySelector('.gallery-wrapper');
+            const imgElement = wrapperDiv.querySelector('.gallery-image');
+            const placeholderDiv = wrapperDiv.querySelector('.gallery-placeholder');
+            const prevBtn = container.querySelector('.nav-btn.prev');
+            const nextBtn = container.querySelector('.nav-btn.next');
+            const counterSpan = container.querySelector('.counter');
+            
+            if (!imgElement || !placeholderDiv) continue;
+            
+            let currentIndex = 0;
+            let validUrls = [];
+            
+            const testAndLoadImages = () => {
+                let remaining = urls.length;
+                if (urls.length === 0) { showPlaceholder('No hay imágenes'); return; }
+                urls.forEach(url => {
+                    const testImg = new Image();
+                    testImg.onload = () => {
+                        validUrls.push(url);
+                        if (validUrls.length === 1) {
+                            displayImage(0);
+                        }
+                        updateCounter();
+                        window.galleryData[galleryId] = { validUrls: validUrls };
+                        if (validUrls.length === 0 && remaining <= 0) showPlaceholder('Sin imágenes disponibles');
                     };
-                } else {
-                    const placeholder = wrapper.querySelector('.sub-placeholder');
-                    if (placeholder && placeholder.style.display !== 'none') wrapper.onclick = null;
-                }
-            }, 100);
+                    testImg.onerror = () => {
+                        remaining--;
+                        if (remaining === 0 && validUrls.length === 0) {
+                            showPlaceholder('Sin imágenes disponibles');
+                            window.galleryData[galleryId] = { validUrls: [] };
+                        }
+                    };
+                    testImg.src = url;
+                });
+            };
+            
+            function showPlaceholder(msg) {
+                imgElement.style.display = 'none';
+                placeholderDiv.style.display = 'flex';
+                placeholderDiv.innerHTML = `<div class="placeholder-icon"><i class="fas fa-image"></i></div><div>${msg}</div>`;
+                counterSpan.innerText = `0 / 0`;
+                if (prevBtn) prevBtn.disabled = true;
+                if (nextBtn) nextBtn.disabled = true;
+            }
+            
+            function displayImage(index) {
+                if (validUrls.length === 0) return;
+                const url = validUrls[index];
+                imgElement.src = url;
+                imgElement.style.display = 'block';
+                placeholderDiv.style.display = 'none';
+                imgElement.onclick = (e) => {
+                    e.stopPropagation();
+                    abrirModalConGaleria(galleryId, index);
+                };
+                updateCounter();
+            }
+            
+            function updateCounter() {
+                if (validUrls.length > 0) counterSpan.innerText = `${currentIndex+1} / ${validUrls.length}`;
+                else counterSpan.innerText = `0 / 0`;
+                if (prevBtn) prevBtn.disabled = (validUrls.length <= 1);
+                if (nextBtn) nextBtn.disabled = (validUrls.length <= 1);
+            }
+            
+            function nextImage() { if (validUrls.length && currentIndex < validUrls.length-1) { currentIndex++; displayImage(currentIndex); } }
+            function prevImage() { if (validUrls.length && currentIndex > 0) { currentIndex--; displayImage(currentIndex); } }
+            
+            if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+            if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+            
+            testAndLoadImages();
         }
     }
-
-    // Configurar todos los ejemplos (9 subproyectos)
-    function configurarImagenesPowerBI() {
-        mostrarImagenSiExiste(document.getElementById('sub-foto-1'), document.getElementById('placeholder-sub1'), ['dashboard_rentabilidad.png', 'powerbi_rentabilidad.jpg']);
-        mostrarImagenSiExiste(document.getElementById('sub-foto-2'), document.getElementById('placeholder-sub2'), ['forecast_ventas.png', 'powerbi_forecast.jpg']);
-        mostrarImagenSiExiste(document.getElementById('sub-foto-3'), document.getElementById('placeholder-sub3'), ['ranking_vendedores.png', 'vendedores_metas.jpg']);
-        mostrarImagenSiExiste(document.getElementById('sub-foto-4'), document.getElementById('placeholder-sub4'), ['foto_dashboard_flota.png', 'powerbi_flota.jpg']);
-        mostrarImagenSiExiste(document.getElementById('sub-foto-5'), document.getElementById('placeholder-sub5'), ['dasboard_RR_HH.jpg', 'powerbi_oee.jpg']);
-        mostrarImagenSiExiste(document.getElementById('sub-foto-6'), document.getElementById('placeholder-sub6'), ['inventario_rotacion.png', 'powerbi_inventario.jpg']);
-        mostrarImagenSiExiste(document.getElementById('sub-foto-7'), document.getElementById('placeholder-sub7'), ['rfm_matriz.png', 'segmentacion_rfm.jpg']);
-        mostrarImagenSiExiste(document.getElementById('sub-foto-8'), document.getElementById('placeholder-sub8'), ['cohortes_retencion.png', 'retencion_cohorte.jpg']);
-        mostrarImagenSiExiste(document.getElementById('sub-foto-9'), document.getElementById('placeholder-sub9'), ['next_best_action.png', 'powerbi_recomendaciones.jpg']);
-
-        setTimeout(() => {
-            for(let i=1;i<=9;i++) configurarWrapperClick(`wrapper-sub${i}`, `sub-foto-${i}`);
-        }, 500);
-    }
-
-    // Funciones para expandir/colapsar proyectos
+    
+    // Expandir/colapsar proyectos
     function setupProyecto(cuadroId, tarjetaId) {
         const cuadro = document.getElementById(cuadroId);
         const tarjeta = document.getElementById(tarjetaId);
@@ -731,50 +876,25 @@
         const iconSpan = cuadro.querySelector('.expand-icon');
         cuadro.addEventListener('click', function(e) {
             e.stopPropagation();
-            document.querySelectorAll('.foto-card').forEach(card => {
-                if (card.id !== tarjetaId && card.classList.contains('visible')) {
-                    card.classList.remove('visible');
-                    const otroCuadroId = card.id.replace('tarjeta-proyecto', 'cuadro-proyecto');
-                    const otroCuadro = document.getElementById(otroCuadroId);
-                    if (otroCuadro) {
-                        const otroIcon = otroCuadro.querySelector('.expand-icon');
-                        if (otroIcon) otroIcon.innerHTML = '<i class="fas fa-chevron-down"></i>';
-                    }
-                }
-            });
+            document.querySelectorAll('.foto-card').forEach(card => { if (card.id !== tarjetaId && card.classList.contains('visible')) card.classList.remove('visible'); });
             const wasVisible = tarjeta.classList.contains('visible');
-            if (!wasVisible) {
-                tarjeta.classList.add('visible');
-                if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-chevron-up"></i>';
-                setTimeout(() => tarjeta.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
-            } else {
-                tarjeta.classList.remove('visible');
-                if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-chevron-down"></i>';
-            }
+            if (!wasVisible) { tarjeta.classList.add('visible'); if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-chevron-up"></i>'; setTimeout(() => tarjeta.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100); } 
+            else { tarjeta.classList.remove('visible'); if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-chevron-down"></i>'; }
         });
     }
-
+    
     function configurarBotonesCerrar() {
         document.querySelectorAll('.cerrar-tarjeta').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                const tarjetaId = this.getAttribute('data-tarjeta');
-                const tarjeta = document.getElementById(tarjetaId);
-                if (tarjeta) {
-                    tarjeta.classList.remove('visible');
-                    const cuadroId = tarjetaId.replace('tarjeta-proyecto', 'cuadro-proyecto');
-                    const cuadro = document.getElementById(cuadroId);
-                    if (cuadro) {
-                        const icon = cuadro.querySelector('.expand-icon');
-                        if (icon) icon.innerHTML = '<i class="fas fa-chevron-down"></i>';
-                    }
-                }
+                const tarjeta = document.getElementById(this.getAttribute('data-tarjeta'));
+                if (tarjeta) { tarjeta.classList.remove('visible'); const cuadroId = tarjeta.id.replace('tarjeta-proyecto', 'cuadro-proyecto'); const cuadro = document.getElementById(cuadroId); if(cuadro){ const icon = cuadro.querySelector('.expand-icon'); if(icon) icon.innerHTML = '<i class="fas fa-chevron-down"></i>'; } }
             });
         });
     }
-
+    
     document.addEventListener('DOMContentLoaded', function() {
-        configurarImagenesPowerBI();
+        initGalleries();
         setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
         setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
         setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
