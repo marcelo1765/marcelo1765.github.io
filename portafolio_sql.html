@@ -408,46 +408,7 @@
             transform: translateY(-1px);
         }
 
-        .image-wrapper {
-            width: 100%;
-            background: #f5f9fe;
-            border-radius: 1rem;
-            padding: 1rem;
-            margin: 0.8rem 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 200px;
-            border: 1px solid #c0d4e8;
-        }
-        
-        .foto-perfil {
-            max-width: 100%;
-            width: auto;
-            height: auto;
-            max-height: 350px;
-            object-fit: contain;
-            border-radius: 12px;
-            display: block;
-            margin: 0 auto;
-            cursor: pointer;
-        }
-        
-        .image-placeholder {
-            width: 100%;
-            min-height: 180px;
-            background: linear-gradient(135deg, #e8f0f7 0%, #dce8f0 100%);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 0.8rem;
-            padding: 1.5rem;
-            color: #4a7c9e;
-        }
-
-        /* MODAL */
+        /* MODAL CON NAVEGACIÓN */
         .modal-img {
             display: none;
             position: fixed;
@@ -456,21 +417,31 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.95);
             justify-content: center;
             align-items: center;
         }
-        .modal-content-img {
+        
+        .modal-content {
+            position: relative;
             max-width: 90%;
             max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content-img {
+            max-width: 90vw;
+            max-height: 85vh;
             object-fit: contain;
             border-radius: 8px;
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
+        
         .modal-cerrar {
             position: absolute;
-            top: 25px;
+            top: 20px;
             right: 35px;
             color: #f1f1f1;
             font-size: 40px;
@@ -479,8 +450,51 @@
             cursor: pointer;
             z-index: 1001;
         }
+        
         .modal-cerrar:hover {
             color: #bbb;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 2rem;
+            padding: 1rem 1.2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s;
+            z-index: 1001;
+            user-select: none;
+        }
+        
+        .modal-nav:hover {
+            background: rgba(0,0,0,0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .modal-prev {
+            left: 20px;
+        }
+        
+        .modal-next {
+            right: 20px;
+        }
+        
+        .modal-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            z-index: 1001;
         }
 
         footer {
@@ -499,6 +513,9 @@
             .hero-text h1 { font-size: 1.4rem; }
             .proyecto-cuadro h3 { font-size: 1.1rem; }
             .gallery-image { max-height: 200px; }
+            .modal-nav { font-size: 1.2rem; padding: 0.6rem 0.8rem; }
+            .modal-prev { left: 5px; }
+            .modal-next { right: 5px; }
         }
     </style>
 </head>
@@ -550,31 +567,25 @@
             <p><strong>SQL SERVER INTEGRATION SERVICES | ETL | DATA WAREHOUSE</strong></p>
             <p>Proyectos completo de extracción, transformación y carga.</p>
         </div>
-        <!-- Subproyecto 1.1 -->
-        <div class="subproyecto" data-gallery-idx="0">
+        <div class="subproyecto">
             <h4><i class="fas fa-database"></i> Ejemplo 1: Carga de Base de datos a un Data Warehouse</h4>
             <div class="sub-etiquetas">Extracción · Transformación · Limpieza · Carga</div>
             <div class="gallery-container" data-gallery="gallery-1-1">
                 <div class="gallery-wrapper"><img class="gallery-image" alt="migracion" style="display:none;"><div class="gallery-placeholder">Cargando imágenes...</div></div>
                 <div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div>
             </div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem; color: #2a5a7a;">Carga automatizada a Data Warehouse. Limpieza de datos históricos y transformación de esquemas.</p>
             <ul class="sub-features"><li>Extracción de archivos planos</li><li>Limpieza de datos inconsistentes</li><li>Transformación de tipos de datos</li><li>Envío de correo de alerta</li></ul>
         </div>
-        <!-- Subproyecto 1.2 -->
-        <div class="subproyecto" data-gallery-idx="1">
+        <div class="subproyecto">
             <h4><i class="fas fa-chart-pie"></i> Ejemplo 2: Integración de Ventas Multicanal</h4>
             <div class="sub-etiquetas">CRM · ERP · Consolidación</div>
             <div class="gallery-container" data-gallery="gallery-1-2"><div class="gallery-wrapper"><img class="gallery-image" style="display:none;"><div class="gallery-placeholder">Cargando...</div></div><div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div></div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem;">Consolidación de ventas desde CRM, E-commerce y puntos de venta.</p>
             <ul class="sub-features"><li>Orígenes: Dynamics CRM, Magento, SQL POS</li><li>MDM de clientes y productos</li><li>Detección de duplicados</li><li>Tabla de hechos de ventas diaria</li></ul>
         </div>
-        <!-- Subproyecto 1.3 -->
-        <div class="subproyecto" data-gallery-idx="2">
+        <div class="subproyecto">
             <h4><i class="fas fa-file-csv"></i> Ejemplo 3: ETL desde Archivos Planos a Base de Datos</h4>
             <div class="sub-etiquetas">Excel · CSV · Automatización · Validación</div>
             <div class="gallery-container" data-gallery="gallery-1-3"><div class="gallery-wrapper"><img class="gallery-image" style="display:none;"><div class="gallery-placeholder">Cargando...</div></div><div class="gallery-nav"><button class="nav-btn prev"><i class="fas fa-chevron-left"></i> Anterior</button><span class="counter">0 / 0</span><button class="nav-btn next">Siguiente <i class="fas fa-chevron-right"></i></button></div></div>
-            <p style="margin: 0.8rem 0; font-size: 0.85rem;">Proceso ETL diario que consume archivos Excel/CSV, validando estructuras.</p>
             <ul class="sub-features"><li>Monitoreo de carpetas</li><li>Validación de esquema</li><li>Redirección de errores</li><li>Notificaciones automáticas</li></ul>
         </div>
         <div class="cerrar-tarjeta" data-tarjeta="tarjeta-proyecto-1">✖ Cerrar</div>
@@ -623,30 +634,102 @@
     <footer><i class="far fa-copyright"></i> 2026 Marcelo Ricardo Gil Grados Calderón — Especialista en SQL Server, SSIS & BI</footer>
 </div>
 
-<div id="imageModal" class="modal-img" onclick="cerrarModal()"><span class="modal-cerrar" onclick="cerrarModal()">&times;</span><img class="modal-content-img" id="modalImage"></div>
+<!-- MODAL CON NAVEGACIÓN -->
+<div id="imageModal" class="modal-img" onclick="cerrarModalSiFondo(event)">
+    <span class="modal-cerrar" onclick="cerrarModal()">&times;</span>
+    <div class="modal-nav modal-prev" onclick="modalNavegar(-1)">&#10094;</div>
+    <div class="modal-nav modal-next" onclick="modalNavegar(1)">&#10095;</div>
+    <div class="modal-content">
+        <img class="modal-content-img" id="modalImage">
+    </div>
+    <div class="modal-counter" id="modalCounter">0 / 0</div>
+</div>
 
 <script>
-    function abrirModal(src) { const modal = document.getElementById('imageModal'); document.getElementById('modalImage').src = src; modal.style.display = 'flex'; }
-    function cerrarModal() { document.getElementById('imageModal').style.display = 'none'; }
-
-    // Definir múltiples imágenes para cada subproyecto (orden: subproyecto 1.1, 1.2, 1.3, etc.)
+    // Variables globales para el modal con navegación
+    let currentGalleryId = null;
+    let currentImageIndex = 0;
+    let currentImageUrls = [];
+    
+    function cerrarModalSiFondo(event) {
+        if (event.target === document.getElementById('imageModal')) {
+            cerrarModal();
+        }
+    }
+    
+    function cerrarModal() {
+        document.getElementById('imageModal').style.display = 'none';
+        currentGalleryId = null;
+        currentImageUrls = [];
+    }
+    
+    function abrirModalConGaleria(galleryId, index) {
+        // Buscar la galería y sus URLs
+        const galleryContainer = document.querySelector(`.gallery-container[data-gallery="${galleryId}"]`);
+        if (!galleryContainer) return;
+        
+        // Obtener las URLs de las imágenes válidas desde el estado de la galería
+        // Para eso necesitamos acceder a los datos almacenados en la galería
+        if (window.galleryData && window.galleryData[galleryId]) {
+            currentImageUrls = window.galleryData[galleryId].validUrls || [];
+            currentImageIndex = index;
+            
+            if (currentImageUrls.length > 0 && currentImageIndex >= 0 && currentImageIndex < currentImageUrls.length) {
+                const modalImg = document.getElementById('modalImage');
+                const modalCounter = document.getElementById('modalCounter');
+                modalImg.src = currentImageUrls[currentImageIndex];
+                modalCounter.innerText = `${currentImageIndex + 1} / ${currentImageUrls.length}`;
+                document.getElementById('imageModal').style.display = 'flex';
+                currentGalleryId = galleryId;
+            }
+        }
+    }
+    
+    function modalNavegar(direccion) {
+        if (!currentGalleryId || currentImageUrls.length === 0) return;
+        
+        const newIndex = currentImageIndex + direccion;
+        if (newIndex >= 0 && newIndex < currentImageUrls.length) {
+            currentImageIndex = newIndex;
+            const modalImg = document.getElementById('modalImage');
+            const modalCounter = document.getElementById('modalCounter');
+            modalImg.src = currentImageUrls[currentImageIndex];
+            modalCounter.innerText = `${currentImageIndex + 1} / ${currentImageUrls.length}`;
+        }
+    }
+    
+    // Teclado: flechas izquierda/derecha para navegar en el modal
+    document.addEventListener('keydown', function(e) {
+        if (document.getElementById('imageModal').style.display === 'flex') {
+            if (e.key === 'ArrowLeft') {
+                modalNavegar(-1);
+                e.preventDefault();
+            } else if (e.key === 'ArrowRight') {
+                modalNavegar(1);
+                e.preventDefault();
+            } else if (e.key === 'Escape') {
+                cerrarModal();
+            }
+        }
+    });
+    
+    // Almacenar datos de galerías
+    window.galleryData = {};
+    
+    // Definir múltiples imágenes para cada subproyecto
     const imageSets = {
-        // Proyecto1 - ETL: tres subproyectos
         'gallery-1-1': ['migracion_legacy.png', 'etl_migracion.jpg', 'datawarehouse_flow.png'],
         'gallery-1-2': ['ventas_multicanal.png', 'integracion_crm.jpg', 'multichannel_dashboard.png'],
         'gallery-1-3': ['etl_archivos_planos.png', 'carga_excel.jpg', 'csv_validation.png'],
-        // Proyecto2 - Reportes Email
-        'gallery-2-1': ['correo_ventas.PNG', 'daily_sales_report.jpg', 'email_sales_kpi.png','correo_automatico.PNG'],
+        'gallery-2-1': ['correo_ventas.PNG', 'daily_sales_report.jpg', 'email_sales_kpi.png'],
         'gallery-2-2': ['correo_automatico.PNG', 'dashboard_email.png', 'email_dashboard_sample.jpg'],
         'gallery-2-3': ['alerta_stock.png', 'stock_alert.jpg', 'low_stock_notification.png'],
-        // Proyecto3 - Optimización
         'gallery-3-1': ['optimizacion_ventas.png', 'columnstore_performance.jpg', 'query_tuning_plan.png'],
         'gallery-3-2': ['mantenimiento_indices.png', 'rebuild_index.jpg', 'index_fragmentation.png'],
         'gallery-3-3': ['particionamiento.png', 'table_partition.jpg', 'sliding_window.png'],
-        // Proyecto4 - CRM
         'gallery-4-1': ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG', 'crm_schema.png']
     };
-
+    
     // Inicializar todas las galerías
     function initGalleries() {
         for (const [galleryId, urls] of Object.entries(imageSets)) {
@@ -662,10 +745,8 @@
             if (!imgElement || !placeholderDiv) continue;
             
             let currentIndex = 0;
-            let loadedImages = [];
             let validUrls = [];
             
-            // Probar qué URLs realmente existen (carga asíncrona)
             const testAndLoadImages = () => {
                 let remaining = urls.length;
                 if (urls.length === 0) { showPlaceholder('No hay imágenes'); return; }
@@ -673,14 +754,20 @@
                     const testImg = new Image();
                     testImg.onload = () => {
                         validUrls.push(url);
-                        loadedImages.push(url);
-                        if (validUrls.length === 1) displayImage(0);
+                        if (validUrls.length === 1) {
+                            displayImage(0);
+                        }
                         updateCounter();
-                        if (loadedImages.length === urls.length && validUrls.length === 0) showPlaceholder('No se encontraron imágenes');
+                        // Guardar datos para el modal
+                        window.galleryData[galleryId] = { validUrls: validUrls };
+                        if (validUrls.length === 0 && remaining <= 0) showPlaceholder('Sin imágenes disponibles');
                     };
                     testImg.onerror = () => {
                         remaining--;
-                        if (remaining === 0 && validUrls.length === 0) showPlaceholder('Sin imágenes disponibles');
+                        if (remaining === 0 && validUrls.length === 0) {
+                            showPlaceholder('Sin imágenes disponibles');
+                            window.galleryData[galleryId] = { validUrls: [] };
+                        }
                     };
                     testImg.src = url;
                 });
@@ -701,7 +788,11 @@
                 imgElement.src = url;
                 imgElement.style.display = 'block';
                 placeholderDiv.style.display = 'none';
-                imgElement.onclick = (e) => { e.stopPropagation(); abrirModal(url); };
+                // Al hacer clic en la imagen, abrir modal con navegación
+                imgElement.onclick = (e) => {
+                    e.stopPropagation();
+                    abrirModalConGaleria(galleryId, index);
+                };
                 updateCounter();
             }
             
