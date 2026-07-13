@@ -91,7 +91,6 @@
             flex-wrap: wrap;
             gap: 0.7rem;
             align-items: center;
-            position: relative;
             margin-top: 0.5rem;
         }
 
@@ -135,6 +134,13 @@
         .btn-proyectos:hover {
             background: #dfebf5;
             transform: translateY(-2px);
+        }
+
+        /* Envoltorio del botón Proyectos: aquí va el position:relative que
+           antes estaba mal puesto en .action-group. Así el submenú se
+           posiciona respecto a ESTE botón y no respecto a toda la fila. */
+        .proyectos-wrapper {
+            position: relative;
         }
 
         /* SUBMENÚ */
@@ -231,7 +237,7 @@
         .foto-inline-wrapper:hover {
             transform: scale(1.03);
         }
-        
+
         /* MEJORAS DE NITIDEZ Y CALIDAD DE IMAGEN */
         .foto-inline-img {
             width: 100%;
@@ -246,7 +252,7 @@
             filter: brightness(1.02) contrast(1.08) saturate(1.03) drop-shadow(0 2px 4px rgba(0,0,0,0.05));
             transition: all 0.3s ease;
         }
-        
+
         .foto-inline-img:hover {
             filter: brightness(1.03) contrast(1.1) saturate(1.04);
         }
@@ -341,21 +347,25 @@
                 <a href="CV_Marcelo.GG.pdf" download class="btn btn-pdf">
                     <i class="fas fa-file-pdf"></i> CV.pdf
                 </a>
-                <button class="btn btn-proyectos" id="botonProyectosPrincipal">
-                    <i class="fas fa-folder-open"></i> Proyectos <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
-                </button>
-                <div class="submenu-desplegable" id="submenuCompleto">
-                    <a href="portafolio_sql.html" class="sub-sql">
-                        <i class="fas fa-database"></i> SQL Server · Modelado & Consultas
-                    </a>
-                    <div class="separador-suave"></div>
-                    <a href="portafolio_powerbi.html" class="sub-powerbi">
-                        <i class="fas fa-chart-line"></i> Power BI · Dashboards Interactivos
-                    </a>
-                    <div class="separador-suave"></div>
-                    <a href="portafolio_python.html" class="sub-python">
-                        <i class="fab fa-python"></i> Python · Análisis & Automatización
-                    </a>
+
+                <!-- Envoltorio nuevo: contiene solo el botón Proyectos y su submenú -->
+                <div class="proyectos-wrapper">
+                    <button class="btn btn-proyectos" id="botonProyectosPrincipal">
+                        <i class="fas fa-folder-open"></i> Proyectos <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </button>
+                    <div class="submenu-desplegable" id="submenuCompleto">
+                        <a href="portafolio_sql.html" class="sub-sql">
+                            <i class="fas fa-database"></i> SQL Server · Modelado & Consultas
+                        </a>
+                        <div class="separador-suave"></div>
+                        <a href="portafolio_powerbi.html" class="sub-powerbi">
+                            <i class="fas fa-chart-line"></i> Power BI · Dashboards Interactivos
+                        </a>
+                        <div class="separador-suave"></div>
+                        <a href="portafolio_python.html" class="sub-python">
+                            <i class="fab fa-python"></i> Python · Análisis & Automatización
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -370,8 +380,8 @@
         </div>
         <h2><i class="fas fa-chart-simple" style="margin-right: 12px; color: #3b82f6;"></i> Bienvenido a mi espacio de datos</h2>
         <p>
-            Soy <strong>Ingeniero de Sistemas</strong> con especialización en <strong>Data Analysis & Business Intelligence</strong>.  
-            Me apasiona transformar datos en decisiones. Aquí encontrarás proyectos prácticos en  
+            Soy <strong>Ingeniero de Sistemas</strong> con especialización en <strong>Data Analysis & Business Intelligence</strong>.
+            Me apasiona transformar datos en decisiones. Aquí encontrarás proyectos prácticos en
             <strong>SQL, Power BI y Python</strong>, con dashboards, consultas optimizadas y automatización.
         </p>
         <p>
@@ -420,22 +430,22 @@
 
         if (botonProyectos && submenu) {
             botonProyectos.addEventListener('click', toggleSubmenu);
-            
+
             document.addEventListener('click', function(event) {
-                if (submenu.style.display === 'flex' && 
-                    !botonProyectos.contains(event.target) && 
+                if (submenu.style.display === 'flex' &&
+                    !botonProyectos.contains(event.target) &&
                     !submenu.contains(event.target)) {
                     submenu.style.display = 'none';
                 }
             });
-            
+
             submenu.addEventListener('click', function(e) {
                 e.stopPropagation();
             });
         }
 
         if(submenu) submenu.style.display = 'none';
-        
+
         // MEJORA ADICIONAL: Si la imagen es pequeña, se escala con mejor calidad
         const foto = document.querySelector('.foto-inline-img');
         if (foto) {
