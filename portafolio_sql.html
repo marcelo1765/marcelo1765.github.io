@@ -664,12 +664,9 @@
     }
     
     function abrirModalConGaleria(galleryId, index) {
-        // Buscar la galería y sus URLs
         const galleryContainer = document.querySelector(`.gallery-container[data-gallery="${galleryId}"]`);
         if (!galleryContainer) return;
         
-        // Obtener las URLs de las imágenes válidas desde el estado de la galería
-        // Para eso necesitamos acceder a los datos almacenados en la galería
         if (window.galleryData && window.galleryData[galleryId]) {
             currentImageUrls = window.galleryData[galleryId].validUrls || [];
             currentImageIndex = index;
@@ -720,15 +717,16 @@
     const imageSets = {
         'gallery-1-1': ['migracion_legacy.png', 'etl_migracion.jpg', 'datawarehouse_flow.png'],
         
-       'gallery-1-2': [
-        'Imagenes/SQL/Proyecto_1/1.2/Generar_reporte1_SSIS.jpg',
-        'Imagenes/SQL/Proyecto_1/1.2/Generar_reporte2_SSIS.jpg',
-        'Imagenes/SQL/Proyecto_1/1.2/Generar_reporte3_SSIS.jpg'
+        'gallery-1-2': [
+            'Imagenes/SQL/Proyecto_1/1.2/Generar_reporte1_SSIS.jpg',
+            'Imagenes/SQL/Proyecto_1/1.2/Generar_reporte2_SSIS.jpg',
+            'Imagenes/SQL/Proyecto_1/1.2/Generar_reporte3_SSIS.jpg'
         ],
         
-        'gallery-1-3': ['Imagenes/SQL/Proyecto_1/1.3/Carga_Masiva_SSIS.jpg',
-        'Imagenes/SQL/Proyecto_1/1.3/Query_masivo.jpg',
-        'Imagenes/SQL/Proyecto_1/1.3/Envio_Correo_Masiva_SSISjpg.jpg'
+        'gallery-1-3': [
+            'Imagenes/SQL/Proyecto_1/1.3/Carga_Masiva_SSIS.jpg',
+            'Imagenes/SQL/Proyecto_1/1.3/Query_masivo.jpg',
+            'Imagenes/SQL/Proyecto_1/1.3/Envio_Correo_Masiva_SSISjpg.jpg'
         ],
         
         'gallery-2-1': ['correo_ventas.PNG', 'correo_automatico.PNG'],
@@ -740,7 +738,7 @@
         'gallery-4-1': ['crm_erd.png', 'database_diagram.jpg', 'sql_crm_model.PNG', 'crm_schema.png']
     };
     
-    // Inicializar todas las galerías
+    // Inicializar todas las galerías manteniendo el orden estricto de las imágenes
     function initGalleries() {
         for (const [galleryId, urls] of Object.entries(imageSets)) {
             const container = document.querySelector(`.gallery-container[data-gallery="${galleryId}"]`);
@@ -757,104 +755,138 @@
             let currentIndex = 0;
             let validUrls = [];
             
-            const testAndLoadImages = () => {
-                let remaining = urls.length;
-                if (urls.length === 0) { showPlaceholder('No hay imágenes'); return; }
-                urls.forEach(url => {
-                    const testImg = new Image();
-                    testImg.onload = () => {
-                        validUrls.push(url);
-                        if (validUrls.length === 1) {
-                            displayImage(0);
-                        }
-                        updateCounter();
-                        // Guardar datos para el modal
-                        window.galleryData[galleryId] = { validUrls: validUrls };
-                        if (validUrls.length === 0 && remaining <= 0) showPlaceholder('Sin imágenes disponibles');
+            const loadImagesInOrder = () => {
+                if (urls.length === 0) {
+                    showPlaceholder('No hay imágenes');
+                    return;
+                }
+
+                let loadedCount = 0;
+                let tempValidUrls = new Array(urls.length);
+
+                urls.forEach((url, index) => {
+                    const tempImg = new Image();
+                    tempImg.src = url;
+                    
+                    tempImg.onload = () => {
+                        tempValidUrls[index] = url; // Guarda en la posición exacta del orden original
+                        checkCompletion();
                     };
-                    testImg.onerror = () => {
-                        remaining--;
-                        if (remaining === 0 && validUrls.length === 0) {
-                            showPlaceholder('Sin imágenes disponibles');
-                            window.galleryData[galleryId] = { validUrls: [] };
-                        }
+                    
+                    tempImg.onerror = () => {
+                        tempValidUrls[index] = null; // Marca la posición como sin imagen
+                        checkCompletion();
                     };
-                    testImg.src = url;
                 });
+
+                function checkCompletion() {
+                    loadedCount++;
+                    if (loadedCount === urls.length) {
+                        // Filtramos las válidas manteniendo exactamente la secuencia definida
+                        validUrls = tempValidUrls.filter(u => u !== null);
+                        finishLoading();
+                    }
+                }
             };
-            
-            function showPlaceholder(msg) {
-                imgElement.style.display = 'none';
-                placeholderDiv.style.display = 'flex';
-                placeholderDiv.innerHTML = `<div class="placeholder-icon"><i class="fas fa-image"></i></div><div>${msg}</div>`;
-                counterSpan.innerText = `0 / 0`;
-                if (prevBtn) prevBtn.disabled = true;
-                if (nextBtn) nextBtn.disabled = true;
-            }
-            
-            function displayImage(index) {
-                if (validUrls.length === 0) return;
-                const url = validUrls[index];
-                imgElement.src = url;
+
+            const updateDisplay = () => {
+                if (validUrls.length === 0) {
+                    showPlaceholder('No se encontraron imágenes');
+                    return;
+                }
+                imgElement.src = validUrls[currentIndex];
                 imgElement.style.display = 'block';
                 placeholderDiv.style.display = 'none';
-                // Al hacer clic en la imagen, abrir modal con navegación
-                imgElement.onclick = (e) => {
+                if (counterSpan) {
+                    counterSpan.innerText = `${currentIndex + 1} / ${validUrls.length}`;
+                }
+            };
+
+            const showPlaceholder = (msg) => {
+                imgElement.style.display = 'none';
+                placeholderDiv.style.display = 'flex';
+                placeholderDiv.innerText = msg;
+                if (counterSpan) counterSpan.innerText = '0 / 0';
+            };
+
+            const finishLoading = () => {
+                window.galleryData[galleryId] = { validUrls };
+                if (validUrls.length > 0) {
+                    updateDisplay();
+                } else {
+                    showPlaceholder('Imagen no disponible');
+                }
+            };
+
+            loadImagesInOrder();
+
+            // Eventos para la navegación de la galería dentro de la tarjeta
+            if (prevBtn) {
+                prevBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    abrirModalConGaleria(galleryId, index);
-                };
-                updateCounter();
+                    if (validUrls.length > 0) {
+                        currentIndex = (currentIndex - 1 + validUrls.length) % validUrls.length;
+                        updateDisplay();
+                    }
+                });
             }
-            
-            function updateCounter() {
-                if (validUrls.length > 0) counterSpan.innerText = `${currentIndex+1} / ${validUrls.length}`;
-                else counterSpan.innerText = `0 / 0`;
-                if (prevBtn) prevBtn.disabled = (validUrls.length <= 1);
-                if (nextBtn) nextBtn.disabled = (validUrls.length <= 1);
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (validUrls.length > 0) {
+                        currentIndex = (currentIndex + 1) % validUrls.length;
+                        updateDisplay();
+                    }
+                });
             }
-            
-            function nextImage() { if (validUrls.length && currentIndex < validUrls.length-1) { currentIndex++; displayImage(currentIndex); } }
-            function prevImage() { if (validUrls.length && currentIndex > 0) { currentIndex--; displayImage(currentIndex); } }
-            
-            if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
-            if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
-            
-            testAndLoadImages();
+
+            // Abrir modal con visor a pantalla completa
+            imgElement.addEventListener('click', (e) => {
+                e.stopPropagation();
+                abrirModalConGaleria(galleryId, currentIndex);
+            });
         }
     }
-    
-    // Expandir/colapsar proyectos
-    function setupProyecto(cuadroId, tarjetaId) {
-        const cuadro = document.getElementById(cuadroId);
-        const tarjeta = document.getElementById(tarjetaId);
-        if (!cuadro || !tarjeta) return;
-        const iconSpan = cuadro.querySelector('.expand-icon');
-        cuadro.addEventListener('click', function(e) {
-            e.stopPropagation();
-            document.querySelectorAll('.foto-card').forEach(card => { if (card.id !== tarjetaId && card.classList.contains('visible')) card.classList.remove('visible'); });
-            const wasVisible = tarjeta.classList.contains('visible');
-            if (!wasVisible) { tarjeta.classList.add('visible'); if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-chevron-up"></i>'; setTimeout(() => tarjeta.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100); } 
-            else { tarjeta.classList.remove('visible'); if (iconSpan) iconSpan.innerHTML = '<i class="fas fa-chevron-down"></i>'; }
+
+    // Control de acordeón para desplegar las tarjetas de proyecto
+    document.addEventListener('DOMContentLoaded', () => {
+        initGalleries();
+
+        const proyectos = [
+            { cuadro: 'cuadro-proyecto-1', tarjeta: 'tarjeta-proyecto-1' },
+            { cuadro: 'cuadro-proyecto-2', tarjeta: 'tarjeta-proyecto-2' },
+            { cuadro: 'cuadro-proyecto-3', tarjeta: 'tarjeta-proyecto-3' },
+            { cuadro: 'cuadro-proyecto-4', tarjeta: 'tarjeta-proyecto-4' }
+        ];
+
+        proyectos.forEach(item => {
+            const cuadroEl = document.getElementById(item.cuadro);
+            const tarjetaEl = document.getElementById(item.tarjeta);
+
+            if (cuadroEl && tarjetaEl) {
+                cuadroEl.addEventListener('click', () => {
+                    const isVisible = tarjetaEl.classList.contains('visible');
+                    document.querySelectorAll('.foto-card').forEach(card => card.classList.remove('visible'));
+                    
+                    if (!isVisible) {
+                        tarjetaEl.classList.add('visible');
+                    }
+                });
+            }
         });
-    }
-    
-    function configurarBotonesCerrar() {
+
+        // Botones para cerrar la tarjeta activa
         document.querySelectorAll('.cerrar-tarjeta').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const tarjeta = document.getElementById(this.getAttribute('data-tarjeta'));
-                if (tarjeta) { tarjeta.classList.remove('visible'); const cuadroId = tarjeta.id.replace('tarjeta-proyecto', 'cuadro-proyecto'); const cuadro = document.getElementById(cuadroId); if(cuadro){ const icon = cuadro.querySelector('.expand-icon'); if(icon) icon.innerHTML = '<i class="fas fa-chevron-down"></i>'; } }
+                const tarjetaId = btn.getAttribute('data-tarjeta');
+                const tarjetaEl = document.getElementById(tarjetaId);
+                if (tarjetaEl) {
+                    tarjetaEl.classList.remove('visible');
+                }
             });
         });
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-        initGalleries();
-        setupProyecto('cuadro-proyecto-1', 'tarjeta-proyecto-1');
-        setupProyecto('cuadro-proyecto-2', 'tarjeta-proyecto-2');
-        setupProyecto('cuadro-proyecto-3', 'tarjeta-proyecto-3');
-        setupProyecto('cuadro-proyecto-4', 'tarjeta-proyecto-4');
-        configurarBotonesCerrar();
     });
 </script>
 </body>
